@@ -1,0 +1,18 @@
+# DATA 266 Lab 2 - Part 1 (Multimodal RAG). Versions used to produce the reported results.
+# torch and torchvision are already installed on Kaggle, so the notebook does not reinstall them.
+# Parts 2 and 3 will add their own libraries to this file.
+
+torch==2.14.1
+torchvision==0.29.1
+transformers==5.22.1
+accelerate==1.15.0
+bitsandbytes==0.50.2
+sentence-transformers==6.2.0
+qwen-vl-utils==0.0.14
+chromadb==1.5.9
+rank-bm25==0.2.2
+pymupdf==2.1
+pandas==3.1.1
+numpy==2.4.6
+pillow==13.0.0
+ipykernel==7.4.0
