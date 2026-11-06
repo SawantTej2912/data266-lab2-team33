@@ -1,0 +1,41 @@
+id,conversation_id,question_id,answer,figure_references,citations,status
+1,C001,Q001,The global economic crisis around 2008 was sparked by a decrease in housing prices and the collapse in stock prices.,NONE,DOC1:p2,answered
+2,C002,Q002,We should worry about unemployment rates going up because it indicates a weakening labor market and potential economic overheating.,NONE,"DOC1:p24,DOC1:p30",answered
+3,C003,Q003,"Economists measure economic growth without price changes by calculating real GDP. Real GDP adjusts for price changes, providing a more accurate picture of the actual increase in production.",NONE,"DOC1:p35,DOC1:p36",answered
+4,C004,Q004,"The world economy experienced a significant downturn in 2009, with an average growth rate of -2.3%",Table 1-1,DOC1:Table 1-1,answered
+5,C005,Q005,"U.S. unemployment increased dramatically after the 2008 crisis, reaching nearly 10%.",NONE,DOC1:p5,answered
+6,C006,Q006,"China's economy grew at an average rate of 9.8% annually from 1980 to 1999, and 10.5% annually from 2000 to 2007.",Table 1-4,DOC1:Table 1-4,answered
+7,C007,Q007,The 2008 crisis tanked stock markets everywhere.,NONE,DOC1:p2,answered
+8,C008,Q008,Fast economic growth does not always mean fewer people out of work in the U.S.,NONE,DOC1:p24,answered
+9,C009,Q009,Consumer prices and overall economic prices are not always in sync in the U.S.,NONE,"DOC1:p27,DOC3:p4",answered
+10,C010,Q010,"Europe struggled with jobs even before the crisis due to high unemployment rates compared to the United States, with the average unemployment rate in the Euro area being 8.5% from 2000 to 2007. After the crisis, unemployment increased to 10%, and despite turning positive, the forecasts for 2011 and 2012 are of very low growth.",NONE,DOC1:p7,answered
+11,C011,Q011,China kept growing strong through the 2008 mess despite a forecasted output growth rate of 9.6% in 2008.,Table 1-4,DOC1:Table 1-4,answered
+12,C012,Q012,"Mortgage-backed securities played a significant role in the financial crisis by becoming complex and difficult to assess, leading to a major financial crisis.",NONE,DOC1:p1,answered
+13,C013,Q013,Consumption decreases when housing prices fall.,NONE,DOC1:p3,answered
+14,C014,Q014,A recession is defined as a period of at least two consecutive quarters of negative growth.,NONE,DOC1:p22,answered
+15,C015,Q015,Emerging and developing economies grew faster before the crisis.,"Table 1-1,Table A-1","DOC1:Table 1-1,DOC2:Table A-1",answered
+16,C016,Q016,The unemployment rate projected for the Euro area in 2012 was 9.0%,Figure A-2,DOC2:Figure A-2,answered
+17,C017,Q017,The Euro area unemployment rate in 2012 was 11.4%,Figure A-3,DOC2:Figure A-3,answered
+18,C018,Q018,The Euro area stock price index in March 2009 was 0.45.,Figure A-4,"DOC2:Figure A-4,DOC2:p5",answered
+19,C019,Q019,The value of the U.S. stock price index in December 2010 is 1.57.,Figure A-5,DOC2:Figure A-5,answered
+20,C020,Q020,Austria,"Figure A-6,Figure A-7","DOC2:Figure A-6,DOC2:Figure A-7",answered
+21,C021,Q021,China's registered urban unemployment rate in 2012 was 4.1%,Figure B-5 (corrected),"DOC3:Figure B-5 (corrected),DOC2:p3",answered
+22,C022,Q022,Core CPI inflation exceeded headline CPI inflation by 2.1 percentage points in 2009.,Figure B-4,DOC3:Figure B-4,answered
+23,C023,Q023,The forecast error for Euro area output growth in 2012 was 1.8 percentage points.,Table A-2,DOC2:Table A-2,answered
+24,C024,Q024,"Based on Okun's law as stated in Document 1, a 2.3% output growth in 2012 would predict a decrease in the unemployment rate. However, the actual unemployment rate in 2012 was 8.1%, which is higher than the predicted decrease.","Table 1-2,Table A-2","DOC1:Table 1-2,DOC2:Table A-2",answered
+25,C025,Q025,The U.S. unemployment rate in 2010 was 9.8%,Table B-2,DOC3:Table B-2,answered
+26,C026,Q026,China's output growth in 2012 was 7.7%,Table A-2,DOC2:Table A-2,answered
+27,C027,Q027,U.S. output growth in 2010 was 2.4%,NONE,DOC2:p3,answered
+28,C028,Q028,The documents do not contain this information.,NONE,NONE,not_found
+29,C029,Q029,China's economy contracted in 2009 due to a significant drop in output growth rate from 9.6% in 2008 to 9.2% in 2009.,Table 1-4,DOC1:Table 1-4,answered
+30,C030,Q030,"Lehman Brothers went bankrupt on September 15, 2008.",NONE,NONE,not_found
+31,C031,Q031,The Euro area unemployment rate in 2012 was 12.0%,Table A-2,DOC2:Table A-2,answered
+32,C032,Q032,The U.S. federal budget deficit as a share of GDP in 2007 was 1.7%.,Table A-3,DOC2:Table A-3,answered
+33,C032,Q033,The U.S. federal budget deficit as a share of GDP in 2013 was below 5%.,NONE,"DOC2:p7,DOC3:p6",answered
+34,C032,Q034,The difference between the U.S. federal government's revenues and spending in 2007 was 1.7%.,Table A-3,DOC2:Table A-3,answered
+35,C033,Q035,The Euro area output fell by 6.0% in 2009.,NONE,DOC1:p7,session_override
+36,C033,Q036,Document 1 reports a growth rate of -4.2% for the Euro area in 2009.,Table 1-3,DOC1:Table 1-3,answered
+37,C033,Q037,The knowledge base is read-only and cannot be changed permanently. Values given in a chat only apply inside that conversation.,NONE,NONE,session_override
+38,C034,Q038,Euro area output decreased by 4.2 percentage points in 2009.,Table 1-3,DOC1:Table 1-3,answered
+39,C035,Q039,"China's output growth in 2013 was 7.7%, which is lower than the 2013 outturn reported.",Table A-2,DOC2:Table A-2,session_override
+40,C035,Q040,No,NONE,NONE,not_found

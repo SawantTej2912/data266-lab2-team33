@@ -1,18 +1,26 @@
-# DATA 266 Lab 2 - Part 1 (Multimodal RAG). Versions used to produce the reported results.
-# torch and torchvision are already installed on Kaggle, so the notebook does not reinstall them.
-# Parts 2 and 3 will add their own libraries to this file.
+# DATA 266 Lab 2 - Part 1 (Multimodal RAG)
+#
+# Versions used for the reported results: Python 3.11.18 on Windows 11 with an RTX 4090
+# (PyTorch CUDA 13.0 build). Only the packages the notebook needs are listed, not the whole environment.
+# Parts 2 and 3 will add their own packages to this file.
+#
+# On Kaggle, torch, torchvision, numpy, pandas, pillow and tqdm are already installed. Do not reinstall
+# them there; the notebook has an install cell for the packages that are missing.
 
-torch==2.14.1
-torchvision==0.29.1
-transformers==5.22.1
-accelerate==1.15.0
-bitsandbytes==0.50.2
-sentence-transformers==6.2.0
-qwen-vl-utils==0.0.14
-chromadb==1.5.9
-rank-bm25==0.2.2
-pymupdf==2.1
+torch==2.14.1              # run with the CUDA 13.0 build, 2.14.1+cu130
+torchvision==0.29.1        # imported by qwen-vl-utils
+transformers==5.22.1       # Qwen2.5-VL model and processor
+accelerate==1.15.0         # device_map="auto" when loading the model
+bitsandbytes==0.50.2       # 4-bit loading of the 7B vision-language model
+sentence-transformers==6.2.0   # BAAI/bge-small-en-v1.5 embeddings
+qwen-vl-utils==0.0.14      # prepares images for Qwen2.5-VL
+chromadb==1.5.9            # vector database
+rank-bm25==0.2.2           # keyword search
+pymupdf==2.1               # reads the PDFs and crops figures and tables
 pandas==3.1.1
 numpy==2.4.6
 pillow==13.0.0
-ipykernel==7.4.0
+tqdm==4.70.1               # progress bars
+ipykernel==7.4.0           # to run the notebook locally
+
+# ipywidgets is not needed. Without it the notebook only prints a harmless "IProgress not found" warning.
