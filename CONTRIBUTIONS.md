@@ -22,7 +22,17 @@ The Git history does not show who wrote what before the first commit, or any pai
 
 ## Part 2 - Fine-tuning diffusion models
 
-- Not started. TODO
+What the Git history shows (all commits are under the one GitHub account `SawantTej2912`):
+
+| Commit | What it contains |
+|---|---|
+| `9cf9213` | Data preparation notebook, train/test split lists and the 20 fixed prompts (committed before any training) |
+| later commit | Training script and wrapper, the training and evaluation notebooks, results, README and requirements (see `git log`) |
+
+- Member 1: TODO (what they did in Part 2)
+- Member 2: TODO (what they did in Part 2; the lab says both members must run the complete pipeline)
+- Human evaluation (25 pairs, at least 3 raters: both members and one person outside the team): TODO. The rating form is `outputs/part2/human_eval/rating_form.html`.
+- Hugging Face account used for the uploads: `SawantTej`
 
 ## Part 3 - Multi-agent system
 

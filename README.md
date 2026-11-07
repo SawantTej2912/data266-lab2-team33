@@ -15,7 +15,7 @@ Every part follows the same pattern: its notebook is in `notebooks/`, its input 
 ```
 GPU_LAB_2/
 |-- README.md, requirements.txt, AI_USAGE.md, CONTRIBUTIONS.md
-|-- notebooks/        p1_rag_final.ipynb, p2_finetune.ipynb (planned), p3_agents.ipynb (planned)
+|-- notebooks/        p1_rag_final.ipynb, p2_1_data_prep / p2_2_finetune / p2_3_generate_evaluate (.ipynb), p3_agents.ipynb (planned)
 |-- data/             part1/ (provided files), part2/ (our prompts and split lists), part3/ (planned)
 |-- outputs/          part1/, part2/, part3/ (planned)  - created by the notebooks
 |-- scripts/part2/    training script for Part 2
@@ -148,39 +148,71 @@ The lab requires all work to fit on one 16 GB GPU. With 4-bit loading the 7B mod
 - All settings (model names, 4-bit switch, image size limit, paths) are in the "Setup: Paths and Settings" cell.
 - The model weights are downloaded by the notebook and are not stored in this repository.
 
-## Part 2: Fine-tuning Stable Diffusion 1.5 with LoRA (in progress)
+## Part 2: Fine-tuning Stable Diffusion 1.5 with LoRA
 
-Nothing is trained yet. This is the plan and the folder structure. Results will be added when the notebooks have run.
+We fine-tuned Stable Diffusion 1.5 on Pokemon artwork with LoRA, trained two runs that differ only in the LoRA rank, and compared both with the base model. The notebooks are finished and executed. The blinded human evaluation still needs its ratings (see below).
 
 | Item | Choice |
 |---|---|
-| Dataset | Pokemon BLIP captions (`reach-vb/pokemon-blip-captions`) |
+| Dataset | Pokemon BLIP captions (`reach-vb/pokemon-blip-captions`, cc-by-nc-sa-4.0), 833 images, 830 after cleaning |
+| Split | 90/10 with seed 266: 747 train, 83 test |
 | Base model | `stable-diffusion-v1-5/stable-diffusion-v1-5`, 512x512 |
-| Run 1 | LoRA, rank 8 |
-| Run 2 | LoRA, rank 32 (same data and same number of steps as run 1) |
-| Training | Local RTX 4090, kept under 16 GB of GPU memory, fp16 |
-| Random seed | 266 (also used for the 90/10 train/test split) |
-| Environment | Separate conda environment `data266_lab2_part2` |
+| Run 1 / Run 2 | LoRA rank 8 / LoRA rank 32. Same data, 3000 steps, batch size 4, learning rate 1e-4 (cosine), fp16, seed 266 |
+| Training | Local RTX 4090, limited to 15 GB of GPU memory (both runs peaked below 4 GB, so they also fit a 16 GB GPU) |
+| Generation | 20 fixed prompts x 2 seeds (0 and 1) x 3 models, 30 steps, guidance 7.5 |
 
-Environment: the exact setup is at the top of `requirements-part2.txt` (Python 3.11, the same CUDA 13.0 PyTorch build as Part 1). The Jupyter kernel is called `DATA266 Lab2 Part2 GPU`.
+### Notebooks (run them in this order, each with Restart & Run All)
 
-Licenses: the Pokemon BLIP captions dataset is `cc-by-nc-sa-4.0` (attribution, non-commercial, share-alike) and Stable Diffusion 1.5 uses the CreativeML OpenRAIL-M license. The Pokemon characters are copyrighted, so our model and images are for non-commercial research only.
+Use the Jupyter kernel `DATA266 Lab2 Part2 GPU` (environment `data266_lab2_part2`, see `requirements-part2.txt` for the setup).
 
-Where the Part 2 files go:
+1. `notebooks/p2_1_data_prep.ipynb` (under 1 minute): loads the data, removes corrupted and duplicate images, splits 90/10, resizes to 512x512, describes the dataset, and writes the 20 prompts. The prompts were committed to Git before training started.
+2. `notebooks/p2_2_finetune.ipynb` (about 35 minutes on an RTX 4090): trains the two runs with the unchanged diffusers script in `scripts/part2/` and prints the training table (parameters, learning rate, steps, batch size, peak memory, time).
+3. `notebooks/p2_3_generate_evaluate.ipynb` (about 4 minutes): generates the images, makes the grids, computes KID, CLIP score and LPIPS, runs the NSFW and memorization checks, shows the failure modes, prepares the human evaluation and uploads to Hugging Face. To skip the upload set `UPLOAD_TO_HF = False` in its settings cell. To upload you need to be logged in (`huggingface-cli login`).
+
+### Results
+
+The final table is saved in `outputs/part2/metrics/results_table.csv` (KID: lower is better; the plus-minus is the spread over 100 subsets of 20 images, so it is only a rough guide):
+
+| Model | KID (in-domain) | CLIP score | LPIPS diversity | Training GPU-hours | Peak GPU memory |
+|---|---|---|---|---|---|
+| Base SD 1.5 (baseline) | 0.0947 +/- 0.0090 | 32.82 | 0.830 | - | - |
+| Run 1, LoRA rank 8 | 0.0531 +/- 0.0065 | 32.01 | 0.769 | 0.271 | 3.70 GB |
+| **Run 2, LoRA rank 32 (final)** | **0.0356 +/- 0.0068** | 32.13 | 0.755 | 0.269 | 3.75 GB |
+
+Both runs move the images much closer to the dataset (lower KID), rank 32 more than rank 8, at almost the same cost. The price is a small loss in prompt alignment (CLIP) and diversity. Prompts with several objects, counts or colours still go wrong. We chose run 2 because it has the lowest KID and its images clearly look like the dataset (flat cartoon creatures on a white background). More detail, the failure modes and the safety checks are in notebook 3.
+
+The notebook also covers the two checks required for safety: the Stable Diffusion safety checker flagged 9 of 120 images (6 of them from the rank-32 run), and we looked at all of them (harmless cartoon creatures, false alarms); and a memorization check shows that the generated images are not closer to the training images than unseen test images are.
+
+### Human evaluation (still to do)
+
+The lab needs a blinded comparison of 25 image pairs (final run against the base model) by at least 3 raters: both team members and one person outside the team.
+
+1. Send `outputs/part2/human_eval/rating_form.html` to each rater (it works offline in any browser; do not send `answer_key.csv`).
+2. Each rater fills it in and clicks *Download my ratings*, which saves a `ratings_<name>.csv` file.
+3. Put all rating files into `outputs/part2/human_eval/ratings/` and run notebook 3 again. The win rate and the rater agreement appear in its results table.
+
+### Hugging Face
+
+- Models: https://huggingface.co/SawantTej/pokemon-sd15-lora-r8 and https://huggingface.co/SawantTej/pokemon-sd15-lora-r32 (the card of the rank-32 model is the full model card of the final run)
+- All generated images with prompt, seed and model: https://huggingface.co/datasets/SawantTej/pokemon-sd15-lora-generations
+
+### Where the Part 2 files are
 
 ```
-data/part2/                        prompts (written before training), train/test split lists
+data/part2/                        the 20 prompts (prompts.json, prompts.csv)
 outputs/part2/
-|-- data_prep/                     counts of removed images, split lists
-|-- runs/run1_lora_r8/             training log and summary of run 1 (weights go to Hugging Face)
-|-- runs/run2_lora_r32/            training log and summary of run 2
-|-- generated/{base,run1_lora_r8,run2_lora_r32}/   the 40 images of each model (go to Hugging Face)
-|-- grids/                         side-by-side grids for 8 prompts
-|-- metrics/                       KID, CLIP score and LPIPS results (csv)
-|-- human_eval/                    blinded image pairs and the rating sheets
-`-- safety/                        NSFW check and memorization check
-scripts/part2/                     the diffusers LoRA training script
-notebooks/p2_finetune.ipynb        may be split into a few notebooks later
+|-- data_prep/                     split lists and cleaning summary (the 512x512 images are not in Git)
+|-- runs/run1_lora_r8/             training log, loss log and summary of run 1 (the weights are on Hugging Face)
+|-- runs/run2_lora_r32/            the same for run 2
+|-- metrics/                       training table, loss curves, KID / CLIP / LPIPS results, results table
+|-- human_eval/                    answer key and the folder for the rating files
+|-- safety/                        NSFW check and memorization check (csv)
+`-- generated/, grids/             the 120 images and the figures (not in Git, the images are on Hugging Face)
+scripts/part2/                     the diffusers training script (unchanged, v0.42.1) and our small wrapper
 ```
 
-Model weights, generated images and processed images are not stored in Git. They go to Hugging Face.
+### Limits and licenses
+
+- The data is small and uniform, and the BLIP captions are weak and often wrong, so the model is good at the dataset's look but poor at counting, colours and arrangement.
+- The characters are copyrighted and the dataset license is cc-by-nc-sa-4.0, so the models and images are for non-commercial research and education only. Stable Diffusion 1.5 uses the CreativeML OpenRAIL-M license.
+- A first trial with 1500 steps changed the style only partly, so we raised the budget to 3000 steps before the final runs. This was decided from the diffusers reference recipe and from one generated image, not from a test metric.

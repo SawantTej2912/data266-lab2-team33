@@ -22,7 +22,6 @@ safetensors==0.8.0
 torchmetrics==1.9.0        # KID
 torch-fidelity==0.4.0      # needed by torchmetrics for KID
 lpips==0.1.4               # diversity between the two seeds of a prompt
-open_clip_torch==4.2.1     # CLIP similarity (memorization check)
 ImageHash==4.3.2           # finds duplicate images
 pillow==13.0.0
 numpy==2.4.6

@@ -1,0 +1,4 @@
+,kid_mean,kid_std,clip_all,clip_in_domain,clip_out_of_domain,clip_compositional,lpips_all,lpips_in_domain,lpips_out_of_domain,lpips_compositional
+base,0.0947,0.009,32.8247,33.3616,31.2872,33.2884,0.8301,0.857,0.7493,0.8571
+run1_lora_r8,0.0531,0.0065,32.0135,32.3457,30.5693,32.7931,0.7694,0.7794,0.7308,0.788
+run2_lora_r32,0.0356,0.0068,32.1311,32.1726,31.1396,33.0398,0.7551,0.7711,0.7266,0.7517

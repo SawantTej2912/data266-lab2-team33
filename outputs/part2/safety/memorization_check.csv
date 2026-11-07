@@ -1,0 +1,11 @@
+prompt_id,prompt,most_similar_training_image,clip_similarity
+P01,a cartoon bird with a scarf around its neck,pokemon_0776.png,0.9375
+P05,a cartoon character sitting in the middle of a pose,pokemon_0570.png,0.9197
+P09,a cartoon bird with a hat on its head,pokemon_0374.png,0.9172
+P04,a cartoon of a fire breathing dragon,pokemon_0628.png,0.9069
+P07,a very cute looking pokemon with a big hat on,pokemon_0524.png,0.9044
+P03,a pink cartoon character with a blue tail,pokemon_0065.png,0.8734
+P08,a purple and black animal with big eyes,pokemon_0238.png,0.8659
+P10,a red and white bird with a yellow beak,pokemon_0600.png,0.8447
+P02,a picture of a butterfly that is orange and green,pokemon_0723.png,0.8424
+P06,a black and white photo of a butterfly,pokemon_0729.png,0.8411

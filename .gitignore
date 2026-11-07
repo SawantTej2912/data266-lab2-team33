@@ -9,6 +9,8 @@ outputs/part2/generated/
 outputs/part2/grids/
 outputs/part2/data_prep/images/
 outputs/part2/runs/**/checkpoint-*/
+outputs/part2/human_eval/pairs/
+outputs/part2/human_eval/rating_form.html
 
 # Old copies kept on this computer only
 archive/

@@ -1,0 +1,121 @@
+model,prompt_id,prompt_type,prompt,seed,steps,guidance,sampler,seconds,file
+base,P01,in_domain,a cartoon bird with a scarf around its neck,0,30,7.5,PNDMScheduler,1.36,..\outputs\part2\generated\base\P01_s0.png
+base,P01,in_domain,a cartoon bird with a scarf around its neck,1,30,7.5,PNDMScheduler,1.08,..\outputs\part2\generated\base\P01_s1.png
+base,P02,in_domain,a picture of a butterfly that is orange and green,0,30,7.5,PNDMScheduler,1.05,..\outputs\part2\generated\base\P02_s0.png
+base,P02,in_domain,a picture of a butterfly that is orange and green,1,30,7.5,PNDMScheduler,0.97,..\outputs\part2\generated\base\P02_s1.png
+base,P03,in_domain,a pink cartoon character with a blue tail,0,30,7.5,PNDMScheduler,0.95,..\outputs\part2\generated\base\P03_s0.png
+base,P03,in_domain,a pink cartoon character with a blue tail,1,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P03_s1.png
+base,P04,in_domain,a cartoon of a fire breathing dragon,0,30,7.5,PNDMScheduler,0.97,..\outputs\part2\generated\base\P04_s0.png
+base,P04,in_domain,a cartoon of a fire breathing dragon,1,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P04_s1.png
+base,P05,in_domain,a cartoon character sitting in the middle of a pose,0,30,7.5,PNDMScheduler,0.95,..\outputs\part2\generated\base\P05_s0.png
+base,P05,in_domain,a cartoon character sitting in the middle of a pose,1,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P05_s1.png
+base,P06,in_domain,a black and white photo of a butterfly,0,30,7.5,PNDMScheduler,0.97,..\outputs\part2\generated\base\P06_s0.png
+base,P06,in_domain,a black and white photo of a butterfly,1,30,7.5,PNDMScheduler,1.0,..\outputs\part2\generated\base\P06_s1.png
+base,P07,in_domain,a very cute looking pokemon with a big hat on,0,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P07_s0.png
+base,P07,in_domain,a very cute looking pokemon with a big hat on,1,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P07_s1.png
+base,P08,in_domain,a purple and black animal with big eyes,0,30,7.5,PNDMScheduler,0.97,..\outputs\part2\generated\base\P08_s0.png
+base,P08,in_domain,a purple and black animal with big eyes,1,30,7.5,PNDMScheduler,1.0,..\outputs\part2\generated\base\P08_s1.png
+base,P09,in_domain,a cartoon bird with a hat on its head,0,30,7.5,PNDMScheduler,1.05,..\outputs\part2\generated\base\P09_s0.png
+base,P09,in_domain,a cartoon bird with a hat on its head,1,30,7.5,PNDMScheduler,1.01,..\outputs\part2\generated\base\P09_s1.png
+base,P10,in_domain,a red and white bird with a yellow beak,0,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P10_s0.png
+base,P10,in_domain,a red and white bird with a yellow beak,1,30,7.5,PNDMScheduler,1.02,..\outputs\part2\generated\base\P10_s1.png
+base,P11,out_of_domain,a photograph of a snowy mountain lake at sunrise,0,30,7.5,PNDMScheduler,0.97,..\outputs\part2\generated\base\P11_s0.png
+base,P11,out_of_domain,a photograph of a snowy mountain lake at sunrise,1,30,7.5,PNDMScheduler,1.02,..\outputs\part2\generated\base\P11_s1.png
+base,P12,out_of_domain,an oil painting of an old man with a white beard,0,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P12_s0.png
+base,P12,out_of_domain,an oil painting of an old man with a white beard,1,30,7.5,PNDMScheduler,1.0,..\outputs\part2\generated\base\P12_s1.png
+base,P13,out_of_domain,a red sports car parked on a city street at night,0,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P13_s0.png
+base,P13,out_of_domain,a red sports car parked on a city street at night,1,30,7.5,PNDMScheduler,1.0,..\outputs\part2\generated\base\P13_s1.png
+base,P14,out_of_domain,"a bowl of fresh fruit on a wooden table, studio photo",0,30,7.5,PNDMScheduler,1.02,..\outputs\part2\generated\base\P14_s0.png
+base,P14,out_of_domain,"a bowl of fresh fruit on a wooden table, studio photo",1,30,7.5,PNDMScheduler,1.02,..\outputs\part2\generated\base\P14_s1.png
+base,P15,out_of_domain,a medieval stone castle on a green hill under a blue sky,0,30,7.5,PNDMScheduler,1.02,..\outputs\part2\generated\base\P15_s0.png
+base,P15,out_of_domain,a medieval stone castle on a green hill under a blue sky,1,30,7.5,PNDMScheduler,1.02,..\outputs\part2\generated\base\P15_s1.png
+base,P16,compositional,"two cartoon characters, one in red and one in blue, standing side by side",0,30,7.5,PNDMScheduler,0.97,..\outputs\part2\generated\base\P16_s0.png
+base,P16,compositional,"two cartoon characters, one in red and one in blue, standing side by side",1,30,7.5,PNDMScheduler,1.05,..\outputs\part2\generated\base\P16_s1.png
+base,P17,compositional,a small green creature sitting on top of a large yellow creature,0,30,7.5,PNDMScheduler,1.0,..\outputs\part2\generated\base\P17_s0.png
+base,P17,compositional,a small green creature sitting on top of a large yellow creature,1,30,7.5,PNDMScheduler,1.04,..\outputs\part2\generated\base\P17_s1.png
+base,P18,compositional,a cartoon animal holding a red balloon in one hand and a blue umbrella in the other,0,30,7.5,PNDMScheduler,0.98,..\outputs\part2\generated\base\P18_s0.png
+base,P18,compositional,a cartoon animal holding a red balloon in one hand and a blue umbrella in the other,1,30,7.5,PNDMScheduler,0.96,..\outputs\part2\generated\base\P18_s1.png
+base,P19,compositional,"three round creatures in a row: a pink one, a purple one and an orange one",0,30,7.5,PNDMScheduler,1.0,..\outputs\part2\generated\base\P19_s0.png
+base,P19,compositional,"three round creatures in a row: a pink one, a purple one and an orange one",1,30,7.5,PNDMScheduler,1.02,..\outputs\part2\generated\base\P19_s1.png
+base,P20,compositional,"a blue dragon next to a red bird, drawn in the same style",0,30,7.5,PNDMScheduler,1.0,..\outputs\part2\generated\base\P20_s0.png
+base,P20,compositional,"a blue dragon next to a red bird, drawn in the same style",1,30,7.5,PNDMScheduler,0.99,..\outputs\part2\generated\base\P20_s1.png
+run1_lora_r8,P01,in_domain,a cartoon bird with a scarf around its neck,0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run1_lora_r8\P01_s0.png
+run1_lora_r8,P01,in_domain,a cartoon bird with a scarf around its neck,1,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run1_lora_r8\P01_s1.png
+run1_lora_r8,P02,in_domain,a picture of a butterfly that is orange and green,0,30,7.5,PNDMScheduler,1.39,..\outputs\part2\generated\run1_lora_r8\P02_s0.png
+run1_lora_r8,P02,in_domain,a picture of a butterfly that is orange and green,1,30,7.5,PNDMScheduler,1.37,..\outputs\part2\generated\run1_lora_r8\P02_s1.png
+run1_lora_r8,P03,in_domain,a pink cartoon character with a blue tail,0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run1_lora_r8\P03_s0.png
+run1_lora_r8,P03,in_domain,a pink cartoon character with a blue tail,1,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run1_lora_r8\P03_s1.png
+run1_lora_r8,P04,in_domain,a cartoon of a fire breathing dragon,0,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run1_lora_r8\P04_s0.png
+run1_lora_r8,P04,in_domain,a cartoon of a fire breathing dragon,1,30,7.5,PNDMScheduler,1.37,..\outputs\part2\generated\run1_lora_r8\P04_s1.png
+run1_lora_r8,P05,in_domain,a cartoon character sitting in the middle of a pose,0,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run1_lora_r8\P05_s0.png
+run1_lora_r8,P05,in_domain,a cartoon character sitting in the middle of a pose,1,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run1_lora_r8\P05_s1.png
+run1_lora_r8,P06,in_domain,a black and white photo of a butterfly,0,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run1_lora_r8\P06_s0.png
+run1_lora_r8,P06,in_domain,a black and white photo of a butterfly,1,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run1_lora_r8\P06_s1.png
+run1_lora_r8,P07,in_domain,a very cute looking pokemon with a big hat on,0,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run1_lora_r8\P07_s0.png
+run1_lora_r8,P07,in_domain,a very cute looking pokemon with a big hat on,1,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run1_lora_r8\P07_s1.png
+run1_lora_r8,P08,in_domain,a purple and black animal with big eyes,0,30,7.5,PNDMScheduler,1.37,..\outputs\part2\generated\run1_lora_r8\P08_s0.png
+run1_lora_r8,P08,in_domain,a purple and black animal with big eyes,1,30,7.5,PNDMScheduler,1.46,..\outputs\part2\generated\run1_lora_r8\P08_s1.png
+run1_lora_r8,P09,in_domain,a cartoon bird with a hat on its head,0,30,7.5,PNDMScheduler,1.74,..\outputs\part2\generated\run1_lora_r8\P09_s0.png
+run1_lora_r8,P09,in_domain,a cartoon bird with a hat on its head,1,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run1_lora_r8\P09_s1.png
+run1_lora_r8,P10,in_domain,a red and white bird with a yellow beak,0,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run1_lora_r8\P10_s0.png
+run1_lora_r8,P10,in_domain,a red and white bird with a yellow beak,1,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run1_lora_r8\P10_s1.png
+run1_lora_r8,P11,out_of_domain,a photograph of a snowy mountain lake at sunrise,0,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run1_lora_r8\P11_s0.png
+run1_lora_r8,P11,out_of_domain,a photograph of a snowy mountain lake at sunrise,1,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run1_lora_r8\P11_s1.png
+run1_lora_r8,P12,out_of_domain,an oil painting of an old man with a white beard,0,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run1_lora_r8\P12_s0.png
+run1_lora_r8,P12,out_of_domain,an oil painting of an old man with a white beard,1,30,7.5,PNDMScheduler,1.42,..\outputs\part2\generated\run1_lora_r8\P12_s1.png
+run1_lora_r8,P13,out_of_domain,a red sports car parked on a city street at night,0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run1_lora_r8\P13_s0.png
+run1_lora_r8,P13,out_of_domain,a red sports car parked on a city street at night,1,30,7.5,PNDMScheduler,1.5,..\outputs\part2\generated\run1_lora_r8\P13_s1.png
+run1_lora_r8,P14,out_of_domain,"a bowl of fresh fruit on a wooden table, studio photo",0,30,7.5,PNDMScheduler,1.61,..\outputs\part2\generated\run1_lora_r8\P14_s0.png
+run1_lora_r8,P14,out_of_domain,"a bowl of fresh fruit on a wooden table, studio photo",1,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run1_lora_r8\P14_s1.png
+run1_lora_r8,P15,out_of_domain,a medieval stone castle on a green hill under a blue sky,0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run1_lora_r8\P15_s0.png
+run1_lora_r8,P15,out_of_domain,a medieval stone castle on a green hill under a blue sky,1,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run1_lora_r8\P15_s1.png
+run1_lora_r8,P16,compositional,"two cartoon characters, one in red and one in blue, standing side by side",0,30,7.5,PNDMScheduler,1.46,..\outputs\part2\generated\run1_lora_r8\P16_s0.png
+run1_lora_r8,P16,compositional,"two cartoon characters, one in red and one in blue, standing side by side",1,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run1_lora_r8\P16_s1.png
+run1_lora_r8,P17,compositional,a small green creature sitting on top of a large yellow creature,0,30,7.5,PNDMScheduler,1.47,..\outputs\part2\generated\run1_lora_r8\P17_s0.png
+run1_lora_r8,P17,compositional,a small green creature sitting on top of a large yellow creature,1,30,7.5,PNDMScheduler,1.47,..\outputs\part2\generated\run1_lora_r8\P17_s1.png
+run1_lora_r8,P18,compositional,a cartoon animal holding a red balloon in one hand and a blue umbrella in the other,0,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run1_lora_r8\P18_s0.png
+run1_lora_r8,P18,compositional,a cartoon animal holding a red balloon in one hand and a blue umbrella in the other,1,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run1_lora_r8\P18_s1.png
+run1_lora_r8,P19,compositional,"three round creatures in a row: a pink one, a purple one and an orange one",0,30,7.5,PNDMScheduler,1.46,..\outputs\part2\generated\run1_lora_r8\P19_s0.png
+run1_lora_r8,P19,compositional,"three round creatures in a row: a pink one, a purple one and an orange one",1,30,7.5,PNDMScheduler,1.54,..\outputs\part2\generated\run1_lora_r8\P19_s1.png
+run1_lora_r8,P20,compositional,"a blue dragon next to a red bird, drawn in the same style",0,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run1_lora_r8\P20_s0.png
+run1_lora_r8,P20,compositional,"a blue dragon next to a red bird, drawn in the same style",1,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run1_lora_r8\P20_s1.png
+run2_lora_r32,P01,in_domain,a cartoon bird with a scarf around its neck,0,30,7.5,PNDMScheduler,1.46,..\outputs\part2\generated\run2_lora_r32\P01_s0.png
+run2_lora_r32,P01,in_domain,a cartoon bird with a scarf around its neck,1,30,7.5,PNDMScheduler,1.45,..\outputs\part2\generated\run2_lora_r32\P01_s1.png
+run2_lora_r32,P02,in_domain,a picture of a butterfly that is orange and green,0,30,7.5,PNDMScheduler,1.47,..\outputs\part2\generated\run2_lora_r32\P02_s0.png
+run2_lora_r32,P02,in_domain,a picture of a butterfly that is orange and green,1,30,7.5,PNDMScheduler,1.49,..\outputs\part2\generated\run2_lora_r32\P02_s1.png
+run2_lora_r32,P03,in_domain,a pink cartoon character with a blue tail,0,30,7.5,PNDMScheduler,1.49,..\outputs\part2\generated\run2_lora_r32\P03_s0.png
+run2_lora_r32,P03,in_domain,a pink cartoon character with a blue tail,1,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run2_lora_r32\P03_s1.png
+run2_lora_r32,P04,in_domain,a cartoon of a fire breathing dragon,0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run2_lora_r32\P04_s0.png
+run2_lora_r32,P04,in_domain,a cartoon of a fire breathing dragon,1,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run2_lora_r32\P04_s1.png
+run2_lora_r32,P05,in_domain,a cartoon character sitting in the middle of a pose,0,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run2_lora_r32\P05_s0.png
+run2_lora_r32,P05,in_domain,a cartoon character sitting in the middle of a pose,1,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run2_lora_r32\P05_s1.png
+run2_lora_r32,P06,in_domain,a black and white photo of a butterfly,0,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run2_lora_r32\P06_s0.png
+run2_lora_r32,P06,in_domain,a black and white photo of a butterfly,1,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run2_lora_r32\P06_s1.png
+run2_lora_r32,P07,in_domain,a very cute looking pokemon with a big hat on,0,30,7.5,PNDMScheduler,1.47,..\outputs\part2\generated\run2_lora_r32\P07_s0.png
+run2_lora_r32,P07,in_domain,a very cute looking pokemon with a big hat on,1,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run2_lora_r32\P07_s1.png
+run2_lora_r32,P08,in_domain,a purple and black animal with big eyes,0,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run2_lora_r32\P08_s0.png
+run2_lora_r32,P08,in_domain,a purple and black animal with big eyes,1,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run2_lora_r32\P08_s1.png
+run2_lora_r32,P09,in_domain,a cartoon bird with a hat on its head,0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run2_lora_r32\P09_s0.png
+run2_lora_r32,P09,in_domain,a cartoon bird with a hat on its head,1,30,7.5,PNDMScheduler,1.5,..\outputs\part2\generated\run2_lora_r32\P09_s1.png
+run2_lora_r32,P10,in_domain,a red and white bird with a yellow beak,0,30,7.5,PNDMScheduler,1.52,..\outputs\part2\generated\run2_lora_r32\P10_s0.png
+run2_lora_r32,P10,in_domain,a red and white bird with a yellow beak,1,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run2_lora_r32\P10_s1.png
+run2_lora_r32,P11,out_of_domain,a photograph of a snowy mountain lake at sunrise,0,30,7.5,PNDMScheduler,1.42,..\outputs\part2\generated\run2_lora_r32\P11_s0.png
+run2_lora_r32,P11,out_of_domain,a photograph of a snowy mountain lake at sunrise,1,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run2_lora_r32\P11_s1.png
+run2_lora_r32,P12,out_of_domain,an oil painting of an old man with a white beard,0,30,7.5,PNDMScheduler,1.41,..\outputs\part2\generated\run2_lora_r32\P12_s0.png
+run2_lora_r32,P12,out_of_domain,an oil painting of an old man with a white beard,1,30,7.5,PNDMScheduler,1.38,..\outputs\part2\generated\run2_lora_r32\P12_s1.png
+run2_lora_r32,P13,out_of_domain,a red sports car parked on a city street at night,0,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run2_lora_r32\P13_s0.png
+run2_lora_r32,P13,out_of_domain,a red sports car parked on a city street at night,1,30,7.5,PNDMScheduler,1.47,..\outputs\part2\generated\run2_lora_r32\P13_s1.png
+run2_lora_r32,P14,out_of_domain,"a bowl of fresh fruit on a wooden table, studio photo",0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run2_lora_r32\P14_s0.png
+run2_lora_r32,P14,out_of_domain,"a bowl of fresh fruit on a wooden table, studio photo",1,30,7.5,PNDMScheduler,1.39,..\outputs\part2\generated\run2_lora_r32\P14_s1.png
+run2_lora_r32,P15,out_of_domain,a medieval stone castle on a green hill under a blue sky,0,30,7.5,PNDMScheduler,1.52,..\outputs\part2\generated\run2_lora_r32\P15_s0.png
+run2_lora_r32,P15,out_of_domain,a medieval stone castle on a green hill under a blue sky,1,30,7.5,PNDMScheduler,1.45,..\outputs\part2\generated\run2_lora_r32\P15_s1.png
+run2_lora_r32,P16,compositional,"two cartoon characters, one in red and one in blue, standing side by side",0,30,7.5,PNDMScheduler,1.4,..\outputs\part2\generated\run2_lora_r32\P16_s0.png
+run2_lora_r32,P16,compositional,"two cartoon characters, one in red and one in blue, standing side by side",1,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run2_lora_r32\P16_s1.png
+run2_lora_r32,P17,compositional,a small green creature sitting on top of a large yellow creature,0,30,7.5,PNDMScheduler,1.46,..\outputs\part2\generated\run2_lora_r32\P17_s0.png
+run2_lora_r32,P17,compositional,a small green creature sitting on top of a large yellow creature,1,30,7.5,PNDMScheduler,1.44,..\outputs\part2\generated\run2_lora_r32\P17_s1.png
+run2_lora_r32,P18,compositional,a cartoon animal holding a red balloon in one hand and a blue umbrella in the other,0,30,7.5,PNDMScheduler,1.39,..\outputs\part2\generated\run2_lora_r32\P18_s0.png
+run2_lora_r32,P18,compositional,a cartoon animal holding a red balloon in one hand and a blue umbrella in the other,1,30,7.5,PNDMScheduler,1.45,..\outputs\part2\generated\run2_lora_r32\P18_s1.png
+run2_lora_r32,P19,compositional,"three round creatures in a row: a pink one, a purple one and an orange one",0,30,7.5,PNDMScheduler,1.43,..\outputs\part2\generated\run2_lora_r32\P19_s0.png
+run2_lora_r32,P19,compositional,"three round creatures in a row: a pink one, a purple one and an orange one",1,30,7.5,PNDMScheduler,1.38,..\outputs\part2\generated\run2_lora_r32\P19_s1.png
+run2_lora_r32,P20,compositional,"a blue dragon next to a red bird, drawn in the same style",0,30,7.5,PNDMScheduler,1.49,..\outputs\part2\generated\run2_lora_r32\P20_s0.png
+run2_lora_r32,P20,compositional,"a blue dragon next to a red bird, drawn in the same style",1,30,7.5,PNDMScheduler,1.56,..\outputs\part2\generated\run2_lora_r32\P20_s1.png
