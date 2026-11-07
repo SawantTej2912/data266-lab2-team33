@@ -32,3 +32,6 @@ venv/
 *.pt
 *.ckpt
 *.pth
+
+outputs/part2/extra/generated/
+outputs/part2/extra/runs/**/checkpoint-*/
