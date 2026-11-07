@@ -1,0 +1,13 @@
+{
+  "dataset": "reach-vb/pokemon-blip-captions",
+  "rows": 833,
+  "corrupted_removed": 0,
+  "exact_duplicates_removed": 0,
+  "near_duplicates_removed": 3,
+  "total_removed": 3,
+  "images_after_cleaning": 830,
+  "hash_distance_limit": 4,
+  "colour_difference_limit": 10,
+  "train_images": 747,
+  "test_images": 83
+}

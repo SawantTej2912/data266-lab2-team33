@@ -1,0 +1,21 @@
+id,type,prompt
+P01,in_domain,a cartoon bird with a scarf around its neck
+P02,in_domain,a picture of a butterfly that is orange and green
+P03,in_domain,a pink cartoon character with a blue tail
+P04,in_domain,a cartoon of a fire breathing dragon
+P05,in_domain,a cartoon character sitting in the middle of a pose
+P06,in_domain,a black and white photo of a butterfly
+P07,in_domain,a very cute looking pokemon with a big hat on
+P08,in_domain,a purple and black animal with big eyes
+P09,in_domain,a cartoon bird with a hat on its head
+P10,in_domain,a red and white bird with a yellow beak
+P11,out_of_domain,a photograph of a snowy mountain lake at sunrise
+P12,out_of_domain,an oil painting of an old man with a white beard
+P13,out_of_domain,a red sports car parked on a city street at night
+P14,out_of_domain,"a bowl of fresh fruit on a wooden table, studio photo"
+P15,out_of_domain,a medieval stone castle on a green hill under a blue sky
+P16,compositional,"two cartoon characters, one in red and one in blue, standing side by side"
+P17,compositional,a small green creature sitting on top of a large yellow creature
+P18,compositional,a cartoon animal holding a red balloon in one hand and a blue umbrella in the other
+P19,compositional,"three round creatures in a row: a pink one, a purple one and an orange one"
+P20,compositional,"a blue dragon next to a red bird, drawn in the same style"

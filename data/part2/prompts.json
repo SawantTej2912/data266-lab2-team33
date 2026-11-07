@@ -1,0 +1,102 @@
+[
+  {
+    "id": "P01",
+    "type": "in_domain",
+    "prompt": "a cartoon bird with a scarf around its neck"
+  },
+  {
+    "id": "P02",
+    "type": "in_domain",
+    "prompt": "a picture of a butterfly that is orange and green"
+  },
+  {
+    "id": "P03",
+    "type": "in_domain",
+    "prompt": "a pink cartoon character with a blue tail"
+  },
+  {
+    "id": "P04",
+    "type": "in_domain",
+    "prompt": "a cartoon of a fire breathing dragon"
+  },
+  {
+    "id": "P05",
+    "type": "in_domain",
+    "prompt": "a cartoon character sitting in the middle of a pose"
+  },
+  {
+    "id": "P06",
+    "type": "in_domain",
+    "prompt": "a black and white photo of a butterfly"
+  },
+  {
+    "id": "P07",
+    "type": "in_domain",
+    "prompt": "a very cute looking pokemon with a big hat on"
+  },
+  {
+    "id": "P08",
+    "type": "in_domain",
+    "prompt": "a purple and black animal with big eyes"
+  },
+  {
+    "id": "P09",
+    "type": "in_domain",
+    "prompt": "a cartoon bird with a hat on its head"
+  },
+  {
+    "id": "P10",
+    "type": "in_domain",
+    "prompt": "a red and white bird with a yellow beak"
+  },
+  {
+    "id": "P11",
+    "type": "out_of_domain",
+    "prompt": "a photograph of a snowy mountain lake at sunrise"
+  },
+  {
+    "id": "P12",
+    "type": "out_of_domain",
+    "prompt": "an oil painting of an old man with a white beard"
+  },
+  {
+    "id": "P13",
+    "type": "out_of_domain",
+    "prompt": "a red sports car parked on a city street at night"
+  },
+  {
+    "id": "P14",
+    "type": "out_of_domain",
+    "prompt": "a bowl of fresh fruit on a wooden table, studio photo"
+  },
+  {
+    "id": "P15",
+    "type": "out_of_domain",
+    "prompt": "a medieval stone castle on a green hill under a blue sky"
+  },
+  {
+    "id": "P16",
+    "type": "compositional",
+    "prompt": "two cartoon characters, one in red and one in blue, standing side by side"
+  },
+  {
+    "id": "P17",
+    "type": "compositional",
+    "prompt": "a small green creature sitting on top of a large yellow creature"
+  },
+  {
+    "id": "P18",
+    "type": "compositional",
+    "prompt": "a cartoon animal holding a red balloon in one hand and a blue umbrella in the other"
+  },
+  {
+    "id": "P19",
+    "type": "compositional",
+    "prompt": "three round creatures in a row: a pink one, a purple one and an orange one"
+  },
+  {
+    "id": "P20",
+    "type": "compositional",
+    "prompt": "a blue dragon next to a red bird, drawn in the same style"
+  }
+]

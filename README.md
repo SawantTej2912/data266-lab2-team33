@@ -6,7 +6,21 @@ This repository holds our work for DATA 266 Lab 2. The lab has three parts:
 2. **Part 2** - fine-tuning a diffusion model for image generation.
 3. **Part 3** - a multi-agent system for image understanding and generation.
 
-Only Part 1 is described below. Parts 2 and 3 will be added to this README when they are done.
+Part 1 is described first, then Part 2. Part 3 will be added when it is done.
+
+## Repository layout (all parts)
+
+Every part follows the same pattern: its notebook is in `notebooks/`, its input files are in `data/partN/`, and everything it creates is in `outputs/partN/`.
+
+```
+GPU_LAB_2/
+|-- README.md, requirements.txt, AI_USAGE.md, CONTRIBUTIONS.md
+|-- notebooks/        p1_rag_final.ipynb, p2_finetune.ipynb (planned), p3_agents.ipynb (planned)
+|-- data/             part1/ (provided files), part2/ (our prompts and split lists), part3/ (planned)
+|-- outputs/          part1/, part2/, part3/ (planned)  - created by the notebooks
+|-- scripts/part2/    training script for Part 2
+`-- archive/          old copies, kept on this computer only (not in Git)
+```
 
 ## Part 1: Multimodal RAG over a read-only knowledge base
 
@@ -133,3 +147,40 @@ The lab requires all work to fit on one 16 GB GPU. With 4-bit loading the 7B mod
 
 - All settings (model names, 4-bit switch, image size limit, paths) are in the "Setup: Paths and Settings" cell.
 - The model weights are downloaded by the notebook and are not stored in this repository.
+
+## Part 2: Fine-tuning Stable Diffusion 1.5 with LoRA (in progress)
+
+Nothing is trained yet. This is the plan and the folder structure. Results will be added when the notebooks have run.
+
+| Item | Choice |
+|---|---|
+| Dataset | Pokemon BLIP captions (`reach-vb/pokemon-blip-captions`) |
+| Base model | `stable-diffusion-v1-5/stable-diffusion-v1-5`, 512x512 |
+| Run 1 | LoRA, rank 8 |
+| Run 2 | LoRA, rank 32 (same data and same number of steps as run 1) |
+| Training | Local RTX 4090, kept under 16 GB of GPU memory, fp16 |
+| Random seed | 266 (also used for the 90/10 train/test split) |
+| Environment | Separate conda environment `data266_lab2_part2` |
+
+Environment: the exact setup is at the top of `requirements-part2.txt` (Python 3.11, the same CUDA 13.0 PyTorch build as Part 1). The Jupyter kernel is called `DATA266 Lab2 Part2 GPU`.
+
+Licenses: the Pokemon BLIP captions dataset is `cc-by-nc-sa-4.0` (attribution, non-commercial, share-alike) and Stable Diffusion 1.5 uses the CreativeML OpenRAIL-M license. The Pokemon characters are copyrighted, so our model and images are for non-commercial research only.
+
+Where the Part 2 files go:
+
+```
+data/part2/                        prompts (written before training), train/test split lists
+outputs/part2/
+|-- data_prep/                     counts of removed images, split lists
+|-- runs/run1_lora_r8/             training log and summary of run 1 (weights go to Hugging Face)
+|-- runs/run2_lora_r32/            training log and summary of run 2
+|-- generated/{base,run1_lora_r8,run2_lora_r32}/   the 40 images of each model (go to Hugging Face)
+|-- grids/                         side-by-side grids for 8 prompts
+|-- metrics/                       KID, CLIP score and LPIPS results (csv)
+|-- human_eval/                    blinded image pairs and the rating sheets
+`-- safety/                        NSFW check and memorization check
+scripts/part2/                     the diffusers LoRA training script
+notebooks/p2_finetune.ipynb        may be split into a few notebooks later
+```
+
+Model weights, generated images and processed images are not stored in Git. They go to Hugging Face.

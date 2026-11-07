@@ -3,6 +3,16 @@ outputs/part1/chroma_db/
 outputs/part1/pages/
 outputs/part1/visuals/
 
+# Part 2: generated images, processed images and checkpoints go to Hugging Face, not GitHub
+# (small logs, csv files and json files in outputs/part2 are kept)
+outputs/part2/generated/
+outputs/part2/grids/
+outputs/part2/data_prep/images/
+outputs/part2/runs/**/checkpoint-*/
+
+# Old copies kept on this computer only
+archive/
+
 # Provided course data: not committed (attached on Kaggle / placed locally)
 data/**/*.pdf
 
