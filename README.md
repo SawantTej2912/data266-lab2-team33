@@ -183,6 +183,12 @@ Both runs move the images much closer to the dataset (lower KID), rank 32 more t
 
 The notebook also covers the two checks required for safety: the Stable Diffusion safety checker flagged 9 of 120 images (6 of them from the rank-32 run), and we looked at all of them (harmless cartoon creatures, false alarms); and a memorization check shows that the generated images are not closer to the training images than unseen test images are.
 
+### Extra experiments (notebook 4, optional)
+
+`notebooks/p2_4_extra_experiments.ipynb` (about 45 minutes) asks whether the final model can be improved. It trains four more LoRA runs that each change one thing compared with run 2 (learning rate 5e-5, rank 64, Min-SNR loss weighting, 5000 steps) and tests four guidance scales. The decision rule was committed before the extra runs were trained, and the runs are compared on 40 validation prompts that are not among the 20 reported prompts. Results are in `outputs/part2/extra/metrics/`.
+
+**Result: no extra run clearly beats run 2, so the final model is unchanged.** Rank 64 and Min-SNR weighting have a slightly lower KID (0.023 against 0.025) but the difference is within the noise. A lower learning rate gives a higher CLIP score but a worse KID. Training for 5000 steps is worse on both. Guidance 11 raises the CLIP score of run 2 by only 0.37, so the default 7.5 was kept. The fine-tuned models score below the base model on CLIP at every guidance value, so that loss is a real cost of specialising in one style.
+
 ### Human evaluation (still to do)
 
 The lab needs a blinded comparison of 25 image pairs (final run against the base model) by at least 3 raters: both team members and one person outside the team.
@@ -207,6 +213,7 @@ outputs/part2/
 |-- metrics/                       training table, loss curves, KID / CLIP / LPIPS results, results table
 |-- human_eval/                    answer key and the folder for the rating files
 |-- safety/                        NSFW check and memorization check (csv)
+|-- extra/                         extra experiments of notebook 4: logs, validation prompts and metrics (images and weights are not in Git)
 `-- generated/, grids/             the 120 images and the figures (not in Git, the images are on Hugging Face)
 scripts/part2/                     the diffusers training script (unchanged, v0.42.1) and our small wrapper
 ```

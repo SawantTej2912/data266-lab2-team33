@@ -1,0 +1,60 @@
+There are modules in AutoencoderKL that should be kept in float32: []. Casting directly with `to()` can lead to inconsistent results; set `torch_dtype` in `from_pretrained()` instead to keep these modules in float32.
+11/07/2026 13:48:36 - INFO - httpx2 - HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/imagefolder/imagefolder.py "HTTP/1.1 404 Not Found"
+11/07/2026 13:48:36 - INFO - __main__ - [RANK 0] ***** Running training *****
+11/07/2026 13:48:36 - INFO - __main__ - [RANK 0]   Num examples = 747
+11/07/2026 13:48:36 - INFO - __main__ - [RANK 0]   Num Epochs = 17
+11/07/2026 13:48:36 - INFO - __main__ - [RANK 0]   Instantaneous batch size per device = 4
+11/07/2026 13:48:36 - INFO - __main__ - [RANK 0]   Total train batch size (w. parallel, distributed & accumulation) = 4
+11/07/2026 13:48:36 - INFO - __main__ - [RANK 0]   Gradient Accumulation steps = 1
+11/07/2026 13:48:36 - INFO - __main__ - [RANK 0]   Total optimization steps = 3000
+Model weights saved in C:/Users/tejas/Desktop/GPU_LAB_2/outputs/part2/extra/runs/extra3_snr5/pytorch_lora_weights.safetensors
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "memory_limit_gb": 15.0,
+  "peak_memory_allocated_gb": 3.75,
+  "peak_memory_reserved_gb": 4.29,
+  "training_seconds": 989.6,
+  "arguments": [
+    "--pretrained_model_name_or_path",
+    "stable-diffusion-v1-5/stable-diffusion-v1-5",
+    "--variant",
+    "fp16",
+    "--train_data_dir",
+    "C:\\Users\\tejas\\Desktop\\GPU_LAB_2\\outputs\\part2\\data_prep\\images\\train",
+    "--image_column",
+    "image",
+    "--caption_column",
+    "text",
+    "--resolution",
+    "512",
+    "--center_crop",
+    "--random_flip",
+    "--train_batch_size",
+    "4",
+    "--gradient_accumulation_steps",
+    "1",
+    "--gradient_checkpointing",
+    "--max_train_steps",
+    "3000",
+    "--learning_rate",
+    "0.0001",
+    "--lr_scheduler",
+    "cosine",
+    "--lr_warmup_steps",
+    "0",
+    "--mixed_precision",
+    "fp16",
+    "--seed",
+    "266",
+    "--rank",
+    "32",
+    "--checkpointing_steps",
+    "100000",
+    "--dataloader_num_workers",
+    "0",
+    "--output_dir",
+    "C:\\Users\\tejas\\Desktop\\GPU_LAB_2\\outputs\\part2\\extra\\runs\\extra3_snr5",
+    "--snr_gamma",
+    "5.0"
+  ]
+}
