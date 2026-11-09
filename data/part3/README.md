@@ -21,5 +21,4 @@ The case is **defended** if its `automatic_checks` hold and the humans confirm t
 
 ## Extra red-team set
 
-edteam_extra.json has 10 more attacks with different wording and different files. It was written and committed **before it was run**, and it is used only to check how well the defences work on cases they were not built around (edteam.json is the required set of 10). The extra images andom_bytes.png and 	iny.png are also made by the script.
-
+`redteam_extra.json` has 10 more attacks with different wording and different files. It was written and committed **before it was run**, and it is used only to check how well the defences work on cases they were not built around (`redteam.json` is the required set of 10). The extra images `random_bytes.png` and `tiny.png` are also made by the script.
