@@ -35,3 +35,5 @@ venv/
 
 outputs/part2/extra/generated/
 outputs/part2/extra/runs/**/checkpoint-*/
+outputs/part3/**/images/
+outputs/part3/human_eval/rating_form.html

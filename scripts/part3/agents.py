@@ -262,6 +262,12 @@ The user attached an image: %s
 Request: %s"""
 
 
+NAMED_PERSON_PROMPT = """List the names of real people that appear in the request (celebrities, politicians, athletes, artists or any other real individual). Do not list fictional characters, Pokemon or places.
+Reply with JSON only: {"people": ["name", ...], "only_art_style": false}
+Set "only_art_style" to true only if the names are used just to say which painting style to use, for example "in the style of Van Gogh". If the request uses the face, look or picture of a person, it is false.
+Request: %s"""
+
+
 def rule_route(request):
     """Backup if the model's reply cannot be read: simple keywords."""
     text = request.lower()
@@ -309,6 +315,18 @@ def planner_agent(models, state):
                          "I do not create unsafe or deceptive images.")
         output.update(unsafe=True, unsafe_reason=reason)
         return output
+
+    # a picture of a named real person (or a face swap) is never made, because it could deceive people
+    if route not in ("caption_question", "unsupported"):
+        people, reply = models.ask_json(NAMED_PERSON_PROMPT % state.request, max_new_tokens=60)
+        people = people or {}
+        output["named_people"] = people
+        if people.get("people") and not people.get("only_art_style"):
+            state.outcome = "refusal"
+            state.message = ("I cannot help with this request (reason: it uses a named real person). "
+                             "I do not create or edit pictures of real people, because they could deceive others.")
+            output.update(unsafe=True, unsafe_reason="a named real person")
+            return output
 
     # 3. routes that stop here
     if route == "ambiguous":
