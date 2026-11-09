@@ -7,7 +7,7 @@
   "message": "Here is your image. The critic still saw a problem (The image shows a real bird, not a creature designed in a Pokemon-style.) after 0 revision(s).",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 10.79,
+  "total_seconds": 12.75,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.34
+      "seconds": 1.55
     },
     {
       "agent": "vision",
@@ -55,7 +55,7 @@
         ]
       },
       "error": null,
-      "seconds": 3.98
+      "seconds": 4.69
     },
     {
       "agent": "prompt",
@@ -70,7 +70,7 @@
         "strength": 0.75
       },
       "error": null,
-      "seconds": 2.17
+      "seconds": 2.6
     },
     {
       "agent": "generation",
@@ -87,11 +87,11 @@
         "lora_used": true,
         "prompt": "a cartoon bird with a vibrant blue body and a yellow beak, perched on a thin branch",
         "seed": 266,
-        "seconds": 1.07,
+        "seconds": 1.33,
         "image_path": "..\\outputs\\part3\\scenarios_without_critic\\images\\S10_without_try1.png"
       },
       "error": null,
-      "seconds": 1.07
+      "seconds": 1.33
     },
     {
       "agent": "critique",
@@ -108,7 +108,7 @@
         "decision": "accept_after_limit"
       },
       "error": null,
-      "seconds": 2.23
+      "seconds": 2.59
     }
   ]
 }

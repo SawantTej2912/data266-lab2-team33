@@ -7,7 +7,7 @@
   "message": "I cannot help with this request (reason: a deceptive edit of a person). I do not create unsafe or deceptive images.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 1.98,
+  "total_seconds": 2.33,
   "steps": [
     {
       "agent": "planner",
@@ -25,7 +25,7 @@
         "unsafe_reason": "a deceptive edit of a person"
       },
       "error": null,
-      "seconds": 1.98
+      "seconds": 2.33
     }
   ]
 }

@@ -7,7 +7,7 @@
   "message": "Caption: A sign indicating a cafe's operating hours.\nMain objects: sign, text, background\nVisible text: CAFE OPEN\n9 TO 5 DAILY\nQ: What is the main subject of the image and what is it doing?\nA: The main subject of the image is a sign indicating that a cafe is open from 9 AM to 5 PM daily.\nQ: Which colours and what setting dominate the picture?\nA: The dominant colors in the picture are brown and white, with the text \"CAFE OPEN 9 TO 5 DAILY\" written in black on a white background.\nQ: What does the sign say?\nA: The sign says \"CAFE OPEN 9 TO 5 DAILY.\"",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 5.33,
+  "total_seconds": 6.14,
   "steps": [
     {
       "agent": "planner",
@@ -24,7 +24,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 0.94
+      "seconds": 1.09
     },
     {
       "agent": "vision",
@@ -55,7 +55,7 @@
         ]
       },
       "error": null,
-      "seconds": 4.39
+      "seconds": 5.05
     }
   ]
 }

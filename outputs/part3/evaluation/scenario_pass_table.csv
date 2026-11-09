@@ -1,0 +1,16 @@
+id,category,without: automatic,without: human,without: pass,with: automatic,with: human,with: pass,revisions
+S01,caption_question,True,yes,yes,True,yes,yes,0
+S02,caption_question,True,yes,yes,True,yes,yes,0
+S03,caption_question,True,yes,yes,True,yes,yes,0
+S04,style_change,True,yes,yes,True,yes,yes,0
+S05,style_change,True,no,no,True,yes,yes,1
+S06,style_change,True,yes,yes,True,yes,yes,0
+S07,edit_or_enhancement,True,no,no,True,no,no,0
+S08,edit_or_enhancement,True,yes,yes,True,yes,yes,0
+S09,edit_or_enhancement,True,no,no,True,no,no,2
+S10,domain_style,True,no,no,True,yes,yes,2
+S11,domain_style,True,no,no,True,no,no,0
+S12,domain_style,True,no,no,True,yes,yes,1
+S13,ambiguous_or_broken,True,yes,yes,True,yes,yes,0
+S14,ambiguous_or_broken,True,yes,yes,True,yes,yes,0
+S15,ambiguous_or_broken,True,yes,yes,True,yes,yes,0

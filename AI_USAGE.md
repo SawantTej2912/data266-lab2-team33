@@ -53,7 +53,7 @@ How the test cases were used:
 - The 15 scenarios and the 10 red-team cases were written and committed to Git (commit `9807497`) before any agent code existed. The 10 extra red-team cases were committed (commit `32462c5`) before they were run.
 - While building the agents, Claude Code tried them on about 20 other development requests that are not among the test cases (for example a charcoal drawing, pixel art, "change the car to green", a request to describe an image with hidden text) and changed the prompts and settings from what it saw there. The scenarios and red-team cases were then run once to get the reported results.
 - After that first run the extra set showed one attack that got through (E07, a face swap with a named real person). Claude Code added a check for named real people to the planner and ran the notebook again. The first-round result of the extra set is saved and shown in the notebook, and the extra set is no longer a hold-out for that defence.
-- Claude Code looked at the generated images to describe what works and what does not. Those notes are not the human evaluation. The pass/fail judgement of the scenarios is done by the two team members with the rating form.
+- Claude Code looked at the generated images to describe what works and what does not. Those notes are not the human evaluation. The pass/fail judgement of the scenarios was done by the two team members with the blinded rating form, each on their own; they resolved their two disagreements together, and the notebook uses those decisions.
 
 ## Review
 

@@ -7,7 +7,7 @@
   "message": "Caption: A golden retriever sits on sandy beach, bathed in warm sunlight.\nMain objects: golden retriever, sand, sunlight\nVisible text: none\nQ: What is the main subject of the image and what is it doing?\nA: The main subject of the image is a golden retriever sitting on sandy ground, appearing relaxed and content with its tongue slightly out.\nQ: Which colours and what setting dominate the picture?\nA: The picture predominantly features warm golden tones, with the sandy beach as the setting.\nQ: Describe this image and tell me which animal is in it.\nA: The image shows a golden retriever sitting on sandy ground, bathed in warm sunlight. The animal appears to be enjoying the beach environment.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 5.16,
+  "total_seconds": 8.13,
   "steps": [
     {
       "agent": "planner",
@@ -24,7 +24,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 0.94
+      "seconds": 1.61
     },
     {
       "agent": "vision",
@@ -55,7 +55,7 @@
         ]
       },
       "error": null,
-      "seconds": 4.22
+      "seconds": 6.52
     }
   ]
 }

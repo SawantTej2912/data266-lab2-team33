@@ -7,7 +7,7 @@
   "message": "Here is your image.",
   "flags": [],
   "revisions": 1,
-  "total_seconds": 14.79,
+  "total_seconds": 17.59,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.31
+      "seconds": 1.59
     },
     {
       "agent": "vision",
@@ -54,7 +54,7 @@
         ]
       },
       "error": null,
-      "seconds": 3.67
+      "seconds": 4.3
     },
     {
       "agent": "prompt",
@@ -69,7 +69,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 2.5
+      "seconds": 3.0
     },
     {
       "agent": "generation",
@@ -86,11 +86,11 @@
         "lora_used": false,
         "prompt": "A relaxed tabby cat sleeping peacefully on a gray couch, pencil sketch, soft lines, muted tones, smooth shading",
         "seed": 266,
-        "seconds": 0.86,
+        "seconds": 1.02,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S05_with_try1.png"
       },
       "error": null,
-      "seconds": 0.86
+      "seconds": 1.02
     },
     {
       "agent": "critique",
@@ -107,7 +107,7 @@
         "decision": "revise"
       },
       "error": null,
-      "seconds": 2.0
+      "seconds": 2.4
     },
     {
       "agent": "prompt",
@@ -122,7 +122,7 @@
         "strength": 0.9
       },
       "error": null,
-      "seconds": 2.5
+      "seconds": 3.0
     },
     {
       "agent": "generation",
@@ -139,11 +139,11 @@
         "lora_used": false,
         "prompt": "A relaxed tabby cat sleeping peacefully on a gray couch, pencil sketch, sharp lines, dark hatching, detailed shading",
         "seed": 267,
-        "seconds": 0.93,
+        "seconds": 1.08,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S05_with_try2.png"
       },
       "error": null,
-      "seconds": 0.93
+      "seconds": 1.08
     },
     {
       "agent": "critique",
@@ -160,7 +160,7 @@
         "decision": "accept"
       },
       "error": null,
-      "seconds": 1.02
+      "seconds": 1.2
     }
   ]
 }

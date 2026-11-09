@@ -7,7 +7,7 @@
   "message": "Here is your image.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 5.31,
+  "total_seconds": 8.49,
   "steps": [
     {
       "agent": "planner",
@@ -23,7 +23,7 @@
         }
       },
       "error": null,
-      "seconds": 1.12
+      "seconds": 1.78
     },
     {
       "agent": "prompt",
@@ -38,7 +38,7 @@
         "strength": 0.95
       },
       "error": null,
-      "seconds": 1.76
+      "seconds": 2.89
     },
     {
       "agent": "generation",
@@ -53,11 +53,11 @@
         "lora_used": true,
         "prompt": "a cartoon fire dragon with red scales and a glowing orange breath",
         "seed": 266,
-        "seconds": 1.39,
+        "seconds": 2.23,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S11_with_try1.png"
       },
       "error": null,
-      "seconds": 1.39
+      "seconds": 2.23
     },
     {
       "agent": "critique",
@@ -74,7 +74,7 @@
         "decision": "accept"
       },
       "error": null,
-      "seconds": 1.05
+      "seconds": 1.58
     }
   ]
 }

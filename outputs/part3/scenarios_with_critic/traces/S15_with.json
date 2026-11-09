@@ -7,7 +7,7 @@
   "message": "This request needs an image. Please upload one and ask again.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 1.1,
+  "total_seconds": 1.82,
   "steps": [
     {
       "agent": "planner",
@@ -23,7 +23,7 @@
         }
       },
       "error": null,
-      "seconds": 1.1
+      "seconds": 1.82
     }
   ]
 }

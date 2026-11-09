@@ -7,7 +7,7 @@
   "message": "Your request is not clear enough. Could you please provide more details on how you would like the image improved?",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 1.67,
+  "total_seconds": 2.33,
   "steps": [
     {
       "agent": "planner",
@@ -27,7 +27,7 @@
         }
       },
       "error": null,
-      "seconds": 1.67
+      "seconds": 2.33
     }
   ]
 }

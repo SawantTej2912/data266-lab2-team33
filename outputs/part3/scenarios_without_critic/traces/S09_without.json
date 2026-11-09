@@ -7,7 +7,7 @@
   "message": "Here is your image. The critic still saw a problem (The image appears to be overexposed, making it difficult to discern details.) after 0 revision(s).",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 9.85,
+  "total_seconds": 11.51,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.29
+      "seconds": 1.51
     },
     {
       "agent": "vision",
@@ -60,7 +60,7 @@
         ]
       },
       "error": null,
-      "seconds": 4.18
+      "seconds": 4.95
     },
     {
       "agent": "prompt",
@@ -75,7 +75,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 1.79
+      "seconds": 2.13
     },
     {
       "agent": "generation",
@@ -91,11 +91,11 @@
         "lora_used": false,
         "prompt": "brighten and sharpen",
         "seed": 266,
-        "seconds": 0.74,
+        "seconds": 0.77,
         "image_path": "..\\outputs\\part3\\scenarios_without_critic\\images\\S09_without_try1.png"
       },
       "error": null,
-      "seconds": 0.74
+      "seconds": 0.77
     },
     {
       "agent": "critique",
@@ -112,7 +112,7 @@
         "decision": "accept_after_limit"
       },
       "error": null,
-      "seconds": 1.84
+      "seconds": 2.15
     }
   ]
 }

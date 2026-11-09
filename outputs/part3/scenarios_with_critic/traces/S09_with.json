@@ -7,7 +7,7 @@
   "message": "Here is your image. The critic still saw a problem () after 2 revision(s).",
   "flags": [],
   "revisions": 2,
-  "total_seconds": 17.96,
+  "total_seconds": 24.71,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.27
+      "seconds": 1.76
     },
     {
       "agent": "vision",
@@ -60,7 +60,7 @@
         ]
       },
       "error": null,
-      "seconds": 4.18
+      "seconds": 5.97
     },
     {
       "agent": "prompt",
@@ -75,7 +75,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 1.79
+      "seconds": 2.62
     },
     {
       "agent": "generation",
@@ -91,11 +91,11 @@
         "lora_used": false,
         "prompt": "brighten and sharpen",
         "seed": 266,
-        "seconds": 0.74,
+        "seconds": 0.9,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S09_with_try1.png"
       },
       "error": null,
-      "seconds": 0.74
+      "seconds": 0.9
     },
     {
       "agent": "critique",
@@ -112,7 +112,7 @@
         "decision": "revise"
       },
       "error": null,
-      "seconds": 1.86
+      "seconds": 2.58
     },
     {
       "agent": "prompt",
@@ -127,7 +127,7 @@
         "strength": 0.9
       },
       "error": null,
-      "seconds": 1.79
+      "seconds": 2.47
     },
     {
       "agent": "generation",
@@ -143,11 +143,11 @@
         "lora_used": false,
         "prompt": "enhance the brightness and sharpness",
         "seed": 267,
-        "seconds": 0.72,
+        "seconds": 0.86,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S09_with_try2.png"
       },
       "error": null,
-      "seconds": 0.72
+      "seconds": 0.86
     },
     {
       "agent": "critique",
@@ -164,7 +164,7 @@
         "decision": "revise"
       },
       "error": null,
-      "seconds": 1.87
+      "seconds": 2.48
     },
     {
       "agent": "prompt",
@@ -179,7 +179,7 @@
         "strength": 0.95
       },
       "error": null,
-      "seconds": 1.98
+      "seconds": 2.8
     },
     {
       "agent": "generation",
@@ -195,11 +195,11 @@
         "lora_used": false,
         "prompt": "brighten and sharpen the image",
         "seed": 268,
-        "seconds": 0.72,
+        "seconds": 0.87,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S09_with_try3.png"
       },
       "error": null,
-      "seconds": 0.72
+      "seconds": 0.87
     },
     {
       "agent": "critique",
@@ -216,7 +216,7 @@
         "decision": "accept_after_limit"
       },
       "error": null,
-      "seconds": 1.04
+      "seconds": 1.4
     }
   ]
 }

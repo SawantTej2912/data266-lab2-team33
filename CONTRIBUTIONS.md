@@ -46,7 +46,7 @@ What the Git history shows (all commits are under the one GitHub account `Sawant
 
 - Member 1: TODO (what they did in Part 3)
 - Member 2: TODO (what they did in Part 3; the lab says both members must run the complete pipeline)
-- Human evaluation (both members judge every test case pass/fail independently, then resolve disagreements): TODO. The rating form is `outputs/part3/human_eval/rating_form.html`; the rating files go into `outputs/part3/human_eval/ratings/`.
+- Human evaluation (both members judge every test case pass/fail independently, then resolve disagreements): done. The rating files are `outputs/part3/human_eval/ratings/ratings_Tejas.csv` and `ratings_Shriram.csv`, and the two disagreements were resolved together in `resolution.csv`. TODO: confirm here that these two raters are the two team members.
 
 ## Meeting and knowledge-transfer recordings
 

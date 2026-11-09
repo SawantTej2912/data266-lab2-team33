@@ -1,5 +1,5 @@
 id,setting,route,outcome,revisions,seconds,first_decision,first_image,final_image,prompt,message,automatic_pass,failed_checks
-S01,with,caption_question,answer,0,5.84,,,,,"Caption: A golden retriever sits on sandy beach, bathed in warm sunlight.
+S01,with,caption_question,answer,0,6.75,,,,,"Caption: A golden retriever sits on sandy beach, bathed in warm sunlight.
 Main objects: golden retriever, sand, sunlight
 Visible text: none
 Q: What is the main subject of the image and what is it doing?
@@ -8,7 +8,7 @@ Q: Which colours and what setting dominate the picture?
 A: The picture predominantly features warm golden tones, with the sandy beach as the setting.
 Q: Describe this image and tell me which animal is in it.
 A: The image shows a golden retriever sitting on sandy ground, bathed in warm sunlight. The animal appears to be enjoying the beach environment.",True,
-S02,with,caption_question,answer,0,6.93,,,,,"Caption: A vibrant red car parked on a narrow street lined with historic buildings in an urban setting.
+S02,with,caption_question,answer,0,8.13,,,,,"Caption: A vibrant red car parked on a narrow street lined with historic buildings in an urban setting.
 Main objects: red car, narrow street, historic buildings, cityscape, paved road, white lines, red brick buildings, urban architecture
 Visible text: none
 Q: What is the main subject of the image and what is it doing?
@@ -17,7 +17,7 @@ Q: Which colours and what setting dominate the picture?
 A: The picture predominantly features red tones, with the cars and buildings in the background contributing to this color scheme. The setting appears to be an urban street scene, characterized by narrow alleyways and older architectural styles.
 Q: What colour is the car in the front, and is it on a road?
 A: The car in the front is red and it is parked on the road.",True,
-S03,with,caption_question,answer,0,5.33,,,,,"Caption: A sign indicating a cafe's operating hours.
+S03,with,caption_question,answer,0,6.14,,,,,"Caption: A sign indicating a cafe's operating hours.
 Main objects: sign, text, background
 Visible text: CAFE OPEN
 9 TO 5 DAILY
@@ -27,15 +27,15 @@ Q: Which colours and what setting dominate the picture?
 A: The dominant colors in the picture are brown and white, with the text ""CAFE OPEN 9 TO 5 DAILY"" written in black on a white background.
 Q: What does the sign say?
 A: The sign says ""CAFE OPEN 9 TO 5 DAILY.""",True,
-S04,with,style_change,image,0,10.7,accept,..\outputs\part3\scenarios_with_critic\images\S04_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S04_with_try1.png,"A serene lake reflecting the vibrant hues of a sunrise, surrounded by dense evergreen trees, watercolor painting, soft brushstrokes, muted tones, delicate layering",Here is your image.,True,
-S05,with,style_change,image,1,14.79,revise,..\outputs\part3\scenarios_with_critic\images\S05_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S05_with_try2.png,"A relaxed tabby cat sleeping peacefully on a gray couch, pencil sketch, sharp lines, dark hatching, detailed shading",Here is your image.,True,
-S06,with,style_change,image,0,11.53,accept,..\outputs\part3\scenarios_with_critic\images\S06_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S06_with_try1.png,"A vibrant red car parked on a narrow street lined with historic buildings in an urban setting, oil painting, rich hues, textured brushstrokes, glossy finish",Here is your image.,True,
-S07,with,edit,image,0,10.22,accept,..\outputs\part3\scenarios_with_critic\images\S07_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S07_with_try1.png,make the car blue,Here is your image.,True,
-S08,with,edit,image,0,9.4,accept,..\outputs\part3\scenarios_with_critic\images\S08_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S08_with_try1.png,Add snow to the trees,Here is your image.,True,
-S09,with,edit,image,2,17.96,revise,..\outputs\part3\scenarios_with_critic\images\S09_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S09_with_try3.png,brighten and sharpen the image,Here is your image. The critic still saw a problem () after 2 revision(s).,True,
-S10,with,domain_style,image,2,20.71,revise,..\outputs\part3\scenarios_with_critic\images\S10_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S10_with_try3.png,"a cartoon bird with a vibrant blue body and a yellow beak, perched on a thin branch",Here is your image.,True,
-S11,with,domain_style,image,0,5.31,accept,..\outputs\part3\scenarios_with_critic\images\S11_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S11_with_try1.png,a cartoon fire dragon with red scales and a glowing orange breath,Here is your image.,True,
-S12,with,domain_style,image,1,14.86,revise,..\outputs\part3\scenarios_with_critic\images\S12_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S12_with_try2.png,"a cartoon tabby cat with a cute face, wearing a small hat, transformed into a cute Pokemon character, sitting on a gray couch",Here is your image.,True,
-S13,with,ambiguous,ask_clarification,0,1.69,,,,,Your request is not clear enough. Could you please provide more details on how you would like the image improved?,True,
+S04,with,style_change,image,0,12.41,accept,..\outputs\part3\scenarios_with_critic\images\S04_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S04_with_try1.png,"A serene lake reflecting the vibrant hues of a sunrise, surrounded by dense evergreen trees, watercolor painting, soft brushstrokes, muted tones, delicate layering",Here is your image.,True,
+S05,with,style_change,image,1,17.59,revise,..\outputs\part3\scenarios_with_critic\images\S05_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S05_with_try2.png,"A relaxed tabby cat sleeping peacefully on a gray couch, pencil sketch, sharp lines, dark hatching, detailed shading",Here is your image.,True,
+S06,with,style_change,image,0,13.69,accept,..\outputs\part3\scenarios_with_critic\images\S06_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S06_with_try1.png,"A vibrant red car parked on a narrow street lined with historic buildings in an urban setting, oil painting, rich hues, textured brushstrokes, glossy finish",Here is your image.,True,
+S07,with,edit,image,0,12.26,accept,..\outputs\part3\scenarios_with_critic\images\S07_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S07_with_try1.png,make the car blue,Here is your image.,True,
+S08,with,edit,image,0,12.36,accept,..\outputs\part3\scenarios_with_critic\images\S08_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S08_with_try1.png,Add snow to the trees,Here is your image.,True,
+S09,with,edit,image,2,24.71,revise,..\outputs\part3\scenarios_with_critic\images\S09_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S09_with_try3.png,brighten and sharpen the image,Here is your image. The critic still saw a problem () after 2 revision(s).,True,
+S10,with,domain_style,image,2,29.4,revise,..\outputs\part3\scenarios_with_critic\images\S10_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S10_with_try3.png,"a cartoon bird with a vibrant blue body and a yellow beak, perched on a thin branch",Here is your image.,True,
+S11,with,domain_style,image,0,8.49,accept,..\outputs\part3\scenarios_with_critic\images\S11_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S11_with_try1.png,a cartoon fire dragon with red scales and a glowing orange breath,Here is your image.,True,
+S12,with,domain_style,image,1,23.31,revise,..\outputs\part3\scenarios_with_critic\images\S12_with_try1.png,..\outputs\part3\scenarios_with_critic\images\S12_with_try2.png,"a cartoon tabby cat with a cute face, wearing a small hat, transformed into a cute Pokemon character, sitting on a gray couch",Here is your image.,True,
+S13,with,ambiguous,ask_clarification,0,2.82,,,,,Your request is not clear enough. Could you please provide more details on how you would like the image improved?,True,
 S14,with,,error_message,0,0.0,,,,,The image file is damaged or is not an image I can read. Please upload another file (JPEG or PNG).,True,
-S15,with,edit,error_message,0,1.1,,,,,This request needs an image. Please upload one and ask again.,True,
+S15,with,edit,error_message,0,1.82,,,,,This request needs an image. Please upload one and ask again.,True,

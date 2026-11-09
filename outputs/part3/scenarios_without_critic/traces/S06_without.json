@@ -7,7 +7,7 @@
   "message": "Here is your image.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 11.33,
+  "total_seconds": 13.4,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.31
+      "seconds": 1.52
     },
     {
       "agent": "vision",
@@ -60,7 +60,7 @@
         ]
       },
       "error": null,
-      "seconds": 5.38
+      "seconds": 6.45
     },
     {
       "agent": "prompt",
@@ -75,7 +75,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 2.77
+      "seconds": 3.25
     },
     {
       "agent": "generation",
@@ -92,11 +92,11 @@
         "lora_used": false,
         "prompt": "A vibrant red car parked on a narrow street lined with historic buildings in an urban setting, oil painting, rich hues, textured brushstrokes, glossy finish",
         "seed": 266,
-        "seconds": 0.85,
+        "seconds": 0.96,
         "image_path": "..\\outputs\\part3\\scenarios_without_critic\\images\\S06_without_try1.png"
       },
       "error": null,
-      "seconds": 0.85
+      "seconds": 0.96
     },
     {
       "agent": "critique",
@@ -113,7 +113,7 @@
         "decision": "accept"
       },
       "error": null,
-      "seconds": 1.02
+      "seconds": 1.22
     }
   ]
 }

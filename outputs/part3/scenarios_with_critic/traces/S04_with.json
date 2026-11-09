@@ -7,7 +7,7 @@
   "message": "Here is your image.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 10.7,
+  "total_seconds": 12.41,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.32
+      "seconds": 1.52
     },
     {
       "agent": "vision",
@@ -60,7 +60,7 @@
         ]
       },
       "error": null,
-      "seconds": 4.5
+      "seconds": 5.32
     },
     {
       "agent": "prompt",
@@ -75,7 +75,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 2.83
+      "seconds": 3.32
     },
     {
       "agent": "generation",
@@ -92,11 +92,11 @@
         "lora_used": false,
         "prompt": "A serene lake reflecting the vibrant hues of a sunrise, surrounded by dense evergreen trees, watercolor painting, soft brushstrokes, muted tones, delicate layering",
         "seed": 266,
-        "seconds": 0.98,
+        "seconds": 1.07,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S04_with_try1.png"
       },
       "error": null,
-      "seconds": 0.98
+      "seconds": 1.07
     },
     {
       "agent": "critique",
@@ -113,7 +113,7 @@
         "decision": "accept"
       },
       "error": null,
-      "seconds": 1.07
+      "seconds": 1.2
     }
   ]
 }

@@ -7,7 +7,7 @@
   "message": "Here is your image.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 10.24,
+  "total_seconds": 12.98,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.4
+      "seconds": 1.92
     },
     {
       "agent": "vision",
@@ -60,7 +60,7 @@
         ]
       },
       "error": null,
-      "seconds": 5.36
+      "seconds": 6.72
     },
     {
       "agent": "prompt",
@@ -75,7 +75,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 1.65
+      "seconds": 2.18
     },
     {
       "agent": "generation",
@@ -91,11 +91,11 @@
         "lora_used": false,
         "prompt": "make the car blue",
         "seed": 266,
-        "seconds": 0.72,
+        "seconds": 0.85,
         "image_path": "..\\outputs\\part3\\scenarios_without_critic\\images\\S07_without_try1.png"
       },
       "error": null,
-      "seconds": 0.72
+      "seconds": 0.85
     },
     {
       "agent": "critique",
@@ -112,7 +112,7 @@
         "decision": "accept"
       },
       "error": null,
-      "seconds": 1.1
+      "seconds": 1.31
     }
   ]
 }

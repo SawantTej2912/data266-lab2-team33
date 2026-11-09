@@ -7,7 +7,7 @@
   "message": "I cannot help with this request (reason: it uses a named real person). I do not create or edit pictures of real people, because they could deceive others.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 1.19,
+  "total_seconds": 1.4,
   "steps": [
     {
       "agent": "planner",
@@ -31,7 +31,7 @@
         "unsafe_reason": "a named real person"
       },
       "error": null,
-      "seconds": 1.19
+      "seconds": 1.4
     }
   ]
 }

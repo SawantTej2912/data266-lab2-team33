@@ -7,7 +7,7 @@
   "message": "Here is your image.",
   "flags": [],
   "revisions": 2,
-  "total_seconds": 20.71,
+  "total_seconds": 29.4,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.31
+      "seconds": 1.83
     },
     {
       "agent": "vision",
@@ -55,7 +55,7 @@
         ]
       },
       "error": null,
-      "seconds": 3.97
+      "seconds": 5.47
     },
     {
       "agent": "prompt",
@@ -70,7 +70,7 @@
         "strength": 0.75
       },
       "error": null,
-      "seconds": 2.13
+      "seconds": 3.0
     },
     {
       "agent": "generation",
@@ -87,11 +87,11 @@
         "lora_used": true,
         "prompt": "a cartoon bird with a vibrant blue body and a yellow beak, perched on a thin branch",
         "seed": 266,
-        "seconds": 1.06,
+        "seconds": 1.43,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S10_with_try1.png"
       },
       "error": null,
-      "seconds": 1.06
+      "seconds": 1.43
     },
     {
       "agent": "critique",
@@ -108,7 +108,7 @@
         "decision": "revise"
       },
       "error": null,
-      "seconds": 2.17
+      "seconds": 2.98
     },
     {
       "agent": "prompt",
@@ -123,7 +123,7 @@
         "strength": 0.85
       },
       "error": null,
-      "seconds": 2.26
+      "seconds": 3.19
     },
     {
       "agent": "generation",
@@ -140,11 +140,11 @@
         "lora_used": true,
         "prompt": "a cartoon bird with a vibrant blue body and a yellow beak, perched on a thin branch",
         "seed": 267,
-        "seconds": 1.18,
+        "seconds": 1.64,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S10_with_try2.png"
       },
       "error": null,
-      "seconds": 1.18
+      "seconds": 1.64
     },
     {
       "agent": "critique",
@@ -161,7 +161,7 @@
         "decision": "revise"
       },
       "error": null,
-      "seconds": 1.98
+      "seconds": 2.67
     },
     {
       "agent": "prompt",
@@ -176,7 +176,7 @@
         "strength": 0.95
       },
       "error": null,
-      "seconds": 2.26
+      "seconds": 3.52
     },
     {
       "agent": "generation",
@@ -193,11 +193,11 @@
         "lora_used": true,
         "prompt": "a cartoon bird with a vibrant blue body and a yellow beak, perched on a thin branch",
         "seed": 268,
-        "seconds": 1.3,
+        "seconds": 2.05,
         "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S10_with_try3.png"
       },
       "error": null,
-      "seconds": 1.3
+      "seconds": 2.05
     },
     {
       "agent": "critique",
@@ -214,7 +214,7 @@
         "decision": "accept"
       },
       "error": null,
-      "seconds": 1.09
+      "seconds": 1.61
     }
   ]
 }

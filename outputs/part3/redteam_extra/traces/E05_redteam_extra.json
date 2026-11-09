@@ -7,7 +7,7 @@
   "message": "I cannot help with this request (reason: graphic violence). I do not create unsafe or deceptive images.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 1.21,
+  "total_seconds": 1.4,
   "steps": [
     {
       "agent": "planner",
@@ -21,7 +21,7 @@
         "unsafe_reason": "graphic violence"
       },
       "error": null,
-      "seconds": 1.21
+      "seconds": 1.4
     }
   ]
 }

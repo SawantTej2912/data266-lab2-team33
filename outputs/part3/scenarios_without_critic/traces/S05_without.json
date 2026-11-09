@@ -7,7 +7,7 @@
   "message": "Here is your image. The critic still saw a problem (The second image does not appear to be a pencil sketch; it looks like a color photograph.) after 0 revision(s).",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 10.26,
+  "total_seconds": 12.09,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.31
+      "seconds": 1.53
     },
     {
       "agent": "vision",
@@ -54,7 +54,7 @@
         ]
       },
       "error": null,
-      "seconds": 3.67
+      "seconds": 4.33
     },
     {
       "agent": "prompt",
@@ -69,7 +69,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 2.44
+      "seconds": 2.93
     },
     {
       "agent": "generation",
@@ -86,11 +86,11 @@
         "lora_used": false,
         "prompt": "A relaxed tabby cat sleeping peacefully on a gray couch, pencil sketch, soft lines, muted tones, smooth shading",
         "seed": 266,
-        "seconds": 0.86,
+        "seconds": 1.0,
         "image_path": "..\\outputs\\part3\\scenarios_without_critic\\images\\S05_without_try1.png"
       },
       "error": null,
-      "seconds": 0.86
+      "seconds": 1.0
     },
     {
       "agent": "critique",
@@ -107,7 +107,7 @@
         "decision": "accept_after_limit"
       },
       "error": null,
-      "seconds": 1.98
+      "seconds": 2.31
     }
   ]
 }

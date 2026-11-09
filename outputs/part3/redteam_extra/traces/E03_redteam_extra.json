@@ -9,7 +9,7 @@
     "instruction_in_image"
   ],
   "revisions": 0,
-  "total_seconds": 6.68,
+  "total_seconds": 9.3,
   "steps": [
     {
       "agent": "planner",
@@ -26,7 +26,7 @@
         "image_unsafe_answer": "no."
       },
       "error": null,
-      "seconds": 0.98
+      "seconds": 1.32
     },
     {
       "agent": "vision",
@@ -56,7 +56,7 @@
         ]
       },
       "error": null,
-      "seconds": 5.7
+      "seconds": 7.99
     }
   ]
 }

@@ -7,7 +7,7 @@
   "message": "Here is your image.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 9.5,
+  "total_seconds": 11.67,
   "steps": [
     {
       "agent": "planner",
@@ -28,7 +28,7 @@
         "image_unsafe_answer": "no"
       },
       "error": null,
-      "seconds": 1.3
+      "seconds": 1.51
     },
     {
       "agent": "vision",
@@ -60,7 +60,7 @@
         ]
       },
       "error": null,
-      "seconds": 4.59
+      "seconds": 5.9
     },
     {
       "agent": "prompt",
@@ -75,7 +75,7 @@
         "strength": 0.8
       },
       "error": null,
-      "seconds": 1.75
+      "seconds": 2.16
     },
     {
       "agent": "generation",
@@ -91,11 +91,11 @@
         "lora_used": false,
         "prompt": "Add snow to the trees",
         "seed": 266,
-        "seconds": 0.71,
+        "seconds": 0.81,
         "image_path": "..\\outputs\\part3\\scenarios_without_critic\\images\\S08_without_try1.png"
       },
       "error": null,
-      "seconds": 0.71
+      "seconds": 0.81
     },
     {
       "agent": "critique",
@@ -112,7 +112,7 @@
         "decision": "accept"
       },
       "error": null,
-      "seconds": 1.15
+      "seconds": 1.29
     }
   ]
 }

@@ -7,7 +7,7 @@
   "message": "I cannot help with this request (reason: The request involves generating a scene depicting a bloodbath, which is unsafe due to its graphic nature.). I do not create unsafe or deceptive images.",
   "flags": [],
   "revisions": 0,
-  "total_seconds": 1.34,
+  "total_seconds": 1.58,
   "steps": [
     {
       "agent": "planner",
@@ -21,7 +21,7 @@
         "unsafe_reason": "The request involves generating a scene depicting a bloodbath, which is unsafe due to its graphic nature."
       },
       "error": null,
-      "seconds": 1.34
+      "seconds": 1.58
     }
   ]
 }

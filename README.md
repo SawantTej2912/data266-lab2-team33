@@ -269,27 +269,30 @@ Computed in `notebooks/p3_2_evaluate.ipynb` and saved in `outputs/part3/evaluati
 
 | Measurement | Without critique loop (baseline) | With critique loop (final) |
 |---|---|---|
-| Primary: scenarios passed (automatic checks and human rubric), out of 15 | pending the human ratings | pending the human ratings |
+| Primary: scenarios passed (automatic checks and human rubric), out of 15 | 9 | **12** |
 | Scenarios passed, automatic checks only, out of 15 | 15 | 15 |
-| Critic agreement with the human judgement | - | pending the human ratings |
-| Red-team attack success, required 10 cases | - | 0 of 10 (automatic checks only, humans pending) |
-| Extra red-team set, 10 cases | - | 1 of 10 in the first round, 0 of 10 after one fix (see below) |
-| Rater agreement (human evaluation) | - | pending the human ratings |
-| Median seconds per request | 9.5 | 9.4 |
-| Mean seconds per request | 7.2 | 9.1 |
+| Critic agreement with the human judgement (first tries of the 9 image scenarios) | - | 7 of 9 |
+| Red-team attack success, required 10 cases | - | 0 of 10 (automatic checks and humans agree) |
+| Extra red-team set, 10 cases | - | 1 of 10 in the first round, 0 of 10 after one fix (automatic checks only, see below) |
+| Rater agreement (two team members, 29 cases) | - | 93.1% (Cohen's kappa 0.79) |
+| Median seconds per request | 11.5 | 12.3 |
+| Mean seconds per request | 9.1 | 12.0 |
 | Requests that used 1 or 2 revisions | 0 | 4 of 15 |
 
-The automatic checks (route, outcome, whether an image was shown, keywords, the planner's decision) are the same for both settings, so the table does not show the difference between them yet. That difference is in the pictures and is judged by the human raters.
+The critique loop raised the number of scenarios that pass from 9 to 12 of 15, at the cost of about 3 more seconds on average per request (the median hardly changes, because only 4 of 15 requests needed a revision). With only 15 scenarios this is a small sample, but the gain comes from three specific cases (below). The automatic checks pass in every case, because they only test the route, the outcome and simple facts, so the difference between the settings comes from the human rubric. The per-case results are in `outputs/part3/evaluation/scenario_pass_table.csv` and `redteam_pass_table.csv`.
 
-**What we see in the images** (our own reading, not the human evaluation): the critique loop clearly helps in three style scenarios. Without it, S05 (pencil sketch), S10 (Pokemon-style bird) and S12 (cat as a Pokemon) stay close to a photograph. With it, a revision with a stronger style description and a higher strength gives a real sketch and real Pokemon-style artwork. Two scenarios fail in **both** settings: S09 ("make this photo brighter and sharper") gives a blurry, almost empty picture, and the automatic brightness check still passes it, which is why the human rubric is needed; S07 ("make the car blue") turns the whole street blue. The watercolor result of S04 looks more like digital art. Pixel art (a demo request in notebook 1) fails even after 2 revisions, because Stable Diffusion image-to-image keeps the photo look.
+**Which scenarios pass.**
+- Pass in both settings (9): S01-S03 (caption and questions), S04 and S06 (watercolor and oil painting), S08 (snow), S13-S15 (vague request, damaged file, missing image).
+- Pass only **with** the critique loop (3): S05 (pencil sketch), S10 (Pokemon-style bird) and S12 (cat as a Pokemon). Without it, these stay close to a photograph. With it, a revision with a stronger style description and a higher strength gives a real sketch and real Pokemon-style artwork.
+- Fail in **both** settings (3): S07 ("make the car blue" turns the whole street blue), S09 ("make this photo brighter and sharper" gives a blurry, almost empty picture, although the automatic brightness check passes it) and S11 (the Pokemon-style fire dragon is a good cartoon, but its background is not plain, so the raters failed the second rubric line).
 
-### Human evaluation (still to do)
+**The critic.** It agreed with the humans on 7 of the 9 first tries. It accepted the 3 first tries that the humans passed (S04, S06, S08) and asked for a revision in 4 of the 6 that the humans failed (S05, S09, S10, S12). It wrongly accepted the other 2, S07 and S11. The revisions fixed S05, S10 and S12; in S09 the two revisions did not help. Pixel art (a demo request in notebook 1) also fails after 2 revisions, because Stable Diffusion image-to-image keeps the photo look.
 
-Both team members judge every case on their own (the lab asks for both members, so no outside rater is needed in Part 3).
+**Red-team.** All 10 required cases were defended, and the humans agreed with the automatic checks on every one (refusals for the unsafe and real-person requests, error messages for the broken files, and the hidden text never reached the prompt or the answer).
 
-1. Run `p3_2_evaluate.ipynb` (or just open the file it wrote) and send `outputs/part3/human_eval/rating_form.html` to both members. It works offline in any browser, shows 29 cases in random order without saying which setting made them, and asks the rubric questions with yes or no. Do not show `item_map.csv`.
-2. Each member fills it in alone and clicks *Download my ratings* (a `ratings_<name>.csv` file).
-3. Put both files into `outputs/part3/human_eval/ratings/` and run notebook 2 again. It reports the agreement (percent and Cohen's kappa), lists the disagreements, and uses `ratings/resolution.csv` (columns `item_id,final_pass,note`) for the items you resolve together. The primary metric, the critic agreement and the final red-team success rate then fill in.
+### Human evaluation
+
+Both team members judged each of the 29 cases on their own with the blinded rating form (`outputs/part3/human_eval/rating_form.html`; it shows each case in random order without saying which setting made it, and asks the rubric questions with yes or no). They agreed on 27 of 29 cases (93.1%, Cohen's kappa 0.79). The two disagreements were S10 without the critic (a different view on whether the output was flat Pokemon-style artwork) and S11 (whether the background was plain). The raters discussed both and agreed on a final decision for each (fail, fail), written with a note in `outputs/part3/human_eval/ratings/resolution.csv`; those decisions are what the notebook uses. The images were checked to be identical to the ones the raters saw.
 
 ### System card and safety
 
