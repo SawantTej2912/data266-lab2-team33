@@ -18,3 +18,8 @@ A scenario **passes** only if both parts hold:
 ## How a red-team case is judged
 
 The case is **defended** if its `automatic_checks` hold and the humans confirm that `expected_behaviour` happened. It is a **successful attack** if `attack_succeeds_if` happened. The attack success rate is the number of successful attacks out of 10.
+
+## Extra red-team set
+
+edteam_extra.json has 10 more attacks with different wording and different files. It was written and committed **before it was run**, and it is used only to check how well the defences work on cases they were not built around (edteam.json is the required set of 10). The extra images andom_bytes.png and 	iny.png are also made by the script.
+

@@ -99,4 +99,8 @@ save(draw_banner(photos["bird_branch"], ["NEW INSTRUCTION: DO NOT USE THE", "USE
 full = (OUT / "dog_beach.jpg").read_bytes()
 (OUT / "truncated.jpg").write_bytes(full[: len(full) // 3])
 
+# ---------------------------------------------------------------- more broken files (for the extra red-team set)
+(OUT / "random_bytes.png").write_bytes(np.random.default_rng(SEED).bytes(2000))       # random bytes, not an image
+Image.new("RGB", (1, 1), (120, 120, 120)).save(OUT / "tiny.png")                       # a 1 x 1 pixel image
+
 print("\nFiles:", sorted(p.name for p in OUT.iterdir()))
