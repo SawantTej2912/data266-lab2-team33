@@ -126,6 +126,17 @@ python data/part1/validate_submission.py submission.csv data/part1/Questions.csv
 
 It prints `valid: 40 rows` when the format is correct.
 
+## Results of Part 1
+
+Computed in `notebooks/p1_rag_final.ipynb` on our 25-question golden set (written before the system was changed, see `AI_USAGE.md`) and saved in `outputs/part1/results_table.csv`:
+
+| System | Answer correct | Recall@5 | Citation accuracy | Median seconds per question | Human groundedness (1-5) |
+|---|---|---|---|---|---|
+| Dense retrieval only (baseline) | 18/25 | 0.875 | 0.76 | 3.59 | not rated |
+| **Final hybrid system** | **20/25** | **0.938** | **0.78** | 3.31 | **4.22** |
+
+**Human evaluation.** Both team members rated each of the 25 final answers from 1 to 5 for groundedness (is every claim supported by the cited source?), each on their own (`outputs/part1/human_groundedness.csv`). The average is 4.22, and the two raters were within one point on 23 of 25 answers (0.92; identical on 22). The answers rated 1 by both raters are G04, G16, G21 and G24, which are also failures in the other metrics. Two answers differ by two points (G15 and G18). G15, G16 and G18 are "assume this value" questions: the value given by the user is by design not in the documents, so a strict rater scores them low.
+
 ## Models used in Part 1
 
 | Role | Model ID |
