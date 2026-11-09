@@ -1,0 +1,107 @@
+[
+  {
+    "id": "S01", "category": "caption_question", "image": "dog_beach.jpg",
+    "request": "Describe this image and tell me which animal is in it.",
+    "expected_route": "caption_question",
+    "automatic_checks": {"route": "caption_question", "answer_contains_any": ["dog", "retriever"], "image_generated": false},
+    "rubric": ["The caption is accurate: a dog sitting on sand or a beach.", "The question is answered clearly in the output."]
+  },
+  {
+    "id": "S02", "category": "caption_question", "image": "red_car_street.jpg",
+    "request": "What colour is the car in the front, and is it on a road?",
+    "expected_route": "caption_question",
+    "automatic_checks": {"route": "caption_question", "answer_contains_any": ["red"], "image_generated": false},
+    "rubric": ["The answer says the car is red.", "The answer says it is on a road or street."]
+  },
+  {
+    "id": "S03", "category": "caption_question", "image": "sign_cafe.jpg",
+    "request": "What does the sign say?",
+    "expected_route": "caption_question",
+    "automatic_checks": {"route": "caption_question", "visible_text_contains_all": ["cafe", "open"], "image_generated": false},
+    "rubric": ["The visible text includes CAFE OPEN and 9 TO 5 DAILY with at most one wrong word."]
+  },
+  {
+    "id": "S04", "category": "style_change", "image": "mountain_lake.jpg",
+    "request": "Make this look like a watercolor painting.",
+    "expected_route": "style_change",
+    "automatic_checks": {"route": "style_change", "image_generated": true, "mode": "img2img"},
+    "rubric": ["The output is still recognisably the same scene (mountain, lake, pine trees).", "The output looks like a watercolor painting (soft colour washes, painted texture)."]
+  },
+  {
+    "id": "S05", "category": "style_change", "image": "cat_sofa.jpg",
+    "request": "Turn this photo into a pencil sketch.",
+    "expected_route": "style_change",
+    "automatic_checks": {"route": "style_change", "image_generated": true, "mode": "img2img"},
+    "rubric": ["The cat on the sofa is still recognisable.", "The output looks like a pencil drawing (grey lines, little colour)."]
+  },
+  {
+    "id": "S06", "category": "style_change", "image": "red_car_street.jpg",
+    "request": "Render this scene as a vivid oil painting.",
+    "expected_route": "style_change",
+    "automatic_checks": {"route": "style_change", "image_generated": true, "mode": "img2img"},
+    "rubric": ["The street and the red car are still recognisable.", "The output looks like an oil painting (visible brush strokes, rich colour)."]
+  },
+  {
+    "id": "S07", "category": "edit_or_enhancement", "image": "red_car_street.jpg",
+    "request": "Make the car blue.",
+    "expected_route": "edit",
+    "automatic_checks": {"route": "edit", "image_generated": true, "mode": "pix2pix"},
+    "rubric": ["The large car in the front is now blue.", "The rest of the scene (street, buildings) is mostly unchanged."]
+  },
+  {
+    "id": "S08", "category": "edit_or_enhancement", "image": "mountain_lake.jpg",
+    "request": "Make it winter with snow on the trees.",
+    "expected_route": "edit",
+    "automatic_checks": {"route": "edit", "image_generated": true, "mode": "pix2pix"},
+    "rubric": ["Snow is clearly visible on the trees or the ground.", "The lake and mountain layout of the scene is kept."]
+  },
+  {
+    "id": "S09", "category": "edit_or_enhancement", "image": "dark_street.jpg",
+    "request": "Make this photo brighter and sharper.",
+    "expected_route": "edit",
+    "automatic_checks": {"route": "edit", "image_generated": true, "mode": "pix2pix", "brighter_by_at_least": 20},
+    "rubric": ["Details of the street and the car are easier to see than in the input.", "No new objects are added."]
+  },
+  {
+    "id": "S10", "category": "domain_style", "image": "bird_branch.jpg",
+    "request": "Turn this bird into a Pokemon-style creature.",
+    "expected_route": "domain_style",
+    "automatic_checks": {"route": "domain_style", "image_generated": true, "lora_used": true},
+    "rubric": ["The output is a flat cartoon creature in the Pokemon artwork style on a plain light background.", "It is still a blue, bird-like creature."]
+  },
+  {
+    "id": "S11", "category": "domain_style", "image": null,
+    "request": "Generate a Pokemon-style fire dragon.",
+    "expected_route": "domain_style",
+    "automatic_checks": {"route": "domain_style", "image_generated": true, "lora_used": true},
+    "rubric": ["The output is a cartoon dragon-like creature with a fire theme.", "It has the Pokemon artwork look (flat colours, plain background)."]
+  },
+  {
+    "id": "S12", "category": "domain_style", "image": "cat_sofa.jpg",
+    "request": "Draw this cat as a cute Pokemon character.",
+    "expected_route": "domain_style",
+    "automatic_checks": {"route": "domain_style", "image_generated": true, "lora_used": true},
+    "rubric": ["The output is a cartoon creature in the Pokemon artwork style.", "It keeps something of the cat (cat-like shape or brown-grey stripes)."]
+  },
+  {
+    "id": "S13", "category": "ambiguous_or_broken", "image": "dog_beach.jpg",
+    "request": "Make it better.",
+    "expected_route": "ambiguous",
+    "automatic_checks": {"outcome": "ask_clarification", "image_generated": false},
+    "rubric": ["The system asks what the user wants (for example what to improve) instead of guessing and generating."]
+  },
+  {
+    "id": "S14", "category": "ambiguous_or_broken", "image": "truncated.jpg",
+    "request": "Describe this image.",
+    "expected_route": "none",
+    "automatic_checks": {"outcome": "error_message", "image_generated": false, "no_crash": true},
+    "rubric": ["A clear message says the image is damaged or cannot be read and asks for another file."]
+  },
+  {
+    "id": "S15", "category": "ambiguous_or_broken", "image": null,
+    "request": "Change the sky to pink.",
+    "expected_route": "none",
+    "automatic_checks": {"outcome": "error_message", "image_generated": false, "no_crash": true},
+    "rubric": ["A clear message says an image is needed for this edit and asks the user to upload one."]
+  }
+]
