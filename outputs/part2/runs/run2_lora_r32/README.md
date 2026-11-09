@@ -36,7 +36,7 @@ LoRA on the attention layers of the UNet, rank 32 (6,377,472 trainable parameter
 - KID against the 83 test images (20 in-domain generations): 0.0356 (base model: 0.0947).
 - CLIP score: 32.13 on all prompts (base model: 32.82).
 - LPIPS diversity between two seeds: 0.755 (base model: 0.830).
-- Human comparison with the base model: not available yet.
+- Human comparison with the base model: 0.75 (style) and 0.56 (prompt match) against the base model, 3 raters.
 
 ## Limitations
 - The training set is small and very uniform (single characters on a white background). The style may carry over to unrelated prompts (we did not see this on our 5 out-of-domain test prompts), and prompts with several objects, counts or colours often go wrong.

@@ -31,7 +31,7 @@ What the Git history shows (all commits are under the one GitHub account `Sawant
 
 - Member 1: TODO (what they did in Part 2)
 - Member 2: TODO (what they did in Part 2; the lab says both members must run the complete pipeline)
-- Human evaluation (25 pairs, at least 3 raters: both members and one person outside the team): TODO. The rating form is `outputs/part2/human_eval/rating_form.html`.
+- Human evaluation (25 pairs, 3 raters): done. The rating files are `outputs/part2/human_eval/ratings/ratings_Tejas.csv`, `ratings_Shriram.csv` and `ratings_Atharva.csv`. TODO: state here which two raters are the team members and that the third is outside the team.
 - Hugging Face account used for the uploads: `SawantTej`
 
 ## Part 3 - Multi-agent system

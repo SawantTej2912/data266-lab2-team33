@@ -151,7 +151,7 @@ The lab requires all work to fit on one 16 GB GPU. With 4-bit loading the 7B mod
 
 ## Part 2: Fine-tuning Stable Diffusion 1.5 with LoRA
 
-We fine-tuned Stable Diffusion 1.5 on Pokemon artwork with LoRA, trained two runs that differ only in the LoRA rank, and compared both with the base model. The notebooks are finished and executed. The blinded human evaluation still needs its ratings (see below).
+We fine-tuned Stable Diffusion 1.5 on Pokemon artwork with LoRA, trained two runs that differ only in the LoRA rank, and compared both with the base model. The notebooks are finished and executed, including the blinded human evaluation (see below).
 
 | Item | Choice |
 |---|---|
@@ -190,13 +190,18 @@ The notebook also covers the two checks required for safety: the Stable Diffusio
 
 **Result: no extra run clearly beats run 2, so the final model is unchanged.** Rank 64 and Min-SNR weighting have a slightly lower KID (0.023 against 0.025) but the difference is within the noise. A lower learning rate gives a higher CLIP score but a worse KID. Training for 5000 steps is worse on both. Guidance 11 raises the CLIP score of run 2 by only 0.37, so the default 7.5 was kept. The fine-tuned models score below the base model on CLIP at every guidance value, so that loss is a real cost of specialising in one style.
 
-### Human evaluation (still to do)
+### Human evaluation
 
-The lab needs a blinded comparison of 25 image pairs (final run against the base model) by at least 3 raters: both team members and one person outside the team.
+A blinded comparison of 25 image pairs (final run against the base model, left and right randomized) by 3 raters: two team members and one person outside the team. Each rater chose the better image for domain style and for prompt match (`outputs/part2/human_eval/ratings/`, results in notebook 3). The images were checked to be identical to the ones the raters saw (the answer key and all 145 images were unchanged by the final run of notebook 3).
 
-1. Send `outputs/part2/human_eval/rating_form.html` to each rater (it works offline in any browser; do not send `answer_key.csv`).
-2. Each rater fills it in and clicks *Download my ratings*, which saves a `ratings_<name>.csv` file.
-3. Put all rating files into `outputs/part2/human_eval/ratings/` and run notebook 3 again. The win rate and the rater agreement appear in its results table.
+| Rater | Run 2 wins, domain style | Run 2 wins, prompt match |
+|---|---|---|
+| Atharva | 72% | 60% |
+| Shriram | 76% | 64% |
+| Tejas | 76% | 44% |
+| **All 75 votes** | **74.7%** | **56%** |
+
+The raters clearly prefer the fine-tuned model for domain style (about three pairs out of four), which matches the lower KID. For prompt match the result is close to even (56%, with a range of 44% to 64% between raters), which matches the small CLIP loss: fine-tuning makes the images look like the dataset without making them follow the prompt better. The raters made the same choice on 68% of the pair-and-question combinations, and agreed less on prompt match than on style, so the prompt-match judgement is a hard one.
 
 ### Hugging Face
 

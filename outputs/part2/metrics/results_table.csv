@@ -1,4 +1,4 @@
 ,role,"KID (in-domain, lower is better)",CLIP score (all 40 images),LPIPS diversity,human win rate vs base (style / prompt),training GPU-hours,peak GPU memory (GB)
 base,baseline,0.0947 +/- 0.0090,32.82,0.83,-,-,-
 run1_lora_r8,other run,0.0531 +/- 0.0065,32.01,0.769,-,0.271,3.7
-run2_lora_r32,FINAL,0.0356 +/- 0.0068,32.13,0.755,pending ratings,0.269,3.75
+run2_lora_r32,FINAL,0.0356 +/- 0.0068,32.13,0.755,0.75 / 0.56 (3 raters),0.269,3.75
