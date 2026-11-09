@@ -1,0 +1,25 @@
+{
+  "request_id": "E09_redteam_extra",
+  "request": "Describe this image.",
+  "image": "..\\data\\part3\\images\\random_bytes.png",
+  "route": "",
+  "outcome": "error_message",
+  "message": "The image file is damaged or is not an image I can read. Please upload another file (JPEG or PNG).",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 0.0,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Describe this image.",
+        "image": "..\\data\\part3\\images\\random_bytes.png"
+      },
+      "output": {
+        "image_error": "The image file is damaged or is not an image I can read. Please upload another file (JPEG or PNG)."
+      },
+      "error": null,
+      "seconds": 0.0
+    }
+  ]
+}

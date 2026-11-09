@@ -5,6 +5,10 @@ the planner's route, the vision result, the prompt, the generation record, the c
 
 Run from the repository root:   python scripts/part3/app.py            (then open http://127.0.0.1:7860)
 In Kaggle or Colab:             python scripts/part3/app.py --share     (prints a public link)
+
+Loading the models takes about 40 seconds. The first run downloads about 20 GB of models from Hugging Face. After
+that all models are in the local cache, and you can start without a network connection (set HF_HUB_OFFLINE=1).
+When the output of the app is redirected to a file, the "Running on local URL" line can appear late (it is buffered).
 """
 import argparse
 import json

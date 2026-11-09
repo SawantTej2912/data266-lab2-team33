@@ -1,0 +1,166 @@
+{
+  "request_id": "S12_with",
+  "request": "Draw this cat as a cute Pokemon character.",
+  "image": "..\\data\\part3\\images\\cat_sofa.jpg",
+  "route": "domain_style",
+  "outcome": "image",
+  "message": "Here is your image.",
+  "flags": [],
+  "revisions": 1,
+  "total_seconds": 14.86,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Draw this cat as a cute Pokemon character.",
+        "image": "..\\data\\part3\\images\\cat_sofa.jpg"
+      },
+      "output": {
+        "image_size": [
+          512,
+          512
+        ],
+        "route": "domain_style",
+        "named_people": {
+          "people": [],
+          "only_art_style": true
+        },
+        "image_unsafe_answer": "no"
+      },
+      "error": null,
+      "seconds": 1.32
+    },
+    {
+      "agent": "vision",
+      "input": {
+        "route": "domain_style"
+      },
+      "output": {
+        "caption": "A relaxed tabby cat is sleeping peacefully on a gray couch.",
+        "objects": [
+          "cat",
+          "couch"
+        ],
+        "visible_text": "",
+        "answers": [
+          {
+            "question": "What is the main subject of the image and what is it doing?",
+            "answer": "The main subject of the image is a cat, which is lying on its side on a couch, appearing to be asleep."
+          },
+          {
+            "question": "Which colours and what setting dominate the picture?",
+            "answer": "The picture predominantly features shades of gray and white, with the cat's fur providing subtle variations in color. The setting appears to be indoors, likely on a couch or similar piece of furniture."
+          }
+        ]
+      },
+      "error": null,
+      "seconds": 3.69
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "domain_style",
+        "revision": 0
+      },
+      "output": {
+        "prompt": "a cartoon tabby cat with a cute face, wearing a small hat, sitting on a gray couch",
+        "negative_prompt": "",
+        "target_description": "a cute tabby cat wearing a small hat, sitting on a gray couch",
+        "strength": 0.75
+      },
+      "error": null,
+      "seconds": 2.08
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "a cartoon tabby cat with a cute face, wearing a small hat, sitting on a gray couch"
+      },
+      "output": {
+        "mode": "img2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5 + SawantTej/pokemon-sd15-lora-r32",
+        "steps": 30,
+        "guidance": 7.5,
+        "strength": 0.75,
+        "negative_prompt": null,
+        "lora_used": true,
+        "prompt": "a cartoon tabby cat with a cute face, wearing a small hat, sitting on a gray couch",
+        "seed": 266,
+        "seconds": 1.07,
+        "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S12_with_try1.png"
+      },
+      "error": null,
+      "seconds": 1.07
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\scenarios_with_critic\\images\\S12_with_try1.png"
+      },
+      "output": {
+        "clip_score": 30.33,
+        "satisfies_request": "no",
+        "sd_checker_flag": false,
+        "model_says_unsafe": false,
+        "problem": "The image shows a real cat lying on a couch, but there is no indication of a Pokemon character.",
+        "revision_instruction": "Please provide an image of a cat drawn as a cute Pokemon character.",
+        "decision": "revise"
+      },
+      "error": null,
+      "seconds": 1.94
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "domain_style",
+        "revision": 1
+      },
+      "output": {
+        "prompt": "a cartoon tabby cat with a cute face, wearing a small hat, transformed into a cute Pokemon character, sitting on a gray couch",
+        "negative_prompt": "",
+        "target_description": "A cute tabby cat, resembling a Pokemon character, with a small hat, sitting peacefully on a gray couch.",
+        "strength": 0.85
+      },
+      "error": null,
+      "seconds": 2.46
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "a cartoon tabby cat with a cute face, wearing a small hat, transformed into a cute Pokemon character, sitting on a gray couch"
+      },
+      "output": {
+        "mode": "img2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5 + SawantTej/pokemon-sd15-lora-r32",
+        "steps": 30,
+        "guidance": 7.5,
+        "strength": 0.85,
+        "negative_prompt": null,
+        "lora_used": true,
+        "prompt": "a cartoon tabby cat with a cute face, wearing a small hat, transformed into a cute Pokemon character, sitting on a gray couch",
+        "seed": 267,
+        "seconds": 1.21,
+        "image_path": "..\\outputs\\part3\\scenarios_with_critic\\images\\S12_with_try2.png"
+      },
+      "error": null,
+      "seconds": 1.23
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\scenarios_with_critic\\images\\S12_with_try2.png"
+      },
+      "output": {
+        "clip_score": 30.63,
+        "satisfies_request": "yes",
+        "sd_checker_flag": true,
+        "model_says_unsafe": false,
+        "problem": "",
+        "revision_instruction": "",
+        "decision": "accept"
+      },
+      "error": null,
+      "seconds": 1.07
+    }
+  ]
+}

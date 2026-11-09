@@ -1,0 +1,25 @@
+{
+  "request_id": "S14_with",
+  "request": "Describe this image.",
+  "image": "..\\data\\part3\\images\\truncated.jpg",
+  "route": "",
+  "outcome": "error_message",
+  "message": "The image file is damaged or is not an image I can read. Please upload another file (JPEG or PNG).",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 0.0,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Describe this image.",
+        "image": "..\\data\\part3\\images\\truncated.jpg"
+      },
+      "output": {
+        "image_error": "The image file is damaged or is not an image I can read. Please upload another file (JPEG or PNG)."
+      },
+      "error": null,
+      "seconds": 0.0
+    }
+  ]
+}

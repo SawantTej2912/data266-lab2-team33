@@ -1,0 +1,220 @@
+{
+  "request_id": "demo_revise",
+  "request": "Turn this into pixel art.",
+  "image": "..\\data\\part3\\images\\bird_branch.jpg",
+  "route": "style_change",
+  "outcome": "image",
+  "message": "Here is your image. The critic still saw a problem (The images provided are photographs, not pixel art.) after 2 revision(s).",
+  "flags": [],
+  "revisions": 2,
+  "total_seconds": 20.16,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Turn this into pixel art.",
+        "image": "..\\data\\part3\\images\\bird_branch.jpg"
+      },
+      "output": {
+        "image_size": [
+          512,
+          512
+        ],
+        "route": "style_change",
+        "named_people": {
+          "people": [],
+          "only_art_style": false
+        },
+        "image_unsafe_answer": "no"
+      },
+      "error": null,
+      "seconds": 1.32
+    },
+    {
+      "agent": "vision",
+      "input": {
+        "route": "style_change"
+      },
+      "output": {
+        "caption": "A vibrant blue bird perches gracefully on a slender branch against a blurred background.",
+        "objects": [
+          "bird",
+          "branch",
+          "background"
+        ],
+        "visible_text": "",
+        "answers": [
+          {
+            "question": "What is the main subject of the image and what is it doing?",
+            "answer": "The main subject of the image is a blue bird perched on a branch. The bird appears to be resting or observing its surroundings."
+          },
+          {
+            "question": "Which colours and what setting dominate the picture?",
+            "answer": "The picture predominantly features shades of blue and white, with the bird's vibrant blue plumage contrasting against its white chest and the brown background. The setting appears to be outdoors, possibly on a branch."
+          }
+        ]
+      },
+      "error": null,
+      "seconds": 3.99
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "style_change",
+        "revision": 0
+      },
+      "output": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, bright hues, blocky shapes",
+        "negative_prompt": "photograph, photo, realistic",
+        "target_description": "A pixelated blue bird sitting on a thin branch, set against a blurred background.",
+        "strength": 0.8
+      },
+      "error": null,
+      "seconds": 2.33
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, bright hues, blocky shapes"
+      },
+      "output": {
+        "mode": "img2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+        "steps": 30,
+        "guidance": 7.5,
+        "strength": 0.8,
+        "negative_prompt": "photograph, photo, realistic",
+        "lora_used": false,
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, bright hues, blocky shapes",
+        "seed": 266,
+        "seconds": 0.9,
+        "image_path": "..\\outputs\\part3\\demo\\images\\demo_revise_try1.png"
+      },
+      "error": null,
+      "seconds": 0.9
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\demo\\images\\demo_revise_try1.png"
+      },
+      "output": {
+        "clip_score": 34.0,
+        "satisfies_request": "no",
+        "sd_checker_flag": false,
+        "model_says_unsafe": false,
+        "problem": "The images provided are photographs, not pixel art.",
+        "revision_instruction": "Please provide a pixel art version of the bird on the branch.",
+        "decision": "revise"
+      },
+      "error": null,
+      "seconds": 1.71
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "style_change",
+        "revision": 1
+      },
+      "output": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, sharp edges, solid colors, geometric shapes",
+        "negative_prompt": "photograph, photo, realistic",
+        "target_description": "A pixel art depiction of a vibrant blue bird perched on a slender branch",
+        "strength": 0.9
+      },
+      "error": null,
+      "seconds": 2.35
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, sharp edges, solid colors, geometric shapes"
+      },
+      "output": {
+        "mode": "img2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+        "steps": 30,
+        "guidance": 7.5,
+        "strength": 0.9,
+        "negative_prompt": "photograph, photo, realistic",
+        "lora_used": false,
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, sharp edges, solid colors, geometric shapes",
+        "seed": 267,
+        "seconds": 0.96,
+        "image_path": "..\\outputs\\part3\\demo\\images\\demo_revise_try2.png"
+      },
+      "error": null,
+      "seconds": 0.96
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\demo\\images\\demo_revise_try2.png"
+      },
+      "output": {
+        "clip_score": 31.61,
+        "satisfies_request": "no",
+        "sd_checker_flag": false,
+        "model_says_unsafe": false,
+        "problem": "The images provided are photographs, not pixel art.",
+        "revision_instruction": "Please provide a pixel art version of the bird image.",
+        "decision": "revise"
+      },
+      "error": null,
+      "seconds": 1.62
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "style_change",
+        "revision": 2
+      },
+      "output": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, sharp edges, solid colors, geometric shapes",
+        "negative_prompt": "photograph, photo, realistic",
+        "target_description": "A pixel art depiction of a vibrant blue bird perched on a slender branch",
+        "strength": 0.95
+      },
+      "error": null,
+      "seconds": 2.34
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, sharp edges, solid colors, geometric shapes"
+      },
+      "output": {
+        "mode": "img2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+        "steps": 30,
+        "guidance": 7.5,
+        "strength": 0.95,
+        "negative_prompt": "photograph, photo, realistic",
+        "lora_used": false,
+        "prompt": "A vibrant blue bird perched on a slender branch, pixel art, sharp edges, solid colors, geometric shapes",
+        "seed": 268,
+        "seconds": 1.01,
+        "image_path": "..\\outputs\\part3\\demo\\images\\demo_revise_try3.png"
+      },
+      "error": null,
+      "seconds": 1.01
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\demo\\images\\demo_revise_try3.png"
+      },
+      "output": {
+        "clip_score": 31.13,
+        "satisfies_request": "no",
+        "sd_checker_flag": false,
+        "model_says_unsafe": false,
+        "problem": "The images provided are photographs, not pixel art.",
+        "revision_instruction": "Please provide a pixel art version of the bird images.",
+        "decision": "accept_after_limit"
+      },
+      "error": null,
+      "seconds": 1.64
+    }
+  ]
+}

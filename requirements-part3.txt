@@ -1,0 +1,37 @@
+# DATA 266 Lab 2 - Part 3 (multimodal multi-agent image system)
+#
+# Versions installed in the conda environment `data266_lab2_part3` (Python 3.11, Windows 11, RTX 4090).
+# Only the packages the Part 3 notebooks and the Gradio app need are listed, not the whole environment.
+# Parts 1 and 2 have their own files (requirements.txt, requirements-part2.txt) and their own environments.
+#
+# Setup:
+#   conda create -n data266_lab2_part3 python=3.11
+#   conda activate data266_lab2_part3
+#   pip install torch==2.14.1 torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cu130
+#   pip install -r requirements-part3.txt
+#
+# Models (downloaded from Hugging Face on the first run, about 20 GB in total):
+#   Qwen/Qwen2.5-VL-7B-Instruct (4-bit), stable-diffusion-v1-5/stable-diffusion-v1-5, timbrooks/instruct-pix2pix,
+#   openai/clip-vit-base-patch16, CompVis/stable-diffusion-safety-checker,
+#   SawantTej/pokemon-sd15-lora-r32 (the final model of Part 2)
+
+torch==2.14.1              # run with the CUDA 13.0 build, 2.14.1+cu130
+torchvision==0.29.1
+transformers==5.22.2       # Qwen2.5-VL, CLIP
+diffusers==0.42.1          # Stable Diffusion img2img / text-to-image, InstructPix2Pix, safety checker
+peft==0.21.2               # loads the LoRA adapter of Part 2
+accelerate==1.15.0
+bitsandbytes==0.50.2       # 4-bit loading of the vision-language model
+qwen-vl-utils==0.0.14      # prepares images for Qwen2.5-VL
+huggingface_hub==2.4.0
+safetensors==0.8.0
+gradio==6.31.0             # the demo app
+pillow==12.3.0             # gradio 6.31.0 needs pillow below 13
+numpy==2.4.6
+pandas==3.1.1
+matplotlib==3.11.2
+scipy==1.17.1
+tqdm==4.70.1
+ipykernel==7.4.0           # to run the notebooks locally
+nbclient==0.11.0           # to run the notebooks from the command line
+nbformat==5.11.1

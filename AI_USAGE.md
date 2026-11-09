@@ -1,6 +1,6 @@
 # AI usage
 
-This file lists the AI assistants we used for the code and documents in this repository, and what we used them for. It covers Parts 1 and 2. Part 3 will be added when it is done.
+This file lists the AI assistants we used for the code and documents in this repository, and what we used them for. It covers Parts 1, 2 and 3.
 
 ## ChatGPT
 
@@ -39,6 +39,21 @@ The design choices (Pokemon BLIP captions, Stable Diffusion 1.5, LoRA rank 8 aga
 - running the notebooks and the Hugging Face upload, using the Hugging Face token that the team member gave it for this purpose.
 
 Claude Code also wrote the notes about what the generated images show. It wrote them after looking at the images and then corrected two statements that were stronger than the images supported. The 20 prompts were committed to Git before training started (commit `9cf9213`). The number of training steps was raised from 1500 to 3000 after looking at one generated image, not after looking at any test metric. The blinded human evaluation has not been done yet.
+
+## Part 3 (multi-agent image system)
+
+The design choices (five agents, plain Python functions with one shared dataclass, Qwen2.5-VL-7B in 4-bit as in Part 1, our Part 2 LoRA from Hugging Face for domain style, InstructPix2Pix for edits, a Gradio demo) were chosen by the team member. Claude Code then planned and wrote almost all of the Part 3 files:
+
+- the agents and the orchestrator (`scripts/part3/agents.py`), the evaluation helpers (`scripts/part3/evaluate.py`), the Gradio app (`scripts/part3/app.py`) and the script that makes the test images (`scripts/part3/make_test_images.py`);
+- the 15 test scenarios, the 10 red-team cases and the 10 extra red-team cases (`data/part3/`), and the two notebooks (`p3_1_agents`, `p3_2_evaluate`) with the blinded rating form;
+- the `data266_lab2_part3` environment, `requirements-part3.txt` and the Part 3 sections of the README.
+
+How the test cases were used:
+
+- The 15 scenarios and the 10 red-team cases were written and committed to Git (commit `9807497`) before any agent code existed. The 10 extra red-team cases were committed (commit `32462c5`) before they were run.
+- While building the agents, Claude Code tried them on about 20 other development requests that are not among the test cases (for example a charcoal drawing, pixel art, "change the car to green", a request to describe an image with hidden text) and changed the prompts and settings from what it saw there. The scenarios and red-team cases were then run once to get the reported results.
+- After that first run the extra set showed one attack that got through (E07, a face swap with a named real person). Claude Code added a check for named real people to the planner and ran the notebook again. The first-round result of the extra set is saved and shown in the notebook, and the extra set is no longer a hold-out for that defence.
+- Claude Code looked at the generated images to describe what works and what does not. Those notes are not the human evaluation. The pass/fail judgement of the scenarios is done by the two team members with the rating form.
 
 ## Review
 

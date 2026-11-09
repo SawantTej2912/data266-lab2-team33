@@ -1,0 +1,29 @@
+{
+  "request_id": "S15_without",
+  "request": "Change the sky to pink.",
+  "image": null,
+  "route": "edit",
+  "outcome": "error_message",
+  "message": "This request needs an image. Please upload one and ask again.",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 1.12,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Change the sky to pink.",
+        "image": null
+      },
+      "output": {
+        "route": "edit",
+        "named_people": {
+          "people": [],
+          "only_art_style": false
+        }
+      },
+      "error": null,
+      "seconds": 1.12
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "request_id": "demo_style",
+  "request": "Turn this into a pastel drawing.",
+  "image": "..\\data\\part3\\images\\bird_branch.jpg",
+  "route": "style_change",
+  "outcome": "image",
+  "message": "Here is your image.",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 9.78,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Turn this into a pastel drawing.",
+        "image": "..\\data\\part3\\images\\bird_branch.jpg"
+      },
+      "output": {
+        "image_size": [
+          512,
+          512
+        ],
+        "route": "style_change",
+        "named_people": {
+          "people": [],
+          "only_art_style": true
+        },
+        "image_unsafe_answer": "no"
+      },
+      "error": null,
+      "seconds": 1.32
+    },
+    {
+      "agent": "vision",
+      "input": {
+        "route": "style_change"
+      },
+      "output": {
+        "caption": "A vibrant blue bird perches gracefully on a slender branch against a blurred background.",
+        "objects": [
+          "bird",
+          "branch",
+          "background"
+        ],
+        "visible_text": "",
+        "answers": [
+          {
+            "question": "What is the main subject of the image and what is it doing?",
+            "answer": "The main subject of the image is a blue bird perched on a branch. The bird appears to be resting or observing its surroundings."
+          },
+          {
+            "question": "Which colours and what setting dominate the picture?",
+            "answer": "The picture predominantly features shades of blue and white, with the bird's vibrant blue plumage contrasting against its white chest and the brown background. The setting appears to be outdoors, possibly on a branch."
+          }
+        ]
+      },
+      "error": null,
+      "seconds": 3.99
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "style_change",
+        "revision": 0
+      },
+      "output": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pastel drawing, soft pastel hues, delicate brushstrokes",
+        "negative_prompt": "photograph, photo, realistic",
+        "target_description": "A pastel drawing of a blue bird on a branch",
+        "strength": 0.8
+      },
+      "error": null,
+      "seconds": 2.27
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "A vibrant blue bird perched on a slender branch, pastel drawing, soft pastel hues, delicate brushstrokes"
+      },
+      "output": {
+        "mode": "img2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+        "steps": 30,
+        "guidance": 7.5,
+        "strength": 0.8,
+        "negative_prompt": "photograph, photo, realistic",
+        "lora_used": false,
+        "prompt": "A vibrant blue bird perched on a slender branch, pastel drawing, soft pastel hues, delicate brushstrokes",
+        "seed": 266,
+        "seconds": 0.99,
+        "image_path": "..\\outputs\\part3\\demo\\images\\demo_style_try1.png"
+      },
+      "error": null,
+      "seconds": 0.99
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\demo\\images\\demo_style_try1.png"
+      },
+      "output": {
+        "clip_score": 38.01,
+        "satisfies_request": "yes",
+        "sd_checker_flag": false,
+        "model_says_unsafe": false,
+        "problem": "",
+        "revision_instruction": "",
+        "decision": "accept"
+      },
+      "error": null,
+      "seconds": 1.22
+    }
+  ]
+}

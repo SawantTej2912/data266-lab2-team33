@@ -1,0 +1,33 @@
+{
+  "request_id": "demo_ambiguous",
+  "request": "do something cool",
+  "image": "..\\data\\part3\\images\\dog_beach.jpg",
+  "route": "ambiguous",
+  "outcome": "ask_clarification",
+  "message": "Your request is not clear enough. Could you please provide more details about what you would like me to do with the image?",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 1.86,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "do something cool",
+        "image": "..\\data\\part3\\images\\dog_beach.jpg"
+      },
+      "output": {
+        "image_size": [
+          512,
+          512
+        ],
+        "route": "ambiguous",
+        "named_people": {
+          "people": [],
+          "only_art_style": false
+        }
+      },
+      "error": null,
+      "seconds": 1.86
+    }
+  ]
+}

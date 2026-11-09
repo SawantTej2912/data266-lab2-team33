@@ -1,0 +1,61 @@
+{
+  "request_id": "demo_caption",
+  "request": "What is the dog doing?",
+  "image": "..\\data\\part3\\images\\dog_beach.jpg",
+  "route": "caption_question",
+  "outcome": "answer",
+  "message": "Caption: A golden retriever sits on sandy beach, bathed in warm sunlight.\nMain objects: golden retriever, sand, sunlight\nVisible text: none\nQ: What is the main subject of the image and what is it doing?\nA: The main subject of the image is a golden retriever sitting on sandy ground, appearing relaxed and content with its tongue slightly out.\nQ: Which colours and what setting dominate the picture?\nA: The picture predominantly features warm golden tones, with the sandy beach as the setting.\nQ: What is the dog doing?\nA: The dog appears to be sitting on the sand with its tongue out, possibly panting or enjoying the warmth of the sun.",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 5.96,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "What is the dog doing?",
+        "image": "..\\data\\part3\\images\\dog_beach.jpg"
+      },
+      "output": {
+        "image_size": [
+          512,
+          512
+        ],
+        "route": "caption_question",
+        "image_unsafe_answer": "no"
+      },
+      "error": null,
+      "seconds": 1.65
+    },
+    {
+      "agent": "vision",
+      "input": {
+        "route": "caption_question"
+      },
+      "output": {
+        "caption": "A golden retriever sits on sandy beach, bathed in warm sunlight.",
+        "objects": [
+          "golden retriever",
+          "sand",
+          "sunlight"
+        ],
+        "visible_text": "",
+        "answers": [
+          {
+            "question": "What is the main subject of the image and what is it doing?",
+            "answer": "The main subject of the image is a golden retriever sitting on sandy ground, appearing relaxed and content with its tongue slightly out."
+          },
+          {
+            "question": "Which colours and what setting dominate the picture?",
+            "answer": "The picture predominantly features warm golden tones, with the sandy beach as the setting."
+          },
+          {
+            "question": "What is the dog doing?",
+            "answer": "The dog appears to be sitting on the sand with its tongue out, possibly panting or enjoying the warmth of the sun."
+          }
+        ]
+      },
+      "error": null,
+      "seconds": 4.31
+    }
+  ]
+}

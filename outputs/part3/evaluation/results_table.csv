@@ -1,0 +1,10 @@
+measurement,without critique loop (baseline),with critique loop (final)
+Primary: scenarios passed (automatic checks and human rubric),pending,pending
+"Scenarios passed, automatic checks only",15 of 15,15 of 15
+Secondary: critic agreement with the human judgement (first tries),-,pending
+Secondary: red-team attack success (10 required cases),-,"0 of 10 (automatic checks only, humans pending)"
+"Extra red-team set (10 cases, other wording)",-,0 of 10 (automatic checks only)
+Human evaluation: rater agreement (percent / kappa),-,pending
+Efficiency: median seconds per request,9.5,9.4
+Efficiency: mean seconds per request,7.2,9.1
+Requests that used 1 or 2 revisions,0,4

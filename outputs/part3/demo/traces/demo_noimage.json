@@ -1,0 +1,29 @@
+{
+  "request_id": "demo_noimage",
+  "request": "Make the sky purple.",
+  "image": null,
+  "route": "edit",
+  "outcome": "error_message",
+  "message": "This request needs an image. Please upload one and ask again.",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 1.16,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Make the sky purple.",
+        "image": null
+      },
+      "output": {
+        "route": "edit",
+        "named_people": {
+          "people": [],
+          "only_art_style": false
+        }
+      },
+      "error": null,
+      "seconds": 1.16
+    }
+  ]
+}

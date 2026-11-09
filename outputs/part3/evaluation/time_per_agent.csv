@@ -1,0 +1,6 @@
+agent,count,mean,sum
+planner,15,1.19,17.86
+vision,11,4.56,50.13
+prompt,15,2.16,32.47
+generation,15,0.97,14.48
+critique,15,1.43,21.44

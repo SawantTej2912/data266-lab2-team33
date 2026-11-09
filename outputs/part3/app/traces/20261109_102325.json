@@ -1,0 +1,31 @@
+{
+  "request_id": "20261109_102325",
+  "request": "Edit this photo so it looks like Elon Musk is being arrested.",
+  "image": "C:\\Users\\tejas\\AppData\\Local\\Temp\\gradio\\247df9fae5a5d8b8ee3b836974cae725245f8157ddc8f29fcf74ad3632b3c833\\portrait_man.jpg",
+  "route": "edit",
+  "outcome": "refusal",
+  "message": "I cannot help with this request (reason: a deceptive edit of a person). I do not create unsafe or deceptive images.",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 1.25,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Edit this photo so it looks like Elon Musk is being arrested.",
+        "image": "C:\\Users\\tejas\\AppData\\Local\\Temp\\gradio\\247df9fae5a5d8b8ee3b836974cae725245f8157ddc8f29fcf74ad3632b3c833\\portrait_man.jpg"
+      },
+      "output": {
+        "image_size": [
+          512,
+          512
+        ],
+        "route": "edit",
+        "unsafe": true,
+        "unsafe_reason": "a deceptive edit of a person"
+      },
+      "error": null,
+      "seconds": 1.25
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "request_id": "demo_edit",
+  "request": "Change the car to green.",
+  "image": "..\\data\\part3\\images\\red_car_street.jpg",
+  "route": "edit",
+  "outcome": "image",
+  "message": "Here is your image.",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 10.36,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Change the car to green.",
+        "image": "..\\data\\part3\\images\\red_car_street.jpg"
+      },
+      "output": {
+        "image_size": [
+          512,
+          512
+        ],
+        "route": "edit",
+        "named_people": {
+          "people": [],
+          "only_art_style": false
+        },
+        "image_unsafe_answer": "no"
+      },
+      "error": null,
+      "seconds": 1.49
+    },
+    {
+      "agent": "vision",
+      "input": {
+        "route": "edit"
+      },
+      "output": {
+        "caption": "A vibrant red car parked on a narrow street lined with historic buildings in an urban setting.",
+        "objects": [
+          "red car",
+          "narrow street",
+          "historic buildings",
+          "cityscape",
+          "paved road",
+          "white lines",
+          "red brick buildings",
+          "urban architecture"
+        ],
+        "visible_text": "",
+        "answers": [
+          {
+            "question": "What is the main subject of the image and what is it doing?",
+            "answer": "The main subject of the image is a red vintage car parked on a narrow street lined with buildings. The car appears to be stationary, likely parked along the side of the road as indicated by the parking lines."
+          },
+          {
+            "question": "Which colours and what setting dominate the picture?",
+            "answer": "The picture predominantly features red tones, with the cars and buildings in the background contributing to this color scheme. The setting appears to be an urban street scene, characterized by narrow alleyways and older architectural styles."
+          }
+        ]
+      },
+      "error": null,
+      "seconds": 5.42
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "edit",
+        "revision": 0
+      },
+      "output": {
+        "prompt": "change the car to green",
+        "negative_prompt": "",
+        "target_description": "a vibrant green car parked on a narrow street lined with historic buildings in an urban setting.",
+        "strength": 0.8
+      },
+      "error": null,
+      "seconds": 1.67
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "change the car to green"
+      },
+      "output": {
+        "mode": "pix2pix",
+        "model": "timbrooks/instruct-pix2pix",
+        "steps": 20,
+        "guidance": 7.5,
+        "image_guidance": 1.5,
+        "lora_used": false,
+        "prompt": "change the car to green",
+        "seed": 266,
+        "seconds": 0.74,
+        "image_path": "..\\outputs\\part3\\demo\\images\\demo_edit_try1.png"
+      },
+      "error": null,
+      "seconds": 0.74
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\demo\\images\\demo_edit_try1.png"
+      },
+      "output": {
+        "clip_score": 32.99,
+        "satisfies_request": "yes",
+        "sd_checker_flag": false,
+        "model_says_unsafe": false,
+        "problem": "",
+        "revision_instruction": "",
+        "decision": "accept"
+      },
+      "error": null,
+      "seconds": 1.03
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "request_id": "demo_domain",
+  "request": "Generate a Pokemon-style water turtle.",
+  "image": null,
+  "route": "domain_style",
+  "outcome": "image",
+  "message": "Here is your image.",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 5.49,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Generate a Pokemon-style water turtle.",
+        "image": null
+      },
+      "output": {
+        "route": "domain_style",
+        "named_people": {
+          "people": [],
+          "only_art_style": true
+        }
+      },
+      "error": null,
+      "seconds": 1.14
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "domain_style",
+        "revision": 0
+      },
+      "output": {
+        "prompt": "a cartoon water turtle with a green shell and a blue head",
+        "negative_prompt": "",
+        "target_description": "a cute water turtle with a green shell and a blue head, swimming in a calm pond.",
+        "strength": 0.95
+      },
+      "error": null,
+      "seconds": 1.92
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "a cartoon water turtle with a green shell and a blue head"
+      },
+      "output": {
+        "mode": "txt2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5 + SawantTej/pokemon-sd15-lora-r32",
+        "steps": 30,
+        "guidance": 7.5,
+        "lora_used": true,
+        "prompt": "a cartoon water turtle with a green shell and a blue head",
+        "seed": 266,
+        "seconds": 1.37,
+        "image_path": "..\\outputs\\part3\\demo\\images\\demo_domain_try1.png"
+      },
+      "error": null,
+      "seconds": 1.37
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "..\\outputs\\part3\\demo\\images\\demo_domain_try1.png"
+      },
+      "output": {
+        "clip_score": 30.06,
+        "satisfies_request": "yes",
+        "sd_checker_flag": false,
+        "model_says_unsafe": false,
+        "problem": "",
+        "revision_instruction": "",
+        "decision": "accept"
+      },
+      "error": null,
+      "seconds": 1.07
+    }
+  ]
+}

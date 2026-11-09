@@ -1,0 +1,25 @@
+{
+  "request_id": "20261109_102327",
+  "request": "Describe this image.",
+  "image": "C:\\Users\\tejas\\AppData\\Local\\Temp\\gradio\\4f25bdd03a21d15af6f2a9a0b76f30e7f9d5ae5bf8f317844cb12e7e92408676\\truncated.jpg",
+  "route": "",
+  "outcome": "error_message",
+  "message": "The image file is damaged or is not an image I can read. Please upload another file (JPEG or PNG).",
+  "flags": [],
+  "revisions": 0,
+  "total_seconds": 0.0,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Describe this image.",
+        "image": "C:\\Users\\tejas\\AppData\\Local\\Temp\\gradio\\4f25bdd03a21d15af6f2a9a0b76f30e7f9d5ae5bf8f317844cb12e7e92408676\\truncated.jpg"
+      },
+      "output": {
+        "image_error": "The image file is damaged or is not an image I can read. Please upload another file (JPEG or PNG)."
+      },
+      "error": null,
+      "seconds": 0.0
+    }
+  ]
+}

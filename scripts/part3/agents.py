@@ -111,7 +111,7 @@ class Models:
         # Stable Diffusion 1.5 with the Part 2 LoRA. The LoRA is switched on only for domain-style requests.
         self.txt2img = StableDiffusionPipeline.from_pretrained(
             SD_BASE, torch_dtype=torch.float16, variant="fp16", safety_checker=None).to("cuda")
-        self.txt2img.load_lora_weights(LORA_REPO, adapter_name="pokemon")
+        self.txt2img.load_lora_weights(LORA_REPO, weight_name="pytorch_lora_weights.safetensors", adapter_name="pokemon")
         self.img2img = StableDiffusionImg2ImgPipeline(**self.txt2img.components, requires_safety_checker=False)
         self.txt2img.set_progress_bar_config(disable=True)
         self.img2img.set_progress_bar_config(disable=True)
