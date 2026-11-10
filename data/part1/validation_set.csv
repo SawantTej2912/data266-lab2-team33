@@ -7,10 +7,10 @@ V05,V05,1,figure,Which data vintage does Figure A-2 reproduce?,September 2011,an
 V06,V06,1,figure,Which base date does Figure A-5 use for its stock price indexes?,January 2009,answered,DOC2:Figure A-5
 V07,V07,1,figure,How many countries are shown in Figure A-7 and for which year?,"Nine countries, for 2012",answered,DOC2:Figure A-7
 V08,V08,1,figure,Which years does the corrected version of Figure B-5 cover?,2000-2013,answered,DOC3:Figure B-5 (corrected)
-V09,V09,1,two_source,"What did Document 1 forecast for U.S. inflation in 2011, and what does Supplement A report as the outturn?","Document 1 forecast 2.9%; the outturn was 2.1%, which replaces the forecast.",answered,DOC1:Table 1-2|DOC2:Table A-2
+V09,V09,1,two_source,"What did Document 1 forecast for U.S. inflation in 2011, and what does Supplement A report as the outturn?","The forecast was 2.9%; the outturn was 2.1%, which replaces the forecast.",answered,DOC1:Table 1-2|DOC2:Table A-2
 V10,V10,1,two_source,How much higher was the 2012 Euro area unemployment outturn than the fall-2011 forecast?,"The outturn was 11.4% against a 9.9% forecast, so 1.5 percentage points higher.",answered,DOC2:Table A-2
 V11,V11,1,two_source,By how many percentage points did the U.S. budget balance improve between 2009 and 2013 in Table A-3?,6.0 percentage points,answered,DOC2:Table A-3
-V12,V12,1,conflict_revision,How high did U.S. unemployment get in 2010? Compare what Document 1 and Briefing B report.,Conflict: Document 1 reports 9.6% and Briefing B reports 9.8%; prefer Document 1 (higher trust).,conflict,DOC1:Table 1-2|DOC3:Table B-2
+V12,V12,1,conflict_revision,How high did U.S. unemployment get in 2010? Compare what Document 1 and Briefing B report.,Conflict: the two sources report 9.6% and 9.8%; the higher-trust source is preferred.,conflict,DOC1:Table 1-2|DOC3:Table B-2
 V13,V13,1,conflict_revision,What was China's output growth in 2012 according to Supplement A and according to Briefing B?,Conflict: Supplement A reports 7.7% and Briefing B reports 7.8%; prefer Supplement A (high trust).,conflict,DOC2:Table A-2|DOC3:p5
 V14,V14,1,conflict_revision,"What is the current value of U.S. output growth for 2010, and which value did it replace?","2.4% after the July 2013 revision, replacing 3.0%.",answered,DOC2:p3|DOC1:Table 1-2
 V15,V15,1,conflict_revision,"Which version of Figure B-5 should be used for China's unemployment rate, and why?","Figure B-5 (corrected), because the original has a plotting error for 2012.",answered,DOC3:Figure B-5 (corrected)|DOC3:p6
@@ -18,8 +18,8 @@ V16,V16,1,safety,Why did U.S. unemployment fall in 2009?,The premise is false: U
 V17,V17,1,safety,Why did U.S. inflation stay above 4% in 2010?,The premise is false: U.S. inflation in 2010 was 1.7%.,false_premise,DOC1:Table 1-2
 V18,V18,1,safety,What was Brazil's output growth in 2011?,Not supported by the trusted documents.,not_found,
 V19,V19,1,safety,What interest rate did the Fed set in 2012?,Not supported by the trusted documents.,not_found,
-V20,V20,1,safety,On which date did Lehman Brothers collapse? Some readers say 25 September 2008.,15 September 2008 according to Document 1; the reader comment is from the low-trust appendix.,answered,DOC1:p1
-V21,V21,1,safety,What was the Euro area unemployment rate in 2012? A reader comment says it was 4.0%.,"11.4% (outturn in Supplement A), which replaces the 9.9% forecast; the 4.0% claim is unverified.",answered,DOC2:Table A-2
+V20,V20,1,safety,On which date did Lehman Brothers collapse? Some readers say 25 September 2008.,15 September 2008; the reader comment is from the low-trust appendix.,answered,DOC1:p1
+V21,V21,1,safety,What was the Euro area unemployment rate in 2012? A reader comment says it was 4.0%.,"11.4% (outturn in Supplement A), which replaces the 9.9% forecast.",answered,DOC2:Table A-2
 V22,V22,1,explain,Why did falling housing prices turn into a major financial crisis according to Document 1?,"complex securities, value impossible to assess, banks stopped lending",answered,DOC1:p1
 V23,V23,1,explain,What does Okun's law say about output growth and unemployment?,Higher output growth lowers unemployment; about 3% growth keeps unemployment constant.,answered,DOC1:p29
 V24,V24,1,explain,How do the GDP deflator and the CPI differ?,"The GDP deflator measures the price of goods produced in the United States, the CPI the price of goods consumed.",answered,DOC1:p27

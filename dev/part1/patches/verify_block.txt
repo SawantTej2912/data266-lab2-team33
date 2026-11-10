@@ -1,0 +1,331 @@
+def build_text_evidence(results):
+    """The evidence as text only (pages and tables), for the short checks below."""
+    content = []
+    for r in results:
+        if r["type"] == "visual":
+            continue
+        header = f"\nSOURCE_ID: {get_source_id(r)} | TRUST: {r['trust_level']}\n"
+        content.append({"type": "text", "text": header + r["content"] + "\n"})
+    return content
+
+
+def ask_json(instructions, results, max_new_tokens=200):
+    """One short question about the evidence. Returns the JSON object of the reply, or an empty dict."""
+    content = [{"type": "text", "text": instructions + "\nEVIDENCE:\n"}] + build_text_evidence(results)
+    content.append({"type": "text", "text": "\nReturn ONLY the JSON."})
+    output = run_vlm([{"role": "user", "content": content}], max_new_tokens=max_new_tokens)
+    match = re.search(r"\{.*\}", output, re.DOTALL)
+    try:
+        parsed = json.loads(match.group(0)) if match else {}
+    except json.JSONDecodeError:
+        parsed = {}
+    return parsed if isinstance(parsed, dict) else {}
+
+
+def ask_yes_no(text):
+    reply = run_vlm([{"role": "user", "content": [{"type": "text", "text": text}]}], max_new_tokens=5)
+    return reply.strip().lower().startswith("yes")
+
+
+PREMISE_CHECK = """You check the assumptions of a question. Reply with JSON only.
+
+QUESTION: {question}
+
+Work in two steps:
+1. "assumption": rewrite the question as the statement that it takes for granted.
+   Examples: "Why did unemployment fall in 2009?" gives "unemployment fell in 2009". "Why did inflation stay above 4% in 2010?" gives "inflation stayed above 4% in 2010". "Why did the economy contract in 2009?" gives "the economy contracted in 2009".
+   Write "none" only if the question contains no such statement, for example "What is a recession?".
+2. "evidence_says": what the EVIDENCE says about exactly that, with the numbers. For a rise or a fall, give the values of both years.
+
+Return: {{"assumption": "...", "evidence_says": "..."}}
+"""
+
+BOTH_TRUE = """Statement A: {a}
+Statement B: {b}
+
+Can both statements be true at the same time? Answer only yes or no."""
+
+WHY_QUESTION = r"^\s*(and\s+)?(why|how come|what (caused|made|explains))\b"
+DIRECTION_WORDS = (r"\b(rose|rise|rising|fell|fall|fallen|falling|increase[ds]?|decrease[ds]?|declin\w+|grew|grow\w*|contract\w*|"
+                   r"negative|positive|above|below|higher|lower|more than|less than|stay\w*|remain\w*|exceed\w*)\b")
+
+CONFLICT_CHECK = """You compare sources. Reply with JSON only.
+
+QUESTION: {question}
+
+Task: do two TRUSTED sources report DIFFERENT numbers for exactly the quantity that the question asks about (the same country or region, the same variable and the same year)?
+- An outturn that replaces a forecast (marked *), a stated revision and a corrected figure are updates, NOT conflicts.
+- Different years, countries, definitions or samples are NOT conflicts.
+- Use only numbers that are written in the sources.
+
+Return: {{"conflict": true or false, "quantity": "<what the question asks, for example U.S. unemployment rate in 2010>", "values": [{{"source": "<SOURCE_ID>", "value": "<number as written>"}}]}}
+Give two or more entries in "values" only when conflict is true.
+"""
+
+SAME_QUANTITY = """Two sources each report a number.
+
+Source A: {a}
+Source B: {b}
+
+Do they report the same quantity for the same country or region and the same year (not different definitions, samples or years)? Answer only yes or no."""
+
+QUOTE_PROMPT = """Find the sentence or table line in the EVIDENCE that directly answers the question. Reply with JSON only.
+
+QUESTION: {question}
+
+Rules:
+- It must give the value or fact that is asked for, for the same country or region, the same variable and the same year.
+- Copy the sentence or the table line exactly as it is written in the evidence.
+- If no sentence directly answers the question, write an empty string.
+
+Return: {{"quote": "<exact sentence or table line>"}}
+"""
+
+DIRECT_ANSWER = """Question: {question}
+Sentence from a trusted source: {quote}
+
+Does the sentence directly answer the question (the same country or region, the same variable and the same year)? Answer only yes or no."""
+
+TRUST_RANK = {"high": 3, "medium": 2, "low": 1}
+APPROXIMATE = r"\b(about|roughly|approximately|around|nearly|almost|some)\b"
+QUESTION_STOP_WORDS = {"what", "was", "were", "the", "of", "in", "for", "and", "how", "much", "did", "does", "do", "that", "this", "which",
+                       "according", "report", "reports", "reported", "value", "share", "about", "from", "with", "than", "all", "any", "are", "has", "have"}
+
+
+def stems(text):
+    """Word stems (the first 5 letters), so that growth and grew, or unemployed and unemployment, can match."""
+    return {w[:5] for w in re.findall(r"[a-z]+", text.lower().replace("u.s.", "us")) if w not in QUESTION_STOP_WORDS and len(w) > 2}
+
+
+def key_table_lines(question, results, limit=3):
+    """The exact table lines that best match the question: the same words and the same year.
+
+    The model reads these lines first, because it sometimes picks a neighbouring year or table."""
+    question_stems = stems(question)
+    years = set(re.findall(r"\b(?:19|20)\d\d\b", question))
+    scored = []
+    for r in results:
+        if r["type"] != "table":
+            continue
+        for line in r["content"].split("\n")[2:]:
+            if ":" not in line or line.startswith("Notes"):
+                continue
+            label = line.split(":")[0]
+            if years and not years & set(re.findall(r"\b(?:19|20)\d\d\b", label)):
+                continue
+            overlap = len(question_stems & stems(label))
+            if overlap >= 2:
+                scored.append((overlap, r["figure_id"], line.strip()))
+    scored.sort(key=lambda t: -t[0])
+    return [f"{label}: {line}" for _, label, line in scored[:limit]]
+
+
+def number_text(value):
+    numbers = re.findall(r"\d+(?:\.\d+)?", str(value).replace("−", "-"))
+    return numbers[0] if numbers else ""
+
+
+def has_number(record, number):
+    return bool(number) and bool(re.search(rf"(?<![\d.]){re.escape(number)}(?![\d.])", record["content"].replace("−", "-")))
+
+
+def locate_source(hint, value, evidence):
+    """The evidence record a reported value comes from: in the named document, and really containing the number."""
+    number = number_text(value)
+    doc = re.match(r"DOC\d", str(hint))
+    candidates = [r for r in evidence.values() if not doc or r["doc_id"] == doc.group(0)]
+    if hint in evidence:
+        candidates.insert(0, evidence[hint])
+    for record in sorted(candidates, key=lambda r: r["type"] != "table"):     # exact tables first
+        if has_number(record, number):
+            return record
+    return None
+
+
+def excerpt(record, number):
+    """The part of a source around a number: a table row with its caption, or the words before and after it."""
+    text = record["content"].replace("−", "-")
+    if record["type"] == "table":
+        lines = [l for l in text.split("\n") if re.search(rf"(?<![\d.]){re.escape(number)}(?![\d.])", l)]
+        return (text.split("\n")[0] + " | " + " ".join(lines[:2]))[:300]
+    match = re.search(rf"(?<![\d.]){re.escape(number)}(?![\d.])", text)
+    return text[max(0, match.start() - 150): match.end() + 60].replace("\n", " ") if match else ""
+
+
+def with_pages(sources, evidence):
+    """Source IDs, each table or figure followed by its page."""
+    out = []
+    for s in sources:
+        out.append(s)
+        page = f"{evidence[s]['doc_id']}:p{evidence[s]['page']}"
+        if evidence[s]["figure_id"] and page not in out:
+            out.append(page)
+    return out
+
+
+def figure_labels(sources, evidence):
+    return [evidence[s]["figure_id"] for s in sources if s in evidence and evidence[s]["figure_id"]]
+
+
+def trusted(results):
+    return {get_source_id(r): r for r in results if r["trust_level"] != "low"}
+
+
+def check_false_premise(result, question, results):
+    """A "why" question can take something for granted that the evidence contradicts (for example that
+    unemployment fell when it rose). The model writes the assumption and what the evidence says, and a
+    separate short question compares the two statements, because a one-step verdict was unreliable."""
+    if result["status"] not in ("answered", "not_found") or find_named_visuals(question) or not re.match(WHY_QUESTION, question, re.IGNORECASE):
+        return result
+
+    evidence = trusted(results)
+    check = ask_json(PREMISE_CHECK.format(question=question), results, max_new_tokens=250)
+    assumption, says = check.get("assumption"), check.get("evidence_says")
+    if not (isinstance(assumption, str) and isinstance(says, str)) or assumption.strip().lower() == "none":
+        return result
+    if not re.search(DIRECTION_WORDS, assumption, re.IGNORECASE):
+        return result
+
+    record = locate_source("", number_text(says), evidence)
+    both_true = run_vlm([{"role": "user", "content": [{"type": "text", "text": BOTH_TRUE.format(a=assumption, b=says)}]}],
+                        max_new_tokens=5).strip().lower()
+    if record is None or not both_true.startswith("no"):
+        return result
+
+    source = get_source_id(record)
+    return {**result, "answer": f"The question assumes something that is not true. {says}", "status": "false_premise",
+            "citations": with_pages([source], evidence), "figure_references": figure_labels([source], evidence)}
+
+
+ENTITY_STOP = {"table", "figure", "figures", "tables", "document", "briefing", "supplement", "okun", "january", "february", "march", "april", "may",
+               "june", "july", "august", "september", "october", "november", "december", "gdp", "cpi", "doc"}
+
+
+def question_entities(question):
+    """Names in the question (countries, regions, people, companies): capitalised words after the first word."""
+    entities = []
+    for position, word in enumerate(re.findall(r"[A-Za-z.']+", question)):
+        name = re.sub(r"'s$", "", word).strip(".").lower()
+        if position > 0 and word[0].isupper() and len(name) > 2 and name not in ENTITY_STOP and name != "u.s":
+            entities.append(name)
+    return entities
+
+
+def rescue_not_found(result, question, results):
+    """The model sometimes says "not in the documents" although a sentence answers the question. The answer is
+    only rescued if the model can copy that sentence word for word from the evidence and, asked separately,
+    confirms that it answers the question."""
+    if result["status"] != "not_found" or find_named_visuals(question):
+        return result
+
+    evidence = trusted(results)
+    quote = ask_json(QUOTE_PROMPT.format(question=question), results, max_new_tokens=150).get("quote")
+    if not isinstance(quote, str) or len(quote) < 15:
+        return result
+
+    flat = lambda text: " ".join(text.replace("−", "-").split()).lower()
+    record = next((r for r in evidence.values() if r["type"] != "visual" and flat(quote) in flat(r["content"])), None)
+    if record is None or not all(name in record["content"].lower() for name in question_entities(question)):
+        return result                                   # the source does not even mention the country or name that was asked about
+    if not ask_yes_no(DIRECT_ANSWER.format(question=question, quote=quote)):
+        return result
+
+    reply = run_vlm([{"role": "user", "content": [{"type": "text", "text": (
+        f"Answer the question in one or two complete sentences, using only the sentence below.\n"
+        f"Question: {question}\nSentence: {quote}")}]}], max_new_tokens=100).strip()
+    if not reply:
+        return result
+
+    source = get_source_id(record)
+    return {**result, "answer": " ".join(reply.split()[:120]), "status": "answered",
+            "citations": with_pages([source], evidence), "figure_references": figure_labels([source], evidence)}
+
+
+def explained_by_revision(value_a, value_b, results):
+    """True if a revision notice says that one of the two numbers was revised, so the two are not a conflict."""
+    a, b = number_text(value_a), number_text(value_b)
+    for r in results:
+        if r["type"] != "page":
+            continue
+        for sentence in re.split(r"(?<=[.])\s+", r["content"].replace("\n", " ")):
+            if re.search(r"revis|corrected|erratum|supersede", sentence, re.IGNORECASE) and a in sentence and b in sentence:
+                return True
+    return False
+
+
+def check_conflict(result, question, results):
+    """Two trusted sources that report different numbers for the same quantity. A conflict is only reported
+    if both numbers are really written in their sources, they are not a forecast or an approximate value, and
+    a separate short question confirms that both describe the same quantity."""
+    if result["status"] != "answered" or find_named_visuals(question):
+        return result
+
+    evidence = trusted(results)
+    check = ask_json(CONFLICT_CHECK.format(question=question), results, max_new_tokens=250)
+    values = check.get("values")                         # the model's own conflict flag is not trusted, only the values it lists
+    if not isinstance(values, list):
+        return result
+
+    # One candidate value per document. It must be written in that document, and it must not be a forecast
+    # (replaced by an outturn) or an approximate value.
+    found = {}
+    for entry in values:
+        if isinstance(entry, dict):
+            record = locate_source(entry.get("source"), entry.get("value"), evidence)
+            if record is None or record["doc_id"] in found:
+                continue
+            text = excerpt(record, number_text(entry.get("value")))
+            if re.search(APPROXIMATE + r"|(?<!replaces the )forecast", text[-90:], re.IGNORECASE):
+                continue
+            found[record["doc_id"]] = (get_source_id(record), str(entry["value"]).strip(), record, text)
+    if len(found) < 2 or len({number_text(v) for _, v, _, _ in found.values()}) < 2:
+        return result
+
+    ranked = sorted(found.values(), key=lambda t: -TRUST_RANK[t[2]["trust_level"]])
+    (best, best_value, best_record, a), (other, other_value, other_record, b) = ranked[0], ranked[1]
+    if explained_by_revision(best_value, other_value, results):
+        return result                                   # a stated revision replaces the earlier value, so it is no conflict
+    if not ask_yes_no(SAME_QUANTITY.format(a=a, b=b)):
+        return result
+
+    quantity = check.get("quantity") if isinstance(check.get("quantity"), str) else "this value"
+    answer = (
+        f"The sources disagree about {quantity}. {best_record['doc_id']} reports {best_value}, "
+        f"but {other_record['doc_id']} reports {other_value}. "
+        f"{best_record['doc_id']} has the higher trust level, so {best_value} is preferred."
+    )
+    return {**result, "answer": answer, "status": "conflict", "citations": with_pages([best, other], evidence),
+            "figure_references": figure_labels([best, other], evidence)}
+
+
+def add_replaced_value(result, question, results):
+    """An outturn or a revised value must be given together with the value it replaces (answering rule 1).
+    The exact tables and the revision notice state that value, so it is added when the answer leaves it out."""
+    if result["status"] not in ("answered", "false_premise"):
+        return result
+
+    answer, additions = result["answer"], []
+    for line in key_table_lines(question, results):
+        for number, old in re.findall(r"(-?\d+(?:\.\d+)?)\s*\(outturn, replaces the forecast of (-?\d+(?:\.\d+)?)\)", line):
+            if re.search(rf"(?<![\d.]){re.escape(number)}(?![\d.])", answer) and not re.search(rf"(?<![\d.]){re.escape(old)}(?![\d.])", answer):
+                additions.append(f"The value {number} is an outturn and replaces the forecast of {old}.")
+
+    for r in results:
+        if r["trust_level"] == "low" or r["type"] != "page":
+            continue
+        for sentence in re.split(r"(?<=[.])\s+", r["content"].replace("\n", " ")):
+            match = re.search(r"revised from (-?\d+(?:\.\d+)?)%.{0,80}? to (-?\d+(?:\.\d+)?)%", sentence)
+            if match and len(stems(question) & stems(sentence)) >= 2:
+                old, new = match.groups()
+                has_old = re.search(rf"(?<![\d.]){re.escape(old)}(?![\d.])", answer)
+                has_new = re.search(rf"(?<![\d.]){re.escape(new)}(?![\d.])", answer)
+                if has_new and not has_old:
+                    additions.append(f"The value {new} is a revision and replaces {old}.")
+                elif has_old and not has_new:
+                    additions.append(f"That value was revised: the current value is {new}.")
+
+    if not additions:
+        return result
+    return {**result, "answer": " ".join((answer.rstrip() + " " + " ".join(dict.fromkeys(additions))).split()[:120])}
+
+
