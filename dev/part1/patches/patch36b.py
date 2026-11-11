@@ -39,11 +39,13 @@ def fact_applies(question, fact):
     return bool(f) and len(q & f) / len(f) >= 0.6
 
 
-def add_document_value(result, question, retriever=hybrid_retrieve, fact=None):''')
+def add_document_value(result, question, retriever=hybrid_retrieve, fact=None, document_question=None):''')
 
 # the question about the documents is built from the user's fact (without the user's number) when there is one
 replace('''    document_result = answer_question(question, retriever=retriever)      # no conversation facts: documents only''',
-        '''    if fact:
+        '''    if document_question:
+        question = document_question
+    elif fact:
         question = "What do the documents report about this: " + re.sub(r"-?\\b\\d{1,3}(?:\\.\\d+)?%?", "", fact)
     document_result = answer_question(question, retriever=retriever)      # no conversation facts: documents only''')
 replace('''        resolved_question = resolve_question(question, history)
@@ -70,13 +72,14 @@ replace('''        resolved_question = resolve_question(question, history)
             if result["status"] == "answered":
                 result["status"] = "session_override"
             if result["status"] == "session_override":
-                result = add_document_value(result, resolved_question, retriever)
+                result = add_document_value(result, resolved_question, retriever, fact=applicable[-1])
         else:
             # The question asks for the value itself: use the user's value and say what the documents report
             result = add_document_value(
                 {"answer": f"For this conversation, use: {applicable[-1]}.", "status": "session_override",
                  "citations": [], "figure_references": [], "retrieved": []},
-                resolved_question, retriever, fact=applicable[-1]
+                resolved_question, retriever, fact=applicable[-1],
+                document_question=next((t.get("document_question") for t in reversed(history) if t["user_fact"] == applicable[-1]), None) or None
             )
 ''')
 open(SP + "p1_new36.py", "w", encoding="utf-8").write(src)

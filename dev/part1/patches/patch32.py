@@ -124,7 +124,7 @@ Task: do two TRUSTED sources report DIFFERENT numbers for exactly the quantity t
 - Different years, countries, definitions or samples are NOT conflicts.
 - Use only numbers that are written in the sources.
 
-Return: {{"conflict": true or false, "quantity": "<what the question asks, for example U.S. unemployment rate in 2010>", "values": [{{"source": "<SOURCE_ID>", "value": "<number as written>"}}]}}
+Return: {{"conflict": true or false, "quantity": "<what the question asks, for example the inflation rate of Canada in 1999>", "values": [{{"source": "<SOURCE_ID>", "value": "<number as written>"}}]}}
 Give two or more entries in "values" only when conflict is true.
 """
 
@@ -201,6 +201,7 @@ replace('''    result = clean_result(parse_model_output(output), evidence_items,
 
     # Facts given by the user are not document evidence, so the checks only run on questions about the documents
     if not conversation_context:
+        result = confirm_existence(result, question, evidence_items)
         result = check_false_premise(result, question, evidence_items)
         result = rescue_not_found(result, question, evidence_items)
         result = check_conflict(result, question, evidence_items)
@@ -213,7 +214,7 @@ replace('''    content += build_evidence(evidence_items)
     content.append({"type": "text", "text": f"\\nQUESTION:\\n{question}\\n\\nReturn ONLY the JSON."})''', '''    content += build_evidence(evidence_items)
     key_lines = key_table_lines(question, evidence_items)
     if key_lines:
-        content.append({"type": "text", "text": "\\nKEY TABLE LINES (exact lines that best match the question; use them when they answer it):\\n" + "\\n".join(key_lines) + "\\n"})
+        content.append({"type": "text", "text": "\\nKEY TABLE LINES (exact table lines that match the words and the year of the question; use them if they answer it, otherwise use the rest of the evidence, which also includes text):\\n" + "\\n".join(key_lines) + "\\n"})
     content.append({"type": "text", "text": f"\\nQUESTION:\\n{question}\\n\\nReturn ONLY the JSON."})''')
 
 open(SP + "p1_new32.py", "w", encoding="utf-8").write(src)

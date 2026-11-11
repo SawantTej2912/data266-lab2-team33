@@ -45,6 +45,12 @@ Current question:
         max_new_tokens=80
     )
 
+    # "That year" means the year of the most recent turn. The rewrite sometimes picks an older year, so it is corrected here
+    latest_years = re.findall(r"\b(?:19|20)\d\d\b", history[-1]["resolved_question"])
+    rewritten_years = set(re.findall(r"\b(?:19|20)\d\d\b", rewritten))
+    if latest_years and not re.search(r"\b(?:19|20)\d\d\b", question) and len(rewritten_years) == 1 and latest_years[-1] not in rewritten_years:
+        rewritten = re.sub(r"\b(?:19|20)\d\d\b", latest_years[-1], rewritten)
+
     # Keep the original if the rewrite is unusable or loses a figure or table name
     lost_name = any(label not in find_named_visuals(rewritten) for label in find_named_visuals(question))
     if not rewritten or len(rewritten) > 300 or lost_name:

@@ -16,6 +16,14 @@ patch("p1_cell34.py", "p1_new34.py", [
     ('''FOLLOW_UP_WORDS = {"that", "it", "they", "them", "those", "same", "instead", "again", "now", "then", "also", "else", "other"}''',
      '''FOLLOW_UP_WORDS = {"that", "it", "they", "them", "those", "same", "instead", "again", "now", "then", "also", "else", "other",
                    "themselves", "itself"}'''),
+    ('''    # Keep the original if the rewrite is unusable or loses a figure or table name''',
+     '''    # "That year" means the year of the most recent turn. The rewrite sometimes picks an older year, so it is corrected here
+    latest_years = re.findall(r"\\b(?:19|20)\\d\\d\\b", history[-1]["resolved_question"])
+    rewritten_years = set(re.findall(r"\\b(?:19|20)\\d\\d\\b", rewritten))
+    if latest_years and not re.search(r"\\b(?:19|20)\\d\\d\\b", question) and len(rewritten_years) == 1 and latest_years[-1] not in rewritten_years:
+        rewritten = re.sub(r"\\b(?:19|20)\\d\\d\\b", latest_years[-1], rewritten)
+
+    # Keep the original if the rewrite is unusable or loses a figure or table name'''),
     ('''    previous = "\\n".join(f"- {turn['resolved_question']}" for turn in history[-3:])''',
      '''    # The most recent question comes first, because "that year" and "it" usually point to the latest turn
     previous = "\\n".join(f"- {turn['resolved_question']}" for turn in reversed(history[-3:]))'''),
@@ -29,6 +37,14 @@ patch("p1_cell34.py", "p1_new34.py", [
 
 # ---------------------------------------------------------------- cell 36: a session value is shown next to the document value
 patch("p1_cell36.py", "p1_new36.py", [
+    ('''    user_fact = ""
+''', '''    user_fact = ""
+    document_question = ""
+'''),
+    ('''        "user_fact": user_fact
+    })''', '''        "user_fact": user_fact,
+        "document_question": document_question
+    })'''),
     ('''def chat_answer(conversation_id, question, retriever=hybrid_retrieve):''',
      '''def add_document_value(result, question, retriever=hybrid_retrieve):
     """A value given by the user is always shown next to what the documents report (answering rule 5)."""
@@ -52,7 +68,7 @@ def chat_answer(conversation_id, question, retriever=hybrid_retrieve):'''),
 ''', '''            if result["status"] == "answered":
                 result["status"] = "session_override"
             if result["status"] == "session_override":
-                result = add_document_value(result, resolved_question, retriever)
+                result = add_document_value(result, resolved_question, retriever, document_question=document_question)
 '''),
     ('''        result = answer_question(
             resolved_question,

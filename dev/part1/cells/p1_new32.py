@@ -253,7 +253,7 @@ QUESTION: {question}
 
 Work in two steps:
 1. "assumption": rewrite the question as the statement that it takes for granted.
-   Examples: "Why did unemployment fall in 2009?" gives "unemployment fell in 2009". "Why did inflation stay above 4% in 2010?" gives "inflation stayed above 4% in 2010". "Why did the economy contract in 2009?" gives "the economy contracted in 2009".
+   Examples: "Why did the price of oil rise in 2005?" gives "the price of oil rose in 2005". "Why did exports stay above 10% of output in 2003?" gives "exports stayed above 10% of output in 2003". "Why did house building collapse in 1991?" gives "house building collapsed in 1991".
    Write "none" only if the question contains no such statement, for example "What is a recession?".
 2. "evidence_says": what the EVIDENCE says about exactly that, with the numbers. For a rise or a fall, give the values of both years.
 
@@ -278,7 +278,7 @@ Task: do two TRUSTED sources report DIFFERENT numbers for exactly the quantity t
 - Different years, countries, definitions or samples are NOT conflicts.
 - Use only numbers that are written in the sources.
 
-Return: {{"conflict": true or false, "quantity": "<what the question asks, for example U.S. unemployment rate in 2010>", "values": [{{"source": "<SOURCE_ID>", "value": "<number as written>"}}]}}
+Return: {{"conflict": true or false, "quantity": "<what the question asks, for example the inflation rate of Canada in 1999>", "values": [{{"source": "<SOURCE_ID>", "value": "<number as written>"}}]}}
 Give two or more entries in "values" only when conflict is true.
 """
 
@@ -334,10 +334,10 @@ def key_table_lines(question, results, limit=3):
             if years and not years & set(re.findall(r"\b(?:19|20)\d\d\b", label)):
                 continue
             overlap = len(question_stems & stems(label))
-            if overlap >= 2:
+            if overlap >= 2 or (overlap >= 1 and years):          # one specific word is enough when the year matches too
                 scored.append((overlap, r["figure_id"], line.strip()))
     scored.sort(key=lambda t: -t[0])
-    return [f"{label}: {line}" for _, label, line in scored[:limit]]
+    return [f"{label}: {line}" for _, label, line in scored[:limit + 1]]
 
 
 def number_text(value):
@@ -393,7 +393,7 @@ def trusted(results):
 
 def check_false_premise(result, question, results):
     """A "why" question can take something for granted that the evidence contradicts (for example that
-    unemployment fell when it rose). The model writes the assumption and what the evidence says, and a
+    a price fell when it rose). The model writes the assumption and what the evidence says, and a
     separate short question compares the two statements, because a one-step verdict was unreliable."""
     if result["status"] not in ("answered", "not_found") or find_named_visuals(question) or not re.match(WHY_QUESTION, question, re.IGNORECASE):
         return result
@@ -413,7 +413,13 @@ def check_false_premise(result, question, results):
         return result
 
     source = get_source_id(record)
-    return {**result, "answer": f"The question assumes something that is not true. {says}", "status": "false_premise",
+    correction = run_vlm([{"role": "user", "content": [{"type": "text", "text": (
+        f"Question: {question}\nEvidence: {says}\n"
+        "Write one sentence that says that the assumption of the question is wrong and gives the correct fact with its numbers from the evidence.")}]}],
+        max_new_tokens=80).strip()
+    if not any(n in correction for n in re.findall(r"\d+(?:\.\d+)?", says)):
+        correction = f"The question assumes something that is not true. {says}"
+    return {**result, "answer": " ".join(correction.split()[:120]), "status": "false_premise",
             "citations": with_pages([source], evidence), "figure_references": figure_labels([source], evidence)}
 
 
@@ -431,24 +437,66 @@ def question_entities(question):
     return entities
 
 
+EXISTENCE_QUESTION = r"\b(in|within)\s+(your|the)\s+(documents?|knowledge base|sources?)\b"
+
+
+def supporting_sentence(question, results):
+    """A sentence or table line of the evidence that directly answers the question, or None.
+
+    The model must copy it word for word from the evidence, it must be about a year of the question and about the
+    country or name that was asked about, and a separate short question confirms that it answers the question."""
+    evidence = trusted(results)
+    quote = ask_json(QUOTE_PROMPT.format(question=question), results, max_new_tokens=150).get("quote")
+    if not isinstance(quote, str) or len(quote) < 15:
+        return None
+    question_years = re.findall(r"\b(?:19|20)\d\d\b", question)
+    if question_years and not any(year in quote for year in question_years):
+        return None                                     # the sentence must be about a year that was asked about
+
+    flat = lambda text: " ".join(text.replace("−", "-").split()).lower()
+    record = next((r for r in evidence.values() if r["type"] != "visual" and flat(quote) in flat(r["content"])), None)
+    if record is None or not all(name in record["content"].lower() for name in question_entities(question)):
+        return None                                     # the source does not even mention the country or name that was asked about
+    if not ask_yes_no(DIRECT_ANSWER.format(question=question, quote=quote)):
+        return None
+    return quote, record
+
+
+def table_supports(question, results):
+    """An exact table line with the same words and the same year, in a table that mentions the country or name asked about."""
+    entities = question_entities(question)
+    for line in key_table_lines(question, results):
+        label = line.split(": ", 1)[0]
+        record = next((r for r in results if r["type"] == "table" and r["figure_id"] == label), None)
+        if record is not None and all(name in record["content"].lower() for name in entities):
+            return True
+    return False
+
+
+def confirm_existence(result, question, results):
+    """"Is this value in your documents?" is only answered if the documents really contain it: an exact table
+    line, or a sentence that the model can copy word for word."""
+    if result["status"] != "answered" or not re.search(EXISTENCE_QUESTION, question, re.IGNORECASE):
+        return result
+    if table_supports(question, results) or supporting_sentence(question, results) is not None:
+        return result
+    return not_found_result("The documents do not contain this information.")
+
+
 def rescue_not_found(result, question, results):
     """The model sometimes says "not in the documents" although a sentence answers the question. The answer is
     only rescued if the model can copy that sentence word for word from the evidence and, asked separately,
     confirms that it answers the question."""
     if result["status"] != "not_found" or find_named_visuals(question):
         return result
+    if re.search(EXISTENCE_QUESTION, question, re.IGNORECASE):
+        return result                                   # "Is this value in your documents?" asks whether it is there at all
 
     evidence = trusted(results)
-    quote = ask_json(QUOTE_PROMPT.format(question=question), results, max_new_tokens=150).get("quote")
-    if not isinstance(quote, str) or len(quote) < 15:
+    found = supporting_sentence(question, results)
+    if found is None:
         return result
-
-    flat = lambda text: " ".join(text.replace("−", "-").split()).lower()
-    record = next((r for r in evidence.values() if r["type"] != "visual" and flat(quote) in flat(r["content"])), None)
-    if record is None or not all(name in record["content"].lower() for name in question_entities(question)):
-        return result                                   # the source does not even mention the country or name that was asked about
-    if not ask_yes_no(DIRECT_ANSWER.format(question=question, quote=quote)):
-        return result
+    quote, record = found
 
     reply = run_vlm([{"role": "user", "content": [{"type": "text", "text": (
         f"Answer the question in one or two complete sentences, using only the sentence below.\n"
@@ -531,11 +579,12 @@ def add_replaced_value(result, question, results):
                 additions.append(f"The value {number} is an outturn and replaces the forecast of {old}.")
 
     for r in results:
-        if r["trust_level"] == "low" or r["type"] != "page":
+        if r["trust_level"] == "low" or r["type"] == "visual":
             continue
         for sentence in re.split(r"(?<=[.])\s+", r["content"].replace("\n", " ")):
             match = re.search(r"revised from (-?\d+(?:\.\d+)?)%.{0,80}? to (-?\d+(?:\.\d+)?)%", sentence)
-            if match and len(stems(question) & stems(sentence)) >= 2:
+            notice_years = set(re.findall(r"\b(?:19|20)\d\d\b", sentence.split("revised from")[0]))
+            if match and len(stems(question) & stems(sentence)) >= 2 and notice_years <= set(re.findall(r"\b(?:19|20)\d\d\b", question)):
                 old, new = match.groups()
                 has_old = re.search(rf"(?<![\d.]){re.escape(old)}(?![\d.])", answer)
                 has_new = re.search(rf"(?<![\d.]){re.escape(new)}(?![\d.])", answer)
@@ -631,7 +680,7 @@ EVIDENCE:
     content += build_evidence(evidence_items)
     key_lines = key_table_lines(question, evidence_items)
     if key_lines:
-        content.append({"type": "text", "text": "\nKEY TABLE LINES (exact lines that best match the question; use them when they answer it):\n" + "\n".join(key_lines) + "\n"})
+        content.append({"type": "text", "text": "\nKEY TABLE LINES (exact table lines that match the words and the year of the question; use them if they answer it, otherwise use the rest of the evidence, which also includes text):\n" + "\n".join(key_lines) + "\n"})
     content.append({"type": "text", "text": f"\nQUESTION:\n{question}\n\nReturn ONLY the JSON."})
 
     output = run_vlm([{"role": "user", "content": content}], max_new_tokens=300)
@@ -640,6 +689,7 @@ EVIDENCE:
 
     # Facts given by the user are not document evidence, so the checks only run on questions about the documents
     if not conversation_context:
+        result = confirm_existence(result, question, evidence_items)
         result = check_false_premise(result, question, evidence_items)
         result = rescue_not_found(result, question, evidence_items)
         result = check_conflict(result, question, evidence_items)

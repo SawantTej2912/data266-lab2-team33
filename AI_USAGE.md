@@ -29,6 +29,17 @@ In the latest Claude Code session it made substantial edits to `notebooks/p1_rag
 - After the golden set was written, its results were looked at: to choose between the 3B and 7B vision-language models (the 7B model scored higher and was kept) and to read the failures. Prompt changes after that were kept general. The golden-set scores are therefore a fair comparison of baseline and final system, but they are not a completely untouched hold-out.
 - No answers and no question-specific rules are written into the code.
 
+## Part 1: improvement round after the first Kaggle score
+
+After the public Kaggle score of 61, Claude Code was asked to find what keeps the score down and to improve it. What it did:
+
+- It read the golden-set failures and the notebook's own answers to the public `Questions.csv` (there is no answer key for them) and diagnosed the weak points: wrong `not_found` statuses, almost no `conflict` or `false_premise` answers, citations without the page of a table or figure, and answers that leave out the replaced value or what the documents report.
+- It wrote 34 fresh validation questions from the PDFs (`data/part1/validation_set.csv`) and committed them before changing any code (commit `1f134a9`). After seeing results it corrected the expected text of four of them (V09, V12, V20, V21), because a digit in "Document 1" and one unneeded number made the checker ask for numbers that a correct answer does not need. The correction does not depend on the system's answers.
+- It rewrote five cells of `notebooks/p1_rag_final.ipynb` (retrieval, answer generation, follow-up resolution, conversation handling, evaluation) with general rules and short checking prompts. The work files are in `dev/part1/`. It also added the validation evaluation cell and a rule so that old human ratings are never reused for new answers.
+- It scanned the final cells for text and IDs of the public and validation questions. Prompt examples that had mirrored evaluation questions were replaced by unrelated ones, and the results were measured again with the unrelated examples.
+
+Limits of the numbers: the improvements were developed with the golden set and the validation questions, so those scores are higher than what an untouched test would give. The hidden Kaggle set is the real test. The human groundedness ratings made before this round belong to the old answers and have to be made again; the notebook archives the old sheet and writes a new one.
+
 ## Part 2 (fine-tuning Stable Diffusion with LoRA)
 
 The design choices (Pokemon BLIP captions, Stable Diffusion 1.5, LoRA rank 8 against rank 32, fp16, seed 266, local GPU kept under 16 GB) were chosen by the team member. Claude Code then planned and wrote almost all of the Part 2 code and files:

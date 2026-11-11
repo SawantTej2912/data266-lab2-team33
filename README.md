@@ -128,14 +128,37 @@ It prints `valid: 40 rows` when the format is correct.
 
 ## Results of Part 1
 
-Computed in `notebooks/p1_rag_final.ipynb` on our 25-question golden set (written before the system was changed, see `AI_USAGE.md`) and saved in `outputs/part1/results_table.csv`:
+Computed in `notebooks/p1_rag_final.ipynb` on our 25-question golden set (written before the system was changed, see `AI_USAGE.md`) and saved in `outputs/part1/results_table.csv`. The estimated score is a rough local version of the competition score (0.4 answer + 0.2 status + 0.2 figure references + 0.2 citations); the real answer key is hidden.
 
-| System | Answer correct | Recall@5 | Citation accuracy | Median seconds per question | Human groundedness (1-5) |
-|---|---|---|---|---|---|
-| Dense retrieval only (baseline) | 18/25 | 0.875 | 0.76 | 3.59 | not rated |
-| **Final hybrid system** | **20/25** | **0.938** | **0.78** | 3.31 | **4.22** |
+| System | Answer correct | Recall@5 | Citation accuracy | Estimated score | Median seconds per question | Human groundedness (1-5) |
+|---|---|---|---|---|---|---|
+| Dense retrieval only (baseline) | 21/25 | 0.917 | 0.80 | 0.870 | 6.21 | not rated |
+| **Final hybrid system** | **23/25** | **0.958** | **0.96** | **0.944** | 6.02 | pending (see below) |
 
-**Human evaluation.** Both team members rated each of the 25 final answers from 1 to 5 for groundedness (is every claim supported by the cited source?), each on their own (`outputs/part1/human_groundedness.csv`). The average is 4.22, and the two raters were within one point on 23 of 25 answers (0.92; identical on 22). The answers rated 1 by both raters are G04, G16, G21 and G24, which are also failures in the other metrics. Two answers differ by two points (G15 and G18). G15, G16 and G18 are "assume this value" questions: the value given by the user is by design not in the documents, so a strict rater scores them low.
+The version that scored 61 on the public Kaggle leaderboard had, on the same golden set, 20/25 correct, Recall@5 0.938, citation accuracy 0.78 and 3.3 seconds per question (baseline 18/25). Its results are in the Git history (tag `p1-checkpoint-1`).
+
+**Fresh validation questions.** `data/part1/validation_set.csv` holds 34 more questions (conflicts, false premises, revisions, follow-ups, values given by the user) that were written and committed **before** the answer logic was improved. The notebook reports them too (`outputs/part1/validation_results.csv`):
+
+| System | Answer correct | Status correct | Citation accuracy | Estimated score |
+|---|---|---|---|---|
+| Dense retrieval only (baseline) | 26/34 | 32/34 | 0.765 | 0.804 |
+| **Final hybrid system** | **27/34** | **31/34** | **0.912** | **0.847** |
+| Version before the improvements (measured during development, `dev/part1/results/old_valid.csv`) | 18/34 | 27/34 | 0.838 | 0.667 |
+
+The improvements were developed with the golden set and these questions, so neither is a completely untouched test. Only the hidden Kaggle questions are. The baseline now also uses the improved answer checks (it differs from the final system only in retrieval), which is why it is higher than before.
+
+**What was improved after the first Kaggle score.** The weak points were found in the answers to the golden set and in the notebook's own answers to the public questions (there is no answer key for them): a status of `not_found` on questions whose answer is in the documents, almost no `conflict` or `false_premise` answers, citations without the page of a table or figure, and answers that leave out the replaced value or what the documents report. All fixes are general rules, none depends on a question:
+
+- a `not_found` answer must say so; a real answer with a stray `not_found` is kept if its numbers are in the evidence; a wrong `not_found` is rescued only if the model copies a sentence word for word from the evidence (about the asked year and name) and a separate yes/no question confirms it;
+- a *why* question that takes something for granted that the evidence contradicts gets `false_premise` (the model writes the assumption and what the evidence says, and a short separate question compares them);
+- two trusted documents with different numbers for the same quantity give `conflict` (forecasts, approximate values and stated revisions are excluded);
+- an outturn or revised value is given together with the value it replaces, and every table or figure is cited with its page;
+- a question about what the documents report never uses the user's temporary values, and a value that applies is shown next to the document value; "that year" in a follow-up means the year of the latest turn; "Is this in your documents?" is only answered if a sentence or table line supports it;
+- the best matching exact table lines are shown to the model first, and a document named in the question always contributes its best pages.
+
+On the public questions this changes, for example, the U.S. unemployment rate 2010 (a conflict between 9.6% and 9.8%), the "China contracted in 2009" question (a false premise), the Lehman date (now answered and cited), the Euro area unemployment 2012 (11.4%, replacing the 9.9% forecast) and the 2014 figure question (now `not_found`). The run takes about 20 minutes on an RTX 4090 (the version before took about 11).
+
+**Human evaluation (needs new ratings).** The ratings that were made earlier (average 4.22, within one point on 23 of 25 answers) belong to the answers of the previous version. They are kept in `outputs/part1/human_groundedness_previous_answers.csv` and are not used for the new answers. The notebook wrote a new sheet `outputs/part1/human_groundedness.csv` with the 25 new answers. Both members rate it (1-5, groundedness, each on their own), and the notebook is run again to compute the average and the agreement within one point.
 
 ## Models used in Part 1
 
