@@ -3,6 +3,12 @@ import operator
 
 ALLOWED_STATUSES = {"answered", "not_found", "conflict", "false_premise", "session_override"}
 
+# Memory level: 0 is normal. After a GPU out-of-memory error a question is tried again at level 1 and then level 2,
+# with smaller images, shorter text and no optional checks (see safe_chat_answer).
+MEMORY_LEVEL = 0
+MEMORY_TEXT_LIMIT = {0: 100000, 1: 4000, 2: 2000}        # characters of one page that the model reads
+MEMORY_CHECK_LIMIT = {0: 12000, 1: 6000, 2: 3000}        # characters of evidence in a short check
+
 image_paths = {record["figure_id"]: record["image_path"] for record in visual_records}
 
 
@@ -32,11 +38,12 @@ def build_evidence(results):
                 "type": "text",
                 "text": header + f"LABEL: {r['figure_id']}. The next image is {r['figure_id']}. Read its values from the image.\n{exact}"
             })
-            content.append({"type": "image", "image": image_paths[r["figure_id"]], "max_pixels": MAX_IMAGE_PIXELS})
+            if MEMORY_LEVEL < 2:
+                content.append({"type": "image", "image": image_paths[r["figure_id"]], "max_pixels": MAX_IMAGE_PIXELS})
         elif r["type"] == "table":
             content.append({"type": "text", "text": header + f"LABEL: {r['figure_id']}. Exact table:\n{r['content']}\n"})
         else:
-            content.append({"type": "text", "text": header + f"TEXT:\n{r['content']}\n"})
+            content.append({"type": "text", "text": header + f"TEXT:\n{r['content'][:MEMORY_TEXT_LIMIT[MEMORY_LEVEL]]}\n"})
 
     return content
 
@@ -218,14 +225,21 @@ def clean_result(parsed, results, question, has_facts=False):
     }
 
 
-def build_text_evidence(results):
-    """The evidence as text only (pages and tables), for the short checks below."""
-    content = []
+def build_text_evidence(results, max_characters=None):
+    """The evidence as text only (pages and tables), for the short checks below.
+
+    The text is limited in length, because a very long prompt needs a lot of GPU memory (a 15 GB GPU has little room).
+    The most relevant items come first, and an item that does not fit is left out."""
+    max_characters = max_characters or MEMORY_CHECK_LIMIT[MEMORY_LEVEL]
+    content, used = [], 0
     for r in results:
         if r["type"] == "visual":
             continue
-        header = f"\nSOURCE_ID: {get_source_id(r)} | TRUST: {r['trust_level']}\n"
-        content.append({"type": "text", "text": header + r["content"] + "\n"})
+        text = f"\nSOURCE_ID: {get_source_id(r)} | TRUST: {r['trust_level']}\n" + r["content"] + "\n"
+        if content and used + len(text) > max_characters:
+            continue
+        content.append({"type": "text", "text": text})
+        used += len(text)
     return content
 
 
@@ -688,7 +702,7 @@ EVIDENCE:
     result = clean_result(parse_model_output(output), evidence_items, question, has_facts=bool(conversation_context))
 
     # Facts given by the user are not document evidence, so the checks only run on questions about the documents
-    if not conversation_context:
+    if not conversation_context and MEMORY_LEVEL == 0:
         result = confirm_existence(result, question, evidence_items)
         result = check_false_premise(result, question, evidence_items)
         result = rescue_not_found(result, question, evidence_items)

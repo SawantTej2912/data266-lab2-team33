@@ -149,9 +149,25 @@ def chat_answer(conversation_id, question, retriever=hybrid_retrieve):
 
 
 def safe_chat_answer(conversation_id, question, retriever=hybrid_retrieve):
-    """One failing question must never stop a whole run."""
+    """One failing question must never stop a whole run.
+
+    The GPU memory is freed after every question. If the GPU still runs out of memory (a 15 GB GPU such as the Kaggle
+    T4 has little room for long prompts), the question is tried once more with smaller images."""
+    global MAX_IMAGE_PIXELS, MEMORY_LEVEL
+    normal_pixels = MAX_IMAGE_PIXELS
     try:
-        return chat_answer(conversation_id, question, retriever=retriever)
+        for level, shrink in ((0, 1), (1, 4), (2, 16)):
+            MEMORY_LEVEL, MAX_IMAGE_PIXELS = level, normal_pixels // shrink
+            try:
+                result = chat_answer(conversation_id, question, retriever=retriever)
+                torch.cuda.empty_cache()
+                return result
+            except torch.cuda.OutOfMemoryError:
+                torch.cuda.empty_cache()
+                print("Out of GPU memory in", conversation_id, "- trying again with less evidence")
+        raise RuntimeError("out of GPU memory at every level")
     except Exception as error:
         print("Error in", conversation_id, ":", error)
         return not_found_result("The question could not be answered because of an error.")
+    finally:
+        MEMORY_LEVEL, MAX_IMAGE_PIXELS = 0, normal_pixels

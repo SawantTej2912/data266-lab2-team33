@@ -217,5 +217,24 @@ replace('''    content += build_evidence(evidence_items)
         content.append({"type": "text", "text": "\\nKEY TABLE LINES (exact table lines that match the words and the year of the question; use them if they answer it, otherwise use the rest of the evidence, which also includes text):\\n" + "\\n".join(key_lines) + "\\n"})
     content.append({"type": "text", "text": f"\\nQUESTION:\\n{question}\\n\\nReturn ONLY the JSON."})''')
 
+# ---------------------------------------------------------------- 7. less evidence when the GPU memory is short
+replace('''ALLOWED_STATUSES = {"answered", "not_found", "conflict", "false_premise", "session_override"}
+''', '''ALLOWED_STATUSES = {"answered", "not_found", "conflict", "false_premise", "session_override"}
+
+# Memory level: 0 is normal. After a GPU out-of-memory error a question is tried again at level 1 and then level 2,
+# with smaller images, shorter text and no optional checks (see safe_chat_answer).
+MEMORY_LEVEL = 0
+MEMORY_TEXT_LIMIT = {0: 100000, 1: 4000, 2: 2000}        # characters of one page that the model reads
+MEMORY_CHECK_LIMIT = {0: 12000, 1: 6000, 2: 3000}        # characters of evidence in a short check
+''')
+replace('''            content.append({"type": "image", "image": image_paths[r["figure_id"]], "max_pixels": MAX_IMAGE_PIXELS})''',
+        '''            if MEMORY_LEVEL < 2:
+                content.append({"type": "image", "image": image_paths[r["figure_id"]], "max_pixels": MAX_IMAGE_PIXELS})''')
+replace('''            content.append({"type": "text", "text": header + f"TEXT:\\n{r['content']}\\n"})''',
+        '''            content.append({"type": "text", "text": header + f"TEXT:\\n{r['content'][:MEMORY_TEXT_LIMIT[MEMORY_LEVEL]]}\\n"})''')
+replace('''    if not conversation_context:
+        result = confirm_existence(''', '''    if not conversation_context and MEMORY_LEVEL == 0:
+        result = confirm_existence(''')
+
 open(SP + "p1_new32.py", "w", encoding="utf-8").write(src)
 print("patched cell 32:", len(src.splitlines()), "lines")

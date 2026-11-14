@@ -132,8 +132,8 @@ Computed in `notebooks/p1_rag_final.ipynb` on our 25-question golden set (writte
 
 | System | Answer correct | Recall@5 | Citation accuracy | Estimated score | Median seconds per question | Human groundedness (1-5) |
 |---|---|---|---|---|---|---|
-| Dense retrieval only (baseline) | 21/25 | 0.917 | 0.80 | 0.870 | 6.21 | not rated |
-| **Final hybrid system** | **23/25** | **0.958** | **0.96** | **0.944** | 6.02 | pending (see below) |
+| Dense retrieval only (baseline) | 21/25 | 0.917 | 0.80 | 0.870 | 5.35 | not rated |
+| **Final hybrid system** | **23/25** | **0.958** | **0.96** | **0.944** | 5.25 | pending (see below) |
 
 The version that scored 61 on the public Kaggle leaderboard had, on the same golden set, 20/25 correct, Recall@5 0.938, citation accuracy 0.78 and 3.3 seconds per question (baseline 18/25). Its results are in the Git history (tag `p1-checkpoint-1`).
 

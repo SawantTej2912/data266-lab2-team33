@@ -1,11 +1,18 @@
-def build_text_evidence(results):
-    """The evidence as text only (pages and tables), for the short checks below."""
-    content = []
+def build_text_evidence(results, max_characters=None):
+    """The evidence as text only (pages and tables), for the short checks below.
+
+    The text is limited in length, because a very long prompt needs a lot of GPU memory (a 15 GB GPU has little room).
+    The most relevant items come first, and an item that does not fit is left out."""
+    max_characters = max_characters or MEMORY_CHECK_LIMIT[MEMORY_LEVEL]
+    content, used = [], 0
     for r in results:
         if r["type"] == "visual":
             continue
-        header = f"\nSOURCE_ID: {get_source_id(r)} | TRUST: {r['trust_level']}\n"
-        content.append({"type": "text", "text": header + r["content"] + "\n"})
+        text = f"\nSOURCE_ID: {get_source_id(r)} | TRUST: {r['trust_level']}\n" + r["content"] + "\n"
+        if content and used + len(text) > max_characters:
+            continue
+        content.append({"type": "text", "text": text})
+        used += len(text)
     return content
 
 

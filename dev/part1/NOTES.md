@@ -29,3 +29,4 @@ The estimated score is a rough local version of the competition score. Both sets
 2. Run the notebook again to compute the human average and agreement.
 3. Run the notebook on Kaggle (it has to finish within 90 minutes; it takes about 20 minutes on an RTX 4090, a T4 is slower), submit `submission.csv` and compare with the public score of 61.
 4. Optional bonus: add a reranker and show the improvement on the golden set.
+Memory fix (Kaggle T4): memory freed after every model call, three-level fallback on a GPU out-of-memory error (smaller images, shorter text, no optional checks), size cap on the evidence of the short checks, expandable_segments. Tested with the GPU capped to 13 GB and eager attention: the old code lost 5 of 40 questions, the new code lost none.
