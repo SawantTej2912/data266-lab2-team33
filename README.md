@@ -133,7 +133,7 @@ Computed in `notebooks/p1_rag_final.ipynb` on our 25-question golden set (writte
 | System | Answer correct | Recall@5 | Citation accuracy | Estimated score | Median seconds per question | Human groundedness (1-5) |
 |---|---|---|---|---|---|---|
 | Dense retrieval only (baseline) | 21/25 | 0.917 | 0.80 | 0.870 | 5.35 | not rated |
-| **Final hybrid system** | **23/25** | **0.958** | **0.96** | **0.944** | 5.25 | pending (see below) |
+| **Final hybrid system** | **23/25** | **0.958** | **0.96** | **0.944** | 5.25 | **4.84** |
 
 The version that scored 61 on the public Kaggle leaderboard had, on the same golden set, 20/25 correct, Recall@5 0.938, citation accuracy 0.78 and 3.3 seconds per question (baseline 18/25). Its results are in the Git history (tag `p1-checkpoint-1`).
 
@@ -158,7 +158,7 @@ The improvements were developed with the golden set and these questions, so neit
 
 On the public questions this changes, for example, the U.S. unemployment rate 2010 (a conflict between 9.6% and 9.8%), the "China contracted in 2009" question (a false premise), the Lehman date (now answered and cited), the Euro area unemployment 2012 (11.4%, replacing the 9.9% forecast) and the 2014 figure question (now `not_found`). The run takes about 20 minutes on an RTX 4090 (the version before took about 11).
 
-**Human evaluation (needs new ratings).** The ratings that were made earlier (average 4.22, within one point on 23 of 25 answers) belong to the answers of the previous version. They are kept in `outputs/part1/human_groundedness_previous_answers.csv` and are not used for the new answers. The notebook wrote a new sheet `outputs/part1/human_groundedness.csv` with the 25 new answers. Both members rate it (1-5, groundedness, each on their own), and the notebook is run again to compute the average and the agreement within one point.
+**Human evaluation.** Both team members rated each of the 25 final answers of this version from 1 to 5 for groundedness (is every claim supported by the cited source?), each on their own (`outputs/part1/human_groundedness.csv`). The average is 4.84, and the two raters were within one point on all 25 answers (they gave the same score on every answer: 23 fives and two threes, G12 and G24). The ratings that were made earlier for the previous version (average 4.22, within one point on 23 of 25 answers) are kept in `outputs/part1/human_groundedness_previous_answers.csv` and are not used for these answers. The notebook reads the sheet only if its answers are identical to the current answers of the system, and computes the average and the agreement when it is run.
 
 ## Models used in Part 1
 
