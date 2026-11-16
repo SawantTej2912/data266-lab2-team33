@@ -1,0 +1,30 @@
+{
+  "request_id": "no_file_at_all",
+  "request": "Make the sky pink.",
+  "image": null,
+  "route": "edit",
+  "outcome": "error_message",
+  "message": "This needs an image to work from. Please upload one and ask again.",
+  "flags": [],
+  "use_critic": true,
+  "revisions": 0,
+  "total_seconds": 3.2,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Make the sky pink.",
+        "image": null
+      },
+      "output": {
+        "route": "edit",
+        "real_person_check": {
+          "real_person": false,
+          "who": ""
+        }
+      },
+      "error": null,
+      "seconds": 3.2
+    }
+  ]
+}

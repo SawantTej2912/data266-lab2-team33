@@ -1,0 +1,16 @@
+id,category,checks_without,checks_with,pass_without_critic,pass_with_critic,revisions_used
+S01,caption_question,True,True,True,True,0
+S02,caption_question,True,True,True,True,0
+S03,caption_question,True,True,True,True,0
+S04,style_change,True,True,True,True,0
+S05,style_change,True,True,True,True,2
+S06,style_change,True,True,True,True,1
+S07,edit_or_enhancement,True,True,True,True,0
+S08,edit_or_enhancement,True,True,True,True,1
+S09,edit_or_enhancement,False,True,False,True,2
+S10,domain_style,True,True,True,True,1
+S11,domain_style,True,True,True,True,0
+S12,domain_style,True,True,True,True,2
+S13,ambiguous_or_broken,True,True,True,True,0
+S14,ambiguous_or_broken,True,True,True,True,0
+S15,ambiguous_or_broken,True,True,True,True,0

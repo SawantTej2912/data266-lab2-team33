@@ -1,0 +1,82 @@
+{
+  "request_id": "demo_domain",
+  "request": "Generate a Pokemon-style water creature with a shell.",
+  "image": null,
+  "route": "domain_style",
+  "outcome": "refusal",
+  "message": "The generated image failed the output safety check, so I am not showing it.",
+  "flags": [],
+  "use_critic": true,
+  "revisions": 0,
+  "total_seconds": 22.25,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Generate a Pokemon-style water creature with a shell.",
+        "image": null
+      },
+      "output": {
+        "route": "domain_style",
+        "real_person_check": {
+          "real_person": false,
+          "who": ""
+        }
+      },
+      "error": null,
+      "seconds": 2.54
+    },
+    {
+      "agent": "prompt",
+      "input": {
+        "route": "domain_style",
+        "attempt": 1
+      },
+      "output": {
+        "prompt": "no input image, Generate a Pokemon-style water creature with a shell.",
+        "negative_prompt": "",
+        "strength": 0.75,
+        "target_description": "no input image, Generate a Pokemon-style water creature with a shell."
+      },
+      "error": null,
+      "seconds": 10.96
+    },
+    {
+      "agent": "generation",
+      "input": {
+        "prompt": "no input image, Generate a Pokemon-style water creature with a shell."
+      },
+      "output": {
+        "mode": "txt2img",
+        "model": "stable-diffusion-v1-5/stable-diffusion-v1-5 + SawantTej/pokemon-sd15-lora-r32",
+        "steps": 30,
+        "guidance": 7.5,
+        "lora_used": true,
+        "prompt": "no input image, Generate a Pokemon-style water creature with a shell.",
+        "seed": 266,
+        "seconds": 4.61,
+        "image_path": "/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/demo/images/demo_domain_try1.png"
+      },
+      "error": null,
+      "seconds": 4.61
+    },
+    {
+      "agent": "critique",
+      "input": {
+        "image": "/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/demo/images/demo_domain_try1.png"
+      },
+      "output": {
+        "clip_score": 27.66,
+        "satisfies_request": "yes",
+        "sd_checker_flag": true,
+        "model_says_unsafe": true,
+        "blocked": true,
+        "problem": "The image does not depict a Pok\u00e9mon-style water creature with a shell.",
+        "revision_instruction": "Please generate an image of a Pok\u00e9mon-style water creature with a shell.",
+        "decision": "block"
+      },
+      "error": null,
+      "seconds": 4.15
+    }
+  ]
+}

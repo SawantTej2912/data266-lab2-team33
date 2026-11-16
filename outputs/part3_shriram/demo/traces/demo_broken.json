@@ -1,0 +1,26 @@
+{
+  "request_id": "demo_broken",
+  "request": "Describe this image.",
+  "image": "/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/inputs/random_bytes.png",
+  "route": "none",
+  "outcome": "error_message",
+  "message": "I cannot read that file as an image \u2014 it looks damaged or is not an image. Please upload a JPEG or PNG.",
+  "flags": [],
+  "use_critic": true,
+  "revisions": 0,
+  "total_seconds": 0.14,
+  "steps": [
+    {
+      "agent": "planner",
+      "input": {
+        "request": "Describe this image.",
+        "image": "/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/inputs/random_bytes.png"
+      },
+      "output": {
+        "input_error": "I cannot read that file as an image \u2014 it looks damaged or is not an image. Please upload a JPEG or PNG."
+      },
+      "error": null,
+      "seconds": 0.14
+    }
+  ]
+}

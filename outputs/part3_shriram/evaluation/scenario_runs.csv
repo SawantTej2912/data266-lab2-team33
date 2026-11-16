@@ -1,0 +1,31 @@
+id,category,setting,request,route,outcome,revisions,image,checks_passed,failed_checks,clip_score,seconds
+S01,caption_question,without,Describe this image and list the fruit you can see.,caption_question,answer,0,,True,-,,31.73
+S02,caption_question,without,"What animal is in this photo, and is it indoors or outdoors?",caption_question,answer,0,,True,-,,11.97
+S03,caption_question,without,Read the text on the sign for me.,caption_question,answer,0,,True,-,,18.66
+S04,style_change,without,Make this look like a watercolour painting.,style_change,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S04_without_try1.png,True,-,36.47,40.19
+S05,style_change,without,Redraw this as a comic book illustration with bold outlines.,style_change,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S05_without_try1.png,True,-,28.15,30.31
+S06,style_change,without,Turn this into a charcoal sketch.,style_change,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S06_without_try1.png,True,-,26.89,24.82
+S07,edit_or_enhancement,without,Change the colour of the car to green.,edit,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S07_without_try1.png,True,-,28.98,28.71
+S08,edit_or_enhancement,without,Give the trees autumn colours.,edit,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S08_without_try1.png,True,-,30.05,37.55
+S09,edit_or_enhancement,without,Brighten this photo so I can see the details.,edit,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S09_without_try1.png,False,brighter_by_at_least,25.59,25.06
+S10,domain_style,without,Redraw this bird as a Pokemon-style creature.,domain_style,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S10_without_try1.png,True,-,28.88,29.74
+S11,domain_style,without,Generate a Pokemon-style water creature with a shell on its back.,domain_style,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S11_without_try1.png,True,-,29.49,22.69
+S12,domain_style,without,Draw this cat as a cute Pokemon character.,domain_style,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_without_critic/images/S12_without_try1.png,True,-,24.81,28.14
+S13,ambiguous_or_broken,without,Do something cool with this.,ambiguous,ask_clarification,0,,True,-,,2.59
+S14,ambiguous_or_broken,without,What is in this picture?,none,error_message,0,,True,-,,0.16
+S15,ambiguous_or_broken,without,Make the background blue.,edit,error_message,0,,True,-,,3.73
+S01,caption_question,with,Describe this image and list the fruit you can see.,caption_question,answer,0,,True,-,,24.58
+S02,caption_question,with,"What animal is in this photo, and is it indoors or outdoors?",caption_question,answer,0,,True,-,,11.84
+S03,caption_question,with,Read the text on the sign for me.,caption_question,answer,0,,True,-,,17.81
+S04,style_change,with,Make this look like a watercolour painting.,style_change,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S04_with_try1.png,True,-,36.47,38.39
+S05,style_change,with,Redraw this as a comic book illustration with bold outlines.,style_change,image,2,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S05_with_try3.png,True,-,26.1,60.59
+S06,style_change,with,Turn this into a charcoal sketch.,style_change,image,1,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S06_with_try2.png,True,-,33.35,39.39
+S07,edit_or_enhancement,with,Change the colour of the car to green.,edit,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S07_with_try1.png,True,-,28.98,28.47
+S08,edit_or_enhancement,with,Give the trees autumn colours.,edit,image,1,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S08_with_try2.png,True,-,34.08,49.67
+S09,edit_or_enhancement,with,Brighten this photo so I can see the details.,edit,image,2,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S09_with_try3.png,True,-,28.53,49.09
+S10,domain_style,with,Redraw this bird as a Pokemon-style creature.,domain_style,image,1,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S10_with_try2.png,True,-,34.73,42.63
+S11,domain_style,with,Generate a Pokemon-style water creature with a shell on its back.,domain_style,image,0,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S11_with_try1.png,True,-,29.49,22.81
+S12,domain_style,with,Draw this cat as a cute Pokemon character.,domain_style,image,2,/content/drive/MyDrive/data266_lab2/outputs/part3_shriram/scenarios_with_critic/images/S12_with_try3.png,True,-,30.9,59.75
+S13,ambiguous_or_broken,with,Do something cool with this.,ambiguous,ask_clarification,0,,True,-,,2.57
+S14,ambiguous_or_broken,with,What is in this picture?,none,error_message,0,,True,-,,0.0
+S15,ambiguous_or_broken,with,Make the background blue.,edit,error_message,0,,True,-,,3.68

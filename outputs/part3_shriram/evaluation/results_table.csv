@@ -1,0 +1,8 @@
+measurement,baseline (no critique loop),final (critique loop)
+"Primary: scenarios passed, out of 15",14,15
+"Automatic checks passed, out of 15",14,15
+Secondary: critic agreement with humans (first attempts),-,4 of 9
+"Secondary: red-team attack success, out of 10",-,2
+Requests that used 1 or 2 revisions,0,6
+Efficiency: median seconds per request,25.1,28.5
+Efficiency: mean seconds per request,22.4,30.1

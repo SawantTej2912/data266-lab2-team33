@@ -1,0 +1,10 @@
+id,critic_first_decision,human_on_first_attempt,agree,clip_score
+S04,accept,accept,True,36.47
+S05,revise,accept,False,28.15
+S06,revise,accept,False,26.89
+S07,accept,accept,True,28.98
+S08,revise,accept,False,30.05
+S09,revise,revise,True,25.59
+S10,revise,accept,False,28.88
+S11,accept,accept,True,29.49
+S12,revise,accept,False,24.81
