@@ -1,0 +1,4 @@
+model,role,kid_in_domain,kid_std,clip_score,clip_in_domain,lpips_diversity,median_seconds_per_image,trainable_parameters,gpu_hours,peak_gpu_memory_gb
+base,baseline,0.0929,0.0086,32.83,33.31,0.7196,2.0,,,
+lora_r8,"fine-tuned, 3000 steps",0.0507,0.006,32.12,32.26,0.6825,2.22,1594368.0,0.68,3.47
+lora_r32,"fine-tuned, 3000 steps",0.0274,0.0065,31.73,31.82,0.6732,2.24,6377472.0,0.708,4.96

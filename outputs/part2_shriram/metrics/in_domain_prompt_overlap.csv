@@ -1,0 +1,11 @@
+id,prompt,nearest_test_caption,word_overlap
+P01,a cartoon bird with a scarf around its neck,a cartoon bird with a scarf around its neck,1.0
+P02,a picture of a butterfly that is orange and green,a picture of a butterfly that is orange and green,1.0
+P03,a pink cartoon character with a blue tail,a pink cartoon character with a blue tail,1.0
+P04,a cartoon of a fire breathing dragon,a cartoon of a fire breathing dragon,1.0
+P05,a cartoon character sitting in the middle of a pose,a cartoon character sitting in the middle of a pose,1.0
+P06,a black and white photo of a butterfly,a black and white photo of a butterfly,1.0
+P07,a very cute looking pokemon with a big hat on,a very cute looking pokemon with a big hat on,1.0
+P08,a purple and black animal with big eyes,a purple and black animal with big eyes,1.0
+P09,a cartoon bird with a hat on its head,a cartoon bird with a hat on its head,1.0
+P10,a red and white bird with a yellow beak,a red and white bird with a yellow beak,1.0
