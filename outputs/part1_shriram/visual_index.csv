@@ -1,0 +1,37 @@
+doc_id,page,figure_id
+DOC1,1,Table 1-1
+DOC1,2,Figure 1-1
+DOC1,3,Figure 1-2
+DOC1,4,Figure 1-3
+DOC1,5,Table 1-2
+DOC1,5,Figure 1-4
+DOC1,7,Table 1-3
+DOC1,8,Figure 1-5
+DOC1,10,Figure 1-6
+DOC1,11,Table 1-4
+DOC1,20,Figure 2-1
+DOC1,21,Figure 2-2
+DOC1,24,Figure 2-3
+DOC1,27,Figure 2-4
+DOC1,29,Figure 2-5
+DOC1,30,Figure 2-6
+DOC1,32,Figure 2-7
+DOC2,2,Table A-1
+DOC2,2,Figure A-1
+DOC2,3,Table A-2
+DOC2,4,Figure A-2
+DOC2,4,Figure A-3
+DOC2,5,Figure A-4
+DOC2,5,Figure A-5
+DOC2,6,Figure A-6
+DOC2,6,Figure A-7
+DOC2,7,Table A-3
+DOC3,2,Table B-1
+DOC3,2,Figure B-1
+DOC3,3,Figure B-2
+DOC3,4,Figure B-3
+DOC3,4,Figure B-4
+DOC3,5,Table B-2
+DOC3,5,Figure B-5
+DOC3,6,Figure B-5 (corrected)
+DOC3,7,Figure C-1
