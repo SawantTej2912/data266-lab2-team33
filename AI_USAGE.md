@@ -57,3 +57,61 @@ How the test cases were used:
 ## Review
 
 We reviewed the generated code and ran the notebook ourselves with Restart & Run All. The vision-language and embedding models that are part of the system are project components, not coding assistants. They are listed in `README.md`.
+
+---
+
+# Shriram's work (`notebooks/p1_rag.ipynb`, `p2_finetune.ipynb`, `p3_agents.ipynb`, `p3_evaluate.ipynb`, `outputs/part*_shriram/`)
+
+The section above covers Tejas's files. This section covers mine. Everything below it is about my own copies of the three parts and does not describe his work.
+
+## Cursor with Claude (Anthropic)
+
+Used inside the repository, on my machine, for all three parts. It had read and write access to my files and ran shell commands. I ran every notebook myself in Colab; the assistant never had access to the GPU session, to Google Drive, or to Kaggle, and could not see any result until I downloaded the executed notebook back and gave it to it.
+
+### Part 1
+
+I brought it a notebook that scored 0.562 on the public leaderboard and asked it to find out why. Over four rounds it read the executed notebook and the golden-set failures and rewrote eight cells:
+
+- the answering rules prompt, after we found that a sample label in the JSON example was being copied verbatim into answers that named no figure;
+- the JSON parser, with a fallback that recovers an answer from prose when the model does not return JSON, and later a second model pass that converts a prose reply into JSON;
+- retrieval: keyword expansion groups for revision and forecast vocabulary, and a separation between the question shown to the model and the question sent to the index, which was the cause of a session override leaking across years;
+- the conversation handler's regular expressions for detecting an override and for detecting a question about the documents themselves;
+- the grading helper, where a number-extraction regular expression was reading "1961-2010" as two numbers and marking two correct answers wrong;
+- the evidence selection, the crop resolution, and the citation fallback.
+
+It also wrote the retrieval ablation, the failure attribution table and the safety probe cell, and it audited a review of my notebook that I had obtained separately from ChatGPT: of the six points in that review it judged three correct and three likely to lower the score, and I applied only the three it supported.
+
+Honesty about the numbers, in addition to the team note above: the changes listed here were chosen by reading golden-set failures, so the golden-set score is a development number and not an untouched hold-out. The public leaderboard went 0.562, 0.612, then a fall, then 0.65, and the golden set only started moving in the same direction as the leaderboard on the last run. No answer and no question-specific rule is hard-coded; the assistant was told not to write any, and I checked.
+
+The cross-encoder reranker was tested for the S.5 bonus and measured on the golden set. It does not improve Recall@5 or MRR@5 here, because exact-label figure routing already pins the correct crop and the cross-encoder displaces it, so the final system does not use one. The ablation reports the measured result rather than claiming an improvement.
+
+### Part 2
+
+I chose the design (Stable Diffusion 1.5, the Pokemon BLIP captions dataset, LoRA rank 8 against rank 32 at 3000 steps, fp16, seed 266, one 16 GB GPU). The assistant then wrote the notebook: data cleaning and the perceptual duplicate check, the two training runs through the diffusers LoRA script, generation, and the KID, CLIP, LPIPS, memorization and NSFW evaluation cells. It diagnosed two runtime errors from tracebacks I pasted: the fp16 gradient unscaling failure, which needed the mixed precision flag passed to the training script and not only to `accelerate launch`, and a call to `Tensor.round()` with a positional argument. While fixing the second it noticed that the memorization check was being run against the base model rather than the fine-tuned one, which would have made the result meaningless, and changed it.
+
+The Hugging Face push used a write token that I pasted into the settings cell at run time. The token is not in the committed notebook; the cell ships with an empty string in its place.
+
+At one point the assistant expanded Part 2 beyond the baseline that Tejas and I had agreed I would run. I pointed this out, it confirmed from `CONTRIBUTIONS.md` that the agreed split gives Part 2 to Tejas, and it restored the split table and his model in the README. The extra rank-8 against rank-32 comparison was kept as my own run, and the graded blinded human evaluation remains Tejas's.
+
+### Part 3
+
+I chose the design (five agents, one typed state object, the Part 2 LoRA for the domain-style route, a revise loop capped at two passes, JSON traces, a Gradio app). The assistant wrote `scripts/part3/agents.py`, both notebooks, the 15 scenarios and the 10 red-team cases, and the evaluation. The scenarios and red-team cases were written and committed before any of them were run.
+
+Two things it found by reading the executed notebooks: a dependency pin that had already caused a crash in Part 1 and was still present in both Part 3 notebooks, and a mismatch in the output safety gate, where the comment described a two-signal rule but the code blocked on the vision model alone and was refusing valid generations. The gate now blocks only when the Stable Diffusion checker and the vision model agree.
+
+It also pointed out that two of the ten red-team cases are recorded as attacks that succeeded, but that both are checked with a forbidden-substring rule that fires when the reply merely reports the text visible in the image, which Task 3.1 requires the vision agent to do. We are resolving that through the human rubric rather than by editing the check after seeing the result.
+
+### Repository work
+
+The assistant also managed my Git branch, wrote the commit messages, and kept the commits additive so that none of Tejas's files were modified or deleted. It stripped the Hugging Face token out of an executed notebook before anything was committed and checked that it had not reached an earlier commit.
+
+## ChatGPT
+
+Used outside the repository for:
+
+- a review of the Part 1 notebook, which I then brought back for a second opinion as described above;
+- reformatting `outputs/part1_shriram/human_groundedness.csv` after I broke its column alignment while typing my ratings in. It was asked to repair the formatting only. The question, answer and citation columns were not changed, and I checked them afterwards.
+
+## Review
+
+I read the generated code and ran every notebook myself with Restart and Run All before the results in this repository were recorded.
