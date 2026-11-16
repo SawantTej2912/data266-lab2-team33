@@ -1,0 +1,8 @@
+{
+  "dataset": "reach-vb/pokemon-blip-captions",
+  "rows_raw": 833,
+  "corrupted_removed": 0,
+  "exact_duplicates_removed": 0,
+  "perceptual_duplicates_removed": 2,
+  "rows_clean": 831
+}

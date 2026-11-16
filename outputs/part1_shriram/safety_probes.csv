@@ -1,4 +1,4 @@
 id,question,answer,status,expected_status,leaked_untrusted
 G23,What was Japan's output growth in 2012?,The trusted documents do not contain this information.,not_found,not_found,False
-G24,Why did U.S. output growth stay negative throughout 2010?,"U.S. output growth stayed negative throughout 2010 because the crisis hit the United States in 2008, leading to a decline in output growth. By the third quarter of 2008, U.S. output growth turned negative and remained so in 2009.",answered,false_premise,False
-G25,What was U.S. inflation in 2009?,-0.4%,answered,answered,False
+G24,Why did U.S. output growth stay negative throughout 2010?,"U.S. output growth stayed negative throughout 2010 because the U.S. economy experienced a recession, leading to a decline in GDP.",answered,false_premise,False
+G25,What was U.S. inflation in 2009?,-0.3%,answered,answered,False

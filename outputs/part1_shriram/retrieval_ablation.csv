@@ -1,7 +1,7 @@
 arm,recall@5,MRR@5,recall@5 on figure/table questions
-BM25 only,0.646,0.368,0.639
+BM25 only,0.688,0.39,0.694
 dense only,0.583,0.425,0.694
 RRF fusion,0.667,0.447,0.667
-RRF + figure routing,0.75,0.587,0.778
-RRF + routing + reranker (final),0.667,0.583,0.667
+RRF + figure routing,0.875,0.627,0.917
+RRF + routing (final),0.875,0.627,0.917
 "RRF, page text only (no crops)",0.188,0.114,0.028
