@@ -32,7 +32,7 @@ Used inside the repository for:
 After the public Kaggle score of 61, I used Claude Code to improve it. What it did:
 
 - It read the golden-set failures and the notebook's own answers to the public `Questions.csv` (there is no answer key for them) and diagnosed the weak points: wrong `not_found` statuses, almost no `conflict` or `false_premise` answers, citations without the page of a table or figure, and answers that leave out the replaced value or what the documents report.
-- It rewrote five cells of `notebooks/p1_rag_final.ipynb` (retrieval, answer generation, follow-up resolution, conversation handling, evaluation) with general rules and short checking prompts. The work files are in `dev/part1/`. It also added the validation evaluation cell and a rule so that old human ratings are never reused for new answers.
+- It rewrote five cells of `notebooks/tejas/p1_rag_final.ipynb` (retrieval, answer generation, follow-up resolution, conversation handling, evaluation) with general rules and short checking prompts. The work files are in `dev/tejas/part1/`. It also added the validation evaluation cell and a rule so that old human ratings are never reused for new answers.
 
 Limits of the numbers: the improvements were developed with the golden set and the validation questions, so those scores are higher than what an untouched test would give. The hidden Kaggle set is the real test. The human groundedness ratings made before this round belong to the old answers and have to be made again; the notebook archives the old sheet and writes a new one.
 

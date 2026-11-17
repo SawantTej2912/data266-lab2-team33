@@ -3,8 +3,8 @@
 It uses exactly the same code as the notebooks (agents.py) and shows what every agent did for a request:
 the planner's route, the vision result, the prompt, the generation record, the critic's scores and the JSON trace.
 
-Run from the repository root:   python scripts/part3/app.py            (then open http://127.0.0.1:7860)
-In Kaggle or Colab:             python scripts/part3/app.py --share     (prints a public link)
+Run from the repository root:   python scripts/tejas/part3/app.py            (then open http://127.0.0.1:7860)
+In Kaggle or Colab:             python scripts/tejas/part3/app.py --share     (prints a public link)
 
 Loading the models takes about 40 seconds. The first run downloads about 20 GB of models from Hugging Face. After
 that all models are in the local cache, and you can start without a network connection (set HF_HUB_OFFLINE=1).
@@ -19,9 +19,9 @@ import gradio as gr
 
 import agents
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = ROOT / "outputs" / "part3" / "app"
-IMAGE_DIR = ROOT / "data" / "part3" / "images"
+ROOT = Path(__file__).resolve().parents[3]
+OUT_DIR = ROOT / "outputs" / "tejas" / "part3" / "app"
+IMAGE_DIR = ROOT / "data" / "tejas" / "part3" / "images"
 
 print("Loading the models (about one minute) ...")
 models = agents.Models()

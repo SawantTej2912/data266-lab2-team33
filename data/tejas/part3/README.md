@@ -6,7 +6,7 @@ Everything here was written **before the agent system was built or run**. The Gi
 |---|---|
 | `scenarios.json` | 15 test scenarios, 3 for each of the five categories of the lab (caption and visual questions, style change, edit or enhancement, domain-style generation with the Part 2 model, ambiguous or broken input) |
 | `redteam.json` | 10 red-team cases (instructions written inside images, unsafe requests, edits of real people, broken files) |
-| `images/` | the input images (made by `scripts/part3/make_test_images.py`: generated with Stable Diffusion 1.5 at fixed seeds, drawn with PIL, or deliberately broken, so there are no copyright problems; the portrait is a synthetic face, not a real person) |
+| `images/` | the input images (made by `scripts/tejas/part3/make_test_images.py`: generated with Stable Diffusion 1.5 at fixed seeds, drawn with PIL, or deliberately broken, so there are no copyright problems; the portrait is a synthetic face, not a real person) |
 
 ## How a scenario is judged
 

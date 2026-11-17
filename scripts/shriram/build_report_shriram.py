@@ -28,9 +28,9 @@ from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.platypus import (BaseDocTemplate, Frame, KeepTogether, NextPageTemplate,
                                 PageTemplate, Paragraph, Spacer, Table, TableStyle)
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "report" / "DATA266_Lab2_Report_Team_33_shriram.pdf"
-P1, P2, P3 = (ROOT / "outputs" / f"part{n}_shriram" for n in (1, 2, 3))
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "report" / "shriram" / "DATA266_Lab2_Report_Team_33_shriram.pdf"
+P1, P2, P3 = (ROOT / "outputs" / "shriram" / f"part{n}" for n in (1, 2, 3))
 PENDING = "pending — needs both members"
 
 # ----------------------------------------------------------------- IEEE page furniture
@@ -202,7 +202,7 @@ p3_runs = pd.read_csv(P3 / "evaluation" / "scenario_runs.csv")
 # They are scraped out of the stored output cells of the executed notebook rather than typed
 # here, so the same rule holds: re-run the notebook and this report follows it.
 def notebook_output(name):
-    nb = json.loads((ROOT / "notebooks" / name).read_text())
+    nb = json.loads((ROOT / "notebooks" / "shriram" / name).read_text())
     chunks = []
     for cell in nb["cells"]:
         for out in cell.get("outputs", []):
@@ -245,7 +245,7 @@ P2_SAFETY = {"nsfw_flagged": int(p2_nsfw["flagged"].sum()),
              # row in the same cell, which is the only place the comparison is made.
              "mem_test_mean": scrape(NB2, r"nearest train:\s*mean ([\d.]+)"),
              "mem_test_max": scrape(NB2, r"nearest train:\s*mean [\d.]+, max ([\d.]+)"),
-             "source": "outputs/part2_shriram/safety/; the held-out control row from "
+             "source": "outputs/shriram/part2/safety/; the held-out control row from "
                        "p2_finetune.ipynb"}
 
 P3_RUN = {"peak_gb": scrape(NB3, r"peak GPU memory\s+:\s*([\d.]+) GB"),
@@ -355,7 +355,7 @@ rows.append(["Untrusted-source leaks",
              f"{int(p1_results.loc[BASE1, 'untrusted_leaks'])}", f"{int(p1_results.loc[FINAL1, 'untrusted_leaks'])}"])
 A(figure(table(rows, cols(0.50, 0.25, 0.25)),
          "TABLE I.&nbsp;&nbsp;Part 1, baseline against final system. "
-         "<font face='Courier' size='7'>outputs/part1_shriram/results_table.csv</font>"))
+         "<font face='Courier' size='7'>outputs/shriram/part1/results_table.csv</font>"))
 
 A(Paragraph(
     "The headline is that retrieval, not generation, was the binding constraint. Recall@5 moves "
@@ -375,7 +375,7 @@ for arm in p1_ablation.index:
                  f"{r['recall@5 on figure/table questions']:.3f}"])
 A(figure(table(rows, cols(0.46, 0.18, 0.18, 0.18)),
          "TABLE II.&nbsp;&nbsp;Retrieval ablation on the 25-question golden set. "
-         "<font face='Courier' size='7'>outputs/part1_shriram/retrieval_ablation.csv</font>"))
+         "<font face='Courier' size='7'>outputs/shriram/part1/retrieval_ablation.csv</font>"))
 
 fuse = p1_ablation.loc["RRF fusion"]
 route = p1_ablation.loc["RRF + figure routing (final)"]
@@ -407,7 +407,7 @@ for outcome in p1_attrib.index:
     rows.append([outcome, int(p1_attrib.loc[outcome, BASE1]), int(p1_attrib.loc[outcome, FINAL1])])
 A(figure(table(rows, cols(0.50, 0.25, 0.25)),
          "TABLE III.&nbsp;&nbsp;Where the 25 golden answers go. "
-         "<font face='Courier' size='7'>outputs/part1_shriram/failure_attribution.csv</font>"))
+         "<font face='Courier' size='7'>outputs/shriram/part1/failure_attribution.csv</font>"))
 
 if GROUND_DONE:
     A(Paragraph(
@@ -467,7 +467,7 @@ leaks = int(p1_results.loc[FINAL1, "untrusted_leaks"])
 A(Paragraph(
     f"The measured result is {leaks} untrusted-source leaks across the golden set, including the "
     "three probes written specifically to attack this. The probes and their outcomes are in "
-    "<font face='Courier' size='8'>outputs/part1_shriram/safety_probes.csv</font>. Where the "
+    "<font face='Courier' size='8'>outputs/shriram/part1/safety_probes.csv</font>. Where the "
     f"system was not fooled: {p1_probes.iloc[0]['id']} asks for a value the trusted documents do "
     f"not contain, and the system returns "
     f"<font face='Courier' size='8'>{p1_probes.iloc[0]['status']}</font> rather than reaching "
@@ -543,7 +543,7 @@ for run in p2_train.index:
                  int(r["steps"]), f"{r['peak_gpu_memory_gb']:.2f}", f"{r['gpu_hours']:.3f}"])
 A(figure(table(rows, cols(0.20, 0.13, 0.19, 0.13, 0.12, 0.12, 0.11)),
          "TABLE IV.&nbsp;&nbsp;Training configuration and cost, identical data and step budget. "
-         "<font face='Courier' size='7'>outputs/part2_shriram/metrics/training_table.csv</font>"))
+         "<font face='Courier' size='7'>outputs/shriram/part2/metrics/training_table.csv</font>"))
 
 rows = [["Model", "KID \u2193", "CLIP", "CLIP in-dom.", "LPIPS"]]
 for model in ["base", "lora_r8", "lora_r32"]:
@@ -555,7 +555,7 @@ rows.append(["Human eval: win rate vs base", PENDING, "", "", ""])
 A(figure(table(rows, cols(0.26, 0.26, 0.15, 0.18, 0.15)),
          "TABLE V.&nbsp;&nbsp;Part 2 results. KID is computed between in-domain generations and "
          "test images. "
-         "<font face='Courier' size='7'>outputs/part2_shriram/metrics/results_table.csv</font>"))
+         "<font face='Courier' size='7'>outputs/shriram/part2/metrics/results_table.csv</font>"))
 
 base_k, r8_k, r32_k = (p2_results.loc[m, "kid_in_domain"] for m in ("base", "lora_r8", "lora_r32"))
 base_c, r32_c = p2_results.loc["base", "clip_in_domain"], p2_results.loc["lora_r32", "clip_in_domain"]
@@ -681,7 +681,7 @@ for m in p3_results.index:
 rows.append(["Human eval: inter-rater agreement", PENDING, PENDING])
 A(figure(table(rows, cols(0.46, 0.27, 0.27)),
          "TABLE VI.&nbsp;&nbsp;Part 3, 15 scenarios run twice. "
-         "<font face='Courier' size='7'>outputs/part3_shriram/evaluation/results_table.csv</font>"))
+         "<font face='Courier' size='7'>outputs/shriram/part3/evaluation/results_table.csv</font>"))
 
 without = int(p3_pass["pass_without_critic"].sum())
 with_ = int(p3_pass["pass_with_critic"].sum())
@@ -735,7 +735,7 @@ for r in p3_red.itertuples():
     rows.append([f"{r.id} &nbsp;{r.attack}", r.outcome, "yes" if r.defended else "no"])
 A(figure(table(rows, cols(0.52, 0.26, 0.22)),
          "TABLE VII.&nbsp;&nbsp;Ten red-team cases. "
-         "<font face='Courier' size='7'>outputs/part3_shriram/evaluation/redteam_results.csv</font>"))
+         "<font face='Courier' size='7'>outputs/shriram/part3/evaluation/redteam_results.csv</font>"))
 A(Paragraph(
     f"{defended} of 10 cases are defended by the automatic checks. Both failures, "
     f"{' and '.join(p3_red[~p3_red['defended']]['id'].tolist())}, are instruction-in-image "

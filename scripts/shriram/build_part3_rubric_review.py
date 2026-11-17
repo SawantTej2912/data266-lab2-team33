@@ -6,7 +6,7 @@
 The rating sheet on its own gives a rubric line and a Drive path. This pairs every line with
 the reply the system produced, read from that request's JSON trace, and with the image it
 produced, resolved to a local file. Judgements go in the `judgement` column of
-outputs/part3_shriram/human_eval/ratings/ratings_<name>.csv as yes or no, which is what
+outputs/shriram/part3/human_eval/ratings/ratings_<name>.csv as yes or no, which is what
 p3_evaluate.ipynb reads back.
 """
 
@@ -16,8 +16,8 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "outputs" / "part3_shriram"
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "outputs" / "shriram" / "part3"
 SHEET = OUT / "human_eval" / "ratings" / "ratings_Shriram.csv"
 REVIEW = OUT / "human_eval" / "rubric_review.md"
 IMAGES = OUT / "human_eval" / "review_images"

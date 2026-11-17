@@ -4,7 +4,7 @@ import pandas as pd
 import pymupdf
 
 LAB = Path("/Users/x-sdundigalla/Desktop/GenAI/Lab2")
-DATA, OUT = LAB / "data/part1", LAB / "outputs/part1_shriram"
+DATA, OUT = LAB / "data/tejas/part1", LAB / "outputs/shriram/part1"
 
 manifest = json.loads((DATA / "kb_manifest.json").read_text())
 files = {d["doc_id"]: DATA / d["file"] for d in manifest["documents"]}
@@ -18,7 +18,7 @@ crops = {p.name: p for p in (OUT / "visuals").glob("*.png")}
 evaluation = pd.read_csv(OUT / "evaluation_results.csv")
 final = evaluation[evaluation["system"] != "dense baseline"].set_index("id")
 merged = pd.read_csv(OUT / "human_groundedness.csv").set_index("id")
-golden = {g["id"]: g for g in json.loads((DATA / "golden_set.json").read_text())}
+golden = {g["id"]: g for g in json.loads((LAB / "data/shriram/part1/golden_set.json").read_text())}
 
 REDO = list(merged.index)   # Tejas rates all 25 himself, nothing carried over
 
@@ -62,7 +62,7 @@ lines = [
     "| 1 | the source does not support it at all, or the number is not there |",
     "",
     "Each answer below is the one the **graded Kaggle run** produced, copied from",
-    "`outputs/part1_shriram/evaluation_results.csv`. Under it is the full text of every source it",
+    "`outputs/shriram/part1/evaluation_results.csv`. Under it is the full text of every source it",
     "cited. Write your number on the `rating_tejas:` line in `human_groundedness.csv`.",
     "",
     "---",

@@ -6,7 +6,7 @@ All images are made here, so there are no copyright problems and anyone can rebu
   - degraded photo: a dark, blurry, noisy copy of one photo (for the enhancement scenario)
   - broken files: an empty file, a cut-off JPEG and a text file named .png
 
-Run from the repository root:  python scripts/part3/make_test_images.py
+Run from the repository root:  python scripts/tejas/part3/make_test_images.py
 """
 from pathlib import Path
 
@@ -15,7 +15,7 @@ import torch
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 SEED = 266
-OUT = Path(__file__).resolve().parents[2] / "data" / "part3" / "images"
+OUT = Path(__file__).resolve().parents[3] / "data" / "tejas" / "part3" / "images"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # name: (prompt, seed)

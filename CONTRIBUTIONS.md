@@ -15,32 +15,32 @@ Both members contribute to all three parts. This file says who did what. The sec
 
 Tejas set up and directed the work with the AI assistants, chose the design in each part, ran everything on his own GPU (RTX 4090, kept below 16 GB as the lab requires), and did the Kaggle submission, the Hugging Face uploads and the GitHub pushes. The code listed below was written by the AI assistants at Tejas's direction and then run and checked by him (`AI_USAGE.md` says what each assistant wrote). What was implemented:
 
-### Part 1 - Multimodal RAG (`notebooks/p1_rag_final.ipynb`)
+### Part 1 - Multimodal RAG (`notebooks/tejas/p1_rag_final.ipynb`)
 
 - **Ingestion:** reads the three PDFs and `kb_manifest.json` (document IDs and trust levels); cuts the text into chunks; saves every numbered figure and table as an image (PyMuPDF); describes each figure with a vision-language model so it can be found by text search; reads tables as exact text too.
 - **Index:** one ChromaDB collection for all items (text chunks, pages, figure descriptions, table rows) with `doc_id`, `page`, `figure_id` and `trust_level`, built with BGE-small embeddings and rebuilt from the PDFs on every run (the knowledge base is read-only).
 - **Retrieval:** dense search plus BM25 keyword search, combined with reciprocal rank fusion, and an exact lookup when a question names a figure or table.
 - **Answering:** Qwen2.5-VL-7B-Instruct in 4-bit, returning an answer, a status, citations and figure references. It follows the lab's rules: a revision replaces an earlier value, an actual result replaces a forecast, conflicts are reported, false premises are rejected, and the low-trust Appendix C is never used as evidence.
 - **Conversations:** a separate memory per `conversation_id`; values given by the user ("assume ...") stay in that conversation, are never written to the index, and requests to change the documents permanently are refused; a safe calculator for arithmetic.
-- **Kaggle:** the notebook finds the data by itself and runs both locally and on Kaggle; Tejas ran it on Kaggle and submitted `submission.csv` (public leaderboard score 61 at the time of submission).
+- **Kaggle:** the notebook finds the data by itself and runs both locally and on Kaggle; Tejas ran it on Kaggle and submitted `submission.csv` (public leaderboard score 61 at the time of submission). Kaggle notebook: https://www.kaggle.com/code/tejassawant291201/notebook16ee5321d0
 - **Evaluation:** a 25-question golden set (written and committed before the system was changed; no question comes from `Questions.csv`), a dense-only baseline against the final hybrid system (answer correctness 18/25 against 20/25, Recall@5 0.875 against 0.938, citation accuracy 0.76 against 0.78), safety probes for the traps in Appendix C, and the human groundedness ratings (average 4.22 of 5).
 
-### Part 2 - Fine-tuning Stable Diffusion 1.5 (`notebooks/p2_*.ipynb`)
+### Part 2 - Fine-tuning Stable Diffusion 1.5 (`notebooks/tejas/p2_*.ipynb`)
 
 - **Choices made by Tejas:** the Pokemon BLIP captions dataset, Stable Diffusion 1.5 as the base model, LoRA with rank 8 against rank 32, fp16, seed 266, and a separate environment.
 - **Data preparation:** cleaning (3 near-duplicate images removed, 830 of 833 kept), the 90/10 split (747 train, 83 test), resizing to 512x512, the dataset description with its limitations, and the 20 fixed prompts (committed to Git before any training).
-- **Training:** the two LoRA runs with the unchanged diffusers training script and a small wrapper (`scripts/part2/run_training.py`) that caps GPU memory at 15 GB and records peak memory and time; 3000 steps each (peak under 4 GB).
+- **Training:** the two LoRA runs with the unchanged diffusers training script and a small wrapper (`scripts/tejas/part2/run_training.py`) that caps GPU memory at 15 GB and records peak memory and time; 3000 steps each (peak under 4 GB).
 - **Generation and evaluation:** 120 images (20 prompts x 2 seeds x 3 models), side-by-side grids, KID (0.0947 for the base model, 0.0356 for the final rank-32 model), CLIP score, LPIPS diversity, failure modes, the NSFW check and the memorization check.
 - **Human evaluation:** the blinded web form for 25 image pairs and the analysis of the ratings from 3 raters (the final model wins 74.7% for domain style and 56% for prompt match). Tejas also found the outside rater.
 - **Hugging Face:** both LoRA models, the model card of the final run and a dataset with all generated images and their metadata.
 - **Extra experiments (optional):** four more LoRA runs (learning rate, rank 64, Min-SNR loss weighting, 5000 steps) and a guidance test, judged with a decision rule written before the runs. No run beat the final model; the results are an ablation in the README.
 
-### Part 3 - Multi-agent image system (`notebooks/p3_*.ipynb`, `scripts/part3/`)
+### Part 3 - Multi-agent image system (`notebooks/tejas/p3_*.ipynb`, `scripts/tejas/part3/`)
 
 - **Design chosen by Tejas:** five agents (planner, vision understanding, prompt engineering, image generation, critique) as plain Python functions on one shared dataclass, Qwen2.5-VL-7B in 4-bit as in Part 1, Stable Diffusion 1.5 with the **Part 2 LoRA loaded from Hugging Face** for domain-style requests, InstructPix2Pix for edits.
 - **Orchestration:** the revise loop (at most 2 revisions), a JSON trace of every request, and clear messages for vague requests, missing or damaged images and errors inside an agent; everything fits on a 16 GB GPU (peak 11.6 GB with a 15 GB limit).
 - **Safety:** a planner that refuses unsafe requests (rules and the vision-language model, spaced-out letters collapsed, a check for named real people), hidden instructions in images that are reported but never obeyed, and an output check by the critic (CLIP score, a model judgement, the Stable Diffusion safety checker).
-- **Demo app:** a Gradio app (`scripts/part3/app.py`) that shows what each agent did.
+- **Demo app:** a Gradio app (`scripts/tejas/part3/app.py`) that shows what each agent did.
 - **Evaluation:** 15 test scenarios, 10 red-team cases and 10 extra red-team cases written and committed before the system was run; every scenario run with and without the critique loop (12 of 15 pass with it, 9 without); the blinded rating form for the two raters; critic agreement 7 of 9; 0 of 10 required attacks succeeded. One attack of the extra set got through in the first round; Tejas and the assistant added a check to the planner and kept the first-round result in the notebook.
 - **Documentation:** system card and safety notes in the README, `requirements-part3.txt`, and the architecture diagram.
 
@@ -116,21 +116,21 @@ The lab lets each member lead one task in Parts 2 and 3. The other member still 
 
 | Part | Task | Lead |
 |---|---|---|
-| 2 | 2.1 Data preparation | TODO |
-| 2 | 2.2 Fine-tuning | TODO |
-| 2 | 2.3 Image generation | TODO |
-| 2 | 2.4 Evaluation, safety and documentation | TODO |
-| 3 | 3.1 Agents | TODO |
-| 3 | 3.2 Orchestration, failure handling and demo app | TODO |
-| 3 | 3.3 Evaluation, safety and documentation | TODO |
+| 2 | 2.1 Data preparation | Tejas |
+| 2 | 2.2 Fine-tuning | Tejas |
+| 2 | 2.3 Image generation | Tejas |
+| 2 | 2.4 Evaluation, safety and documentation | Tejas |
+| 3 | 3.1 Agents | Shriram |
+| 3 | 3.2 Orchestration, failure handling and demo app | Shriram |
+| 3 | 3.3 Evaluation, safety and documentation | Shriram |
 
 ## Human evaluation raters
 
 | Part | Raters | Files |
 |---|---|---|
-| 1 (groundedness, 25 answers) | Tejas and Shriram | `outputs/part1/human_groundedness.csv` |
-| 2 (25 image pairs) | Tejas, Shriram and Atharva (a friend of Tejas, not in the team) | `outputs/part2/human_eval/ratings/` |
-| 3 (29 test cases) | Tejas and Shriram | `outputs/part3/human_eval/ratings/` |
+| 1 (groundedness, 25 answers) | Tejas and Shriram | `outputs/tejas/part1/human_groundedness.csv` |
+| 2 (25 image pairs) | Tejas, Shriram and Atharva (a friend of Tejas, not in the team) | `outputs/tejas/part2/human_eval/ratings/` |
+| 3 (29 test cases) | Tejas and Shriram | `outputs/tejas/part3/human_eval/ratings/` |
 
 ## AI assistants
 
