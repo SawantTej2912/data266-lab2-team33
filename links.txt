@@ -20,12 +20,22 @@ Hugging Face — Part 2 models
 Hugging Face — Part 2 image dataset (120 generated images with prompt, seed and model)
   https://huggingface.co/datasets/shriram14/data266-lab2-part2-images
 
-Kaggle
-  competition     https://www.kaggle.com/t/e7463a4483964d5a9a41169a67416325
-  final notebook  https://www.kaggle.com/code/shriramdundigalla14/part1-rag/notebook?scriptVersionId=370463230
-                  (version 370463230 is the run that produced the submission below)
-  selected submission  public leaderboard 0.646, run on a Kaggle T4,
-                       peak GPU memory 8.51 GB, notebook runtime 33.4 min
+Kaggle — team Pair_Programming_Team_33 (both members merged into one team)
+  competition  https://www.kaggle.com/t/e7463a4483964d5a9a41169a67416325
+
+  Each of us built and ran our own Part 1 pipeline, so there are two notebooks. The one
+  selected for final scoring is Tejas's, because it scores higher. 1.5 D is graded by
+  re-running the tagged notebook on the hidden set, so p1-v1.0 tags that same notebook.
+
+  SELECTED FOR FINAL SCORE — Tejas
+    notebook    TODO (Tejas): Kaggle notebook URL with ?scriptVersionId=
+    submission  TODO (Tejas): public leaderboard score
+    run cost    TODO (Tejas): peak GPU memory and notebook runtime
+
+  ALSO SUBMITTED — Shriram (not selected; this is the run the report's Part 1 measures)
+    notebook    https://www.kaggle.com/code/shriramdundigalla14/part1-rag/notebook?scriptVersionId=370463230
+    submission  public leaderboard 0.646
+    run cost    one Kaggle T4, peak GPU memory 8.51 GB, notebook runtime 33.4 min
 
 Part 3 Gradio app
   run from notebooks/p3_agents.ipynb; the share link is printed there
