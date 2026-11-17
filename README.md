@@ -184,7 +184,7 @@ Other tools: ChromaDB (vector database), `rank_bm25` (keyword search), PyMuPDF (
 
 ## Running on Kaggle
 
-Our Kaggle notebook for Part 1: https://www.kaggle.com/code/tejassawant291201/notebook16ee5321d0
+Our Kaggle notebook for Part 1: https://www.kaggle.com/code/tejassawant291201/data266-lab2-tejas
 
 1. Make a notebook inside the competition, so the competition files are attached under `/kaggle/input/`.
 2. Upload `notebooks/tejas/p1_rag_final.ipynb`, choose a GPU (T4 or P100) and switch Internet on, because the libraries and models are downloaded.
