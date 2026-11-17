@@ -60,7 +60,7 @@ We reviewed the generated code and ran the notebook ourselves with Restart & Run
 
 ---
 
-# Shriram's work (`notebooks/p1_rag.ipynb`, `p2_finetune.ipynb`, `p3_agents.ipynb`, `p3_evaluate.ipynb`, `outputs/part*_shriram/`)
+# Shriram's work (`notebooks/shriram/`, `outputs/shriram/`, `scripts/shriram/`)
 
 The section above covers Tejas's files. This section covers mine. Everything below it is about my own copies of the three parts and does not describe his work.
 
@@ -95,7 +95,7 @@ At one point the assistant expanded Part 2 beyond the baseline that Tejas and I 
 
 ### Part 3
 
-I chose the design (five agents, one typed state object, the Part 2 LoRA for the domain-style route, a revise loop capped at two passes, JSON traces, a Gradio app). The assistant wrote `scripts/part3/agents.py`, both notebooks, the 15 scenarios and the 10 red-team cases, and the evaluation. The scenarios and red-team cases were written and committed before any of them were run.
+I chose the design (five agents, one typed state object, the Part 2 LoRA for the domain-style route, a revise loop capped at two passes, JSON traces, a Gradio app). The assistant wrote the agent code (which lives in `notebooks/shriram/p3_agents.ipynb` rather than a separate module), both notebooks, the 15 scenarios and the 10 red-team cases, and the evaluation. The scenarios and red-team cases were written and committed before any of them were run.
 
 Two things it found by reading the executed notebooks: a dependency pin that had already caused a crash in Part 1 and was still present in both Part 3 notebooks, and a mismatch in the output safety gate, where the comment described a two-signal rule but the code blocked on the vision model alone and was refusing valid generations. The gate now blocks only when the Stable Diffusion checker and the vision model agree.
 
@@ -110,7 +110,7 @@ The assistant also managed my Git branch, wrote the commit messages, and kept th
 Used outside the repository for:
 
 - a review of the Part 1 notebook, which I then brought back for a second opinion as described above;
-- reformatting `outputs/part1_shriram/human_groundedness.csv` after I broke its column alignment while typing my ratings in. It was asked to repair the formatting only. The question, answer and citation columns were not changed, and I checked them afterwards.
+- reformatting `outputs/shriram/part1/human_groundedness.csv` after I broke its column alignment while typing my ratings in. It was asked to repair the formatting only. The question, answer and citation columns were not changed, and I checked them afterwards.
 
 ## Review
 

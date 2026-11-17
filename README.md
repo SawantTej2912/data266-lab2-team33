@@ -26,10 +26,12 @@ data266-lab2-team33/
 |   |-- tejas/              part1/, part2/, part3/  - created by Tejas's notebooks
 |   `-- shriram/            part1/, part2/, part3/  - created by Shriram's notebooks
 |-- scripts/
+|   |-- build_report.py     builds the submitted team report from the files under outputs/
 |   |-- tejas/              part2/ (training script for Part 2), part3/ (the five agents in agents.py, evaluation helpers, the Gradio app app.py, the test-image maker)
 |   `-- shriram/            build scripts for the review sheets and Shriram's report
 |-- dev/tejas/part1/        Part 1 development files (Tejas)
-|-- report/shriram/         Shriram's report PDF
+|-- report/                 DATA266_Lab2_Report_Team_33.pdf - the submitted report, covering both implementations
+|   `-- shriram/            Shriram's own report PDF, covering his implementation in more detail
 `-- archive/                old copies, kept on this computer only (not in Git)
 ```
 
