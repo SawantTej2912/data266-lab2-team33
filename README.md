@@ -107,7 +107,7 @@ If `torch` installs without GPU support, install the CUDA build from https://pyt
 1. Open `notebooks/tejas/p1_rag_final.ipynb` in VS Code or Jupyter and choose the environment above as the kernel.
 2. Use **Restart & Run All**. Run it this way every time, so the saved outputs match the code. The notebook has no manual steps.
 3. The first run downloads the models from Hugging Face (about 16 GB for the 7B model, so it takes a while).
-4. On our RTX 4090 the whole notebook takes roughly 12 minutes.
+4. On our RTX 4090, answering the 40 questions of `Questions.csv` took 3.6 minutes (printed by the notebook); on a Kaggle Tesla T4 the same step took 19.1 minutes.
 
 The notebook creates everything it needs: the figure images, the database, the evaluation files and `submission.csv`.
 
@@ -145,7 +145,7 @@ Computed in `notebooks/tejas/p1_rag_final.ipynb` on our 25-question golden set (
 | System | Answer correct | Recall@5 | Citation accuracy | Estimated score | Median seconds per question | Human groundedness (1-5) |
 |---|---|---|---|---|---|---|
 | Dense retrieval only (baseline) | 21/25 | 0.917 | 0.80 | 0.870 | 5.35 | not rated |
-| **Final hybrid system** | **23/25** | **0.958** | **0.96** | **0.944** | 5.25 | **4.84** |
+| **Final hybrid system** | **23/25** | **0.958** | **0.96** | **0.944** | 5.25 | not computed in the notebook (see *Human evaluation* below) |
 
 The version that scored 61 on the public Kaggle leaderboard had, on the same golden set, 20/25 correct, Recall@5 0.938, citation accuracy 0.78 and 3.3 seconds per question (baseline 18/25). Its results are in the Git history (tag `p1-checkpoint-1`).
 
@@ -168,9 +168,9 @@ The improvements were developed with the golden set and these questions, so neit
 - a question about what the documents report never uses the user's temporary values, and a value that applies is shown next to the document value; "that year" in a follow-up means the year of the latest turn; "Is this in your documents?" is only answered if a sentence or table line supports it;
 - the best matching exact table lines are shown to the model first, and a document named in the question always contributes its best pages.
 
-On the public questions this changes, for example, the U.S. unemployment rate 2010 (a conflict between 9.6% and 9.8%), the "China contracted in 2009" question (a false premise), the Lehman date (now answered and cited), the Euro area unemployment 2012 (11.4%, replacing the 9.9% forecast) and the 2014 figure question (now `not_found`). The run takes about 20 minutes on an RTX 4090 (the version before took about 11).
+On the public questions this changes, for example, the U.S. unemployment rate 2010 (a conflict between 9.6% and 9.8%), the "China contracted in 2009" question (a false premise), the Lehman date (now answered and cited), the Euro area unemployment 2012 (11.4%, replacing the 9.9% forecast) and the 2014 figure question (now `not_found`). Answering the 40 public questions takes 3.6 minutes on our RTX 4090 (printed by the notebook) and 19.1 minutes on a Kaggle Tesla T4. This version scores 0.761 on the public Kaggle leaderboard.
 
-**Human evaluation.** Both team members rated each of the 25 final answers of this version from 1 to 5 for groundedness (is every claim supported by the cited source?), each on their own (`outputs/tejas/part1/human_groundedness.csv`). The average is 4.84, and the two raters were within one point on all 25 answers (they gave the same score on every answer: 23 fives and two threes, G12 and G24). The ratings that were made earlier for the previous version (average 4.22, within one point on 23 of 25 answers) are kept in `outputs/tejas/part1/human_groundedness_previous_answers.csv` and are not used for these answers. The notebook reads the sheet only if its answers are identical to the current answers of the system, and computes the average and the agreement when it is run.
+**Human evaluation.** Both team members rated each of the 25 final answers of this version from 1 to 5 for groundedness (is every claim supported by the cited source?), each on their own (`outputs/tejas/part1/human_groundedness.csv`). The ratings were entered after the notebook's last run, so the saved notebook output shows "Human ratings completed: 0/25" and does not contain an average or an agreement figure, and this README does not report one. The notebook reads the sheet only if its answers are identical to the current answers of the system, and computes the average and the agreement when it is run. The ratings that were made earlier for the previous version are kept in `outputs/tejas/part1/human_groundedness_previous_answers.csv` and are not used for these answers.
 
 ## Models used in Part 1
 
