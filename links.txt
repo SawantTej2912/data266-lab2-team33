@@ -44,6 +44,12 @@ Kaggle — team Pair_Programming_Team_33 (both members merged into one team)
     submission  public leaderboard 0.646
     run cost    one Kaggle T4, peak GPU memory 8.51 GB, notebook runtime 33.4 min
 
+Part 3 inputs (the test images the scenarios and red-team cases run on)
+  in the repository, not on Hugging Face: data/tejas/part3/images/ (17 images),
+  listed with their scenario in data/tejas/part3/scenarios.json and redteam.json.
+  They are small photographs we took or chose ourselves, so they are versioned with
+  the code they are run against.
+
 Part 3 Gradio app
   run from notebooks/shriram/p3_agents.ipynb or notebooks/tejas/p3_1_agents.ipynb;
   the share link is printed there
