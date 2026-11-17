@@ -210,6 +210,22 @@ t2_raters = sorted(p.stem.split("_")[1] for p in
 
 S2_MEM_CONTROL = scrape(NB_S2, r"nearest train:\s*mean ([\d.]+)")
 
+# Shriram's blinded comparison: how often each rater picked the fine-tuned image.
+s2_key = pd.read_csv(S / "part2" / "human_eval" / "answer_key.csv")
+S2_COLS = ("better_domain_style", "better_prompt_match")
+S2_SHEETS = {p.stem.split("_")[1]: pd.read_csv(p) for p in
+             sorted((S / "part2" / "human_eval" / "ratings").glob("ratings_*.csv"))}
+S2_WINS = {}
+for who, sheet in S2_SHEETS.items():
+    merged = s2_key.merge(sheet, on="pair")
+    S2_WINS[who] = [(((merged[c] == "left") & (merged["left_model"] == "lora_r32"))
+                     | ((merged[c] == "right") & (merged["right_model"] == "lora_r32"))).mean()
+                    for c in S2_COLS]
+S2_MEAN = [sum(v[n] for v in S2_WINS.values()) / len(S2_WINS) for n in (0, 1)]
+S2_UNANIMOUS = {c: sum(1 for n in range(len(s2_key))
+                       if len({sheet[c].iloc[n] for sheet in S2_SHEETS.values()}) == 1)
+                for c in S2_COLS}
+
 # ---- Part 3
 s3 = pd.read_csv(S / "part3" / "evaluation" / "results_table.csv").set_index("measurement")
 s3_pass = pd.read_csv(S / "part3" / "evaluation" / "scenario_pass_table.csv")
@@ -217,6 +233,8 @@ s3_critic = pd.read_csv(S / "part3" / "evaluation" / "critic_agreement.csv")
 s3_red = pd.read_csv(S / "part3" / "evaluation" / "redteam_results.csv")
 s3_rub_s = pd.read_csv(S / "part3" / "human_eval" / "ratings" / "ratings_Shriram.csv")
 s3_rub_t = pd.read_csv(S / "part3" / "human_eval" / "ratings" / "ratings_Tejas.csv")
+# Both raters where they agreed, the jointly settled call where they did not.
+s3_rub = pd.read_csv(S / "part3" / "human_eval" / "ratings" / "ratings_agreed.csv")
 
 t3 = pd.read_csv(T / "part3" / "evaluation" / "results_table.csv").set_index("measurement")
 t3_red = pd.read_csv(T / "part3" / "evaluation" / "redteam_results.csv")
@@ -243,7 +261,8 @@ def rubric_pass(sheet):
     return result
 
 
-S3_HUMAN = rubric_pass(s3_rub_s)
+S3_HUMAN = rubric_pass(s3_rub)
+S3_HUMAN_S = rubric_pass(s3_rub_s)
 S3_HUMAN_T = rubric_pass(s3_rub_t)
 # The two raters disagree on 13 of the 70 checks and the resolution sheet is not filled in,
 # so there is no single human pass rate yet. Both raters' counts are shown until it is.
@@ -254,11 +273,13 @@ S3_RATER_AGREE = 1 - S3_DISAGREE / len(s3_rub_s)
 
 
 def both(key):
-    if S3_HUMAN is None or S3_HUMAN_T is None:
+    """The settled figure once resolution.csv is filled, otherwise both raters."""
+    if S3_HUMAN is None:
         return PENDING
-    return (f"{S3_HUMAN[key]}" if S3_HUMAN[key] == S3_HUMAN_T[key]
-            else f"{S3_HUMAN[key]} / {S3_HUMAN_T[key]}")
-S3_RED_HUMAN = (sum(1 for i, j in zip(s3_rub_s["item"], s3_rub_s["judgement"])
+    if S3_RESOLVED:
+        return f"{S3_HUMAN[key]}"
+    return f"{S3_HUMAN_S[key]} / {S3_HUMAN_T[key]}"
+S3_RED_HUMAN = (sum(1 for i, j in zip(s3_rub["item"], s3_rub["judgement"])
                     if i.startswith("R") and str(j).strip().lower() == "yes")
                 if S3_HUMAN else None)
 
@@ -300,8 +321,7 @@ A(Paragraph(
     "generation system; under human judgement the critique loop raises the pass rate from "
     f"{t3.loc['Primary: scenarios passed (automatic checks and human rubric)', 'without critique loop (baseline)']} "
     f"to {t3.loc['Primary: scenarios passed (automatic checks and human rubric)', 'with critique loop (final)']} "
-    + (f"and from {S3_HUMAN['without']} to {S3_HUMAN['with']} on Shriram's "
-       "own rating of his own system " if S3_HUMAN else "")
+    + (f"and from {S3_HUMAN['without']} to {S3_HUMAN['with']} " if S3_HUMAN else "")
     + "of 15. Everything runs inside one 16\u2009GB GPU. The recurring finding is that "
     "measurement, not intuition, decided the design: several changes that were obviously "
     "right on paper made things measurably worse, and are reported here as losses.", ABS))
@@ -591,11 +611,21 @@ A(Paragraph(
     f"Tejas's blinded comparison is the graded one: 25 image pairs, final run against base, "
     f"sides randomised, judged by {len(t2_raters)} raters including one outside the team "
     f"({', '.join(t2_raters)}). The final model wins "
-    f"{t2.loc['run2_lora_r32'].iloc[4]}. Shriram's parallel 25-pair sheet is "
-    + ("complete." if s2_pairs["better_domain_style"].notna().all()
-       else f"{PENDING}.") +
-    " Human preference is the measurement that matters most here, because KID and CLIP disagree "
-    "with each other and a person can say which image actually looks like the domain.", BODY))
+    f"{t2.loc['run2_lora_r32'].iloc[4]}. Shriram ran the same study on his own 25 pairs with "
+    f"{len(S2_WINS)} raters ({', '.join(S2_WINS)}), and the fine-tuned model wins domain style "
+    f"{S2_MEAN[0]:.0%} and prompt match {S2_MEAN[1]:.0%}. Human preference is the measurement "
+    "that matters most here, because KID and CLIP point in opposite directions and a person can "
+    "say which image actually looks like the domain.", BODY))
+A(Paragraph(
+    f"Two details of that study are worth more than the averages. The raters are unanimous on "
+    f"{S2_UNANIMOUS['better_domain_style']} of 25 for domain style but only "
+    f"{S2_UNANIMOUS['better_prompt_match']} of 25 for prompt match: whether an image looks like "
+    "flat cartoon-creature artwork is a question three people answer the same way, whereas "
+    "\u201cwhich follows the prompt better\u201d is genuinely contestable when neither image "
+    "follows it well. And the three raters fall in opposite orders on the two columns\u2014the "
+    "rater most convinced on style is the least convinced on prompt match. That is consistent "
+    "with style preference leaking into the prompt-match judgement, which is the reason the lab "
+    "asks for a rater from outside the team at all.", BODY))
 A(Paragraph(
     "<b>Failure modes.</b> The two that recur are out-of-domain collapse and diversity collapse. "
     "On \u201ca medieval stone castle on a green hill\u201d the fine-tuned model renders a "
@@ -698,7 +728,7 @@ rows.append(["Median s per request",
              s3.loc["Efficiency: median seconds per request", "final (critique loop)"]])
 A(figure(table(rows, cols(0.34, 0.16, 0.17, 0.16, 0.17)),
          "TABLE IV.&nbsp;&nbsp;Part 3, 15 scenarios run with and without the critique loop. "
-         "Two figures separated by a slash are the two raters, still unresolved. "
+         "Human figures are the two raters' agreed judgement. "
          "<font face='Courier' size='7'>outputs/*/part3/evaluation/results_table.csv</font>"))
 
 A(Paragraph(
@@ -715,7 +745,7 @@ A(Paragraph(
     "implementations, which is the real claim: the critique loop helps, and it helps by a margin "
     "the automatic checks are too blunt to see.", BODY))
 if S3_HUMAN:
-    fails = s3_rub_s[s3_rub_s["judgement"].astype(str).str.strip().str.lower() == "no"]
+    fails = s3_rub[s3_rub["judgement"].astype(str).str.strip().str.lower() == "no"]
     routes = sorted({i.split("_")[0] for i in fails["item"]})
     A(Paragraph(
         f"Shriram's {len(fails)} failed checks are all concentrated in the style-transfer and "
