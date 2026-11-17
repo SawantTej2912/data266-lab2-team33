@@ -83,10 +83,23 @@ for item in sorted(sheet["item"]):
     else:
         lines += [f"**Check.** {rubric}", ""]
 
-    source = local(row.get("image")) or local(trace.get("image"))
-    if source is not None and source.parent.name == "images":
-        shutil.copy(source, IMAGES / source.name)
-        lines += [f"![{item}](review_images/{source.name})", ""]
+    # Many checks are comparative ("the same scene is still recognisable"), so the input the
+    # system was given has to sit beside what it produced or the check cannot be judged.
+    produced = local(row.get("image"))
+    given = local(trace.get("image"))
+    if produced is not None:
+        shutil.copy(produced, IMAGES / produced.name)
+        if given is not None:
+            shutil.copy(given, IMAGES / given.name)
+            lines += ["| input | what the system produced |", "|---|---|",
+                      f"| ![input](review_images/{given.name}) "
+                      f"| ![output](review_images/{produced.name}) |", ""]
+        else:
+            lines += [f"![{item}](review_images/{produced.name})", ""]
+    elif given is not None:
+        lines += ["**The image it was given.**", "",
+                  f"![input](review_images/{given.name})", ""]
+        shutil.copy(given, IMAGES / given.name)
     elif pd.notna(row.get("image")):
         lines += ["_the image for this row is not on disk_", ""]
 
