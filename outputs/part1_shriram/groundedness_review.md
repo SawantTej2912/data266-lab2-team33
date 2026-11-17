@@ -29,6 +29,8 @@ cited. Write your number on the `rating_tejas:` line in `human_groundedness.csv`
 
 - the golden set expected: 2.9%
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:Table B-1`**
@@ -119,6 +121,8 @@ Source: PPI estimates.
 - citations: `DOC3:Table B-2,DOC3:p5`
 
 - the golden set expected: 65.4%
+
+- Shriram rated this **5**
 
 ### What the cited sources actually say
 
@@ -217,6 +221,8 @@ Source: PPI compilation of official registered urban unemployment data.
 
 - the golden set expected: 33 weeks
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:p5`**
@@ -272,6 +278,8 @@ Source: PPI compilation of official registered urban unemployment data.
 - citations: `DOC3:p5,DOC3:Table B-2`
 
 - the golden set expected: about 48%
+
+- Shriram rated this **5**
 
 ### What the cited sources actually say
 
@@ -370,6 +378,8 @@ Source: PPI compilation of official registered urban unemployment data.
 
 - the golden set expected: -0.42
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:Table B-1`**
@@ -461,6 +471,8 @@ Source: PPI estimates.
 
 - the golden set expected: Headline CPI inflation and GDP deflator inflation
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:Figure B-3`**
@@ -518,6 +530,8 @@ Source: PPI calculations.
 
 - the golden set expected: Headline CPI inflation and core CPI inflation
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:Figure B-4`**
@@ -574,6 +588,8 @@ Source: PPI calculations.
 - citations: `DOC3:Figure B-1,DOC3:p2`
 
 - the golden set expected: 1961-2010
+
+- Shriram rated this **5**
 
 ### What the cited sources actually say
 
@@ -666,6 +682,8 @@ Source: PPI estimates.
 
 - the golden set expected: 1961-2013
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:Figure B-2`**
@@ -702,6 +720,8 @@ Source: PPI estimates.
 - citations: `DOC2:Figure A-4,DOC2:p5`
 
 - the golden set expected: 0.66
+
+- Shriram rated this **5**
 
 ### What the cited sources actually say
 
@@ -760,6 +780,8 @@ Source: as Figure A-4, rebased to January 2009.
 
 - the golden set expected: 2.06
 
+- Shriram rated this **3**
+
 ### What the cited sources actually say
 
 **`DOC2:Figure A-5`**
@@ -816,6 +838,8 @@ Source: as Figure A-4, rebased to January 2009.
 - citations: `DOC3:p1,DOC3:p5`
 
 - the golden set expected: Document 1 defines it as unemployed people divided by the labour force; Briefing B says falling participation meant some people who stopped looking for work were no longer counted as unemployed.
+
+- Shriram rated this **4**
 
 ### What the cited sources actually say
 
@@ -911,6 +935,8 @@ Source: PPI compilation of official registered urban unemployment data.
 - citations: `DOC3:Table B-1,DOC3:p2,DOC3:Figure B-2,DOC3:p3`
 
 - the golden set expected: The slope changed from -0.42 to -0.41 and the required growth rate fell from 3.1% to 2.9%.
+
+- Shriram rated this **5**
 
 ### What the cited sources actually say
 
@@ -1023,6 +1049,8 @@ Source: PPI estimates.
 
 - the golden set expected: The Euro area needs only 1.6%, much less than the roughly 3% for the United States.
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:Table B-1`**
@@ -1113,6 +1141,8 @@ Source: PPI estimates.
 - citations: `DOC1:p10,DOC1:Figure 1-6`
 
 - the golden set expected: Use 60% for this conversation; documents report about 48%.
+
+- Shriram rated this **2**
 
 ### What the cited sources actually say
 
@@ -1236,6 +1266,8 @@ Share of world output: 9.3%
 - citations: `DOC1:p10,DOC1:p11,DOC3:Table B-2,DOC3:p5`
 
 - the golden set expected: 60% for this conversation; documents report about 48%.
+
+- Shriram rated this **3**
 
 ### What the cited sources actually say
 
@@ -1471,6 +1503,8 @@ Source: PPI compilation of official registered urban unemployment data.
 
 - the golden set expected: about 48% of GDP
 
+- Shriram rated this **3**
+
 ### What the cited sources actually say
 
 **`DOC1:p11`**
@@ -1573,6 +1607,8 @@ Output growth rate: annual rate of growth of output
 
 - the golden set expected: Use 70% for this conversation; documents report 64.7%.
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:p5`**
@@ -1670,6 +1706,8 @@ Source: PPI compilation of official registered urban unemployment data.
 
 - the golden set expected: 65.4%
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC3:Table B-2`**
@@ -1766,6 +1804,8 @@ Source: PPI compilation of official registered urban unemployment data.
 - citations: `DOC2:Figure A-1,DOC2:p2,DOC2:Table A-1`
 
 - the golden set expected: The outturn was 2.4%, below the 3.2% forecast, which it replaces.
+
+- Shriram rated this **5**
 
 ### What the cited sources actually say
 
@@ -1916,6 +1956,8 @@ Source: Table A-1.
 - citations: `DOC2:p7,DOC2:Table A-2,DOC2:p3`
 
 - the golden set expected: No. Only U.S. output growth for 2010 was revised, from 3.0% to 2.4%.
+
+- Shriram rated this **4**
 
 ### What the cited sources actually say
 
@@ -2117,6 +2159,8 @@ China's growth slowed from above 9% to below 8%, while its registered unemployme
 
 - the golden set expected: 1.8% (outturn), which replaces the 1.2% forecast.
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 **`DOC2:Table A-2`**
@@ -2262,6 +2306,8 @@ China's growth slowed from above 9% to below 8%, while its registered unemployme
 
 - the golden set expected: Not supported by the trusted documents.
 
+- Shriram rated this **5**
+
 ### What the cited sources actually say
 
 The answer cites nothing. Rate whether a claim is being made that would have needed a source.
@@ -2280,6 +2326,8 @@ The answer cites nothing. Rate whether a claim is being made that would have nee
 - citations: `DOC1:p5,DOC2:Table A-2,DOC2:p3`
 
 - the golden set expected: The premise is false: U.S. output growth in 2010 was positive (2.4% after revision).
+
+- Shriram rated this **1**
 
 ### What the cited sources actually say
 
@@ -2515,6 +2563,8 @@ China's growth slowed from above 9% to below 8%, while its registered unemployme
 - citations: `DOC1:Table 1-2,DOC1:p5,DOC2:Table A-2,DOC2:p3`
 
 - the golden set expected: -0.3%
+
+- Shriram rated this **4**
 
 ### What the cited sources actually say
 

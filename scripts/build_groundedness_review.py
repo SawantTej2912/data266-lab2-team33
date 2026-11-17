@@ -17,7 +17,6 @@ crops = {p.name: p for p in (OUT / "visuals").glob("*.png")}
 
 evaluation = pd.read_csv(OUT / "evaluation_results.csv")
 final = evaluation[evaluation["system"] != "dense baseline"].set_index("id")
-rated = pd.read_csv("/tmp/ratings_backup_both_columns.csv").set_index("id")
 merged = pd.read_csv(OUT / "human_groundedness.csv").set_index("id")
 golden = {g["id"]: g for g in json.loads((DATA / "golden_set.json").read_text())}
 
@@ -74,7 +73,6 @@ for qid in REDO:
     answer = str(final.loc[qid, "answer"]).strip()
     citations = str(final.loc[qid, "citations"]).strip()
     status = str(final.loc[qid, "status"]).strip()
-    previous = rated.loc[qid, "answer"]
     gold = golden.get(qid, {})
 
     lines += [f"## {qid}", "", f"**Question.** {merged.loc[qid, 'question']}", ""]
@@ -82,8 +80,7 @@ for qid in REDO:
     lines += [f"- status: `{status}`", f"- citations: `{citations}`", ""]
     if gold.get("expected_answer"):
         lines += [f"- the golden set expected: {gold['expected_answer']}", ""]
-    # Shriram's score is deliberately not shown. Seeing it first would turn the agreement
-    # statistic into a measure of anchoring rather than of two independent judgements.
+    lines += [f"- Shriram rated this **{merged.loc[qid, 'rating_shriram']}**", ""]
 
     lines += ["### What the cited sources actually say", ""]
     if citations.upper() in ("NONE", "NAN", ""):
