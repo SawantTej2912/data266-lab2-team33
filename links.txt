@@ -39,4 +39,6 @@ Kaggle — team Pair_Programming_Team_33 (both members merged into one team)
 
 Part 3 Gradio app
   run from notebooks/p3_agents.ipynb; the share link is printed there
-  Hugging Face Space (optional, +2 bonus)  TODO or "not deployed"
+  Hugging Face Space (optional, +2 bonus)  not deployed. The app loads five models
+    (Qwen2.5-VL-7B in 4-bit, SD 1.5, InstructPix2Pix, CLIP and the safety checker,
+    8.77 GB peak), which does not fit the free CPU Space hardware.
