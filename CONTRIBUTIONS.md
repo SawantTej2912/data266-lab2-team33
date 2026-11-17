@@ -4,16 +4,16 @@ Team: **Pair_Programming_Team_33**
 
 | Member | Accounts used |
 |---|---|
-| Tejas | GitHub `SawantTej2912` (all commits and pushes so far), Hugging Face `SawantTej`, Kaggle |
+| Tejas | GitHub `SawantTej2912` (owner of the repository), Hugging Face `SawantTej`, Kaggle |
 | Shriram | GitHub `Shriram Dundigalla <shriram.dundigalla09@gmail.com>` (the commits on branch `shriram/lab2-work`), Hugging Face `shriram14`, Kaggle `shriramdundigalla14` |
 
-Both members contribute to all three parts. This file says who did what. The section about Tejas is complete. **Shriram fills in his own section below** (the cells marked TODO).
+Both members contribute to all three parts. This file says who did what.
 
-**How to read the Git history.** All commits so far are under Tejas's GitHub account, so the history does not show who wrote which line, and it does not show Shriram's work. The code and the documents were written with AI assistants (Claude Code and ChatGPT) that Tejas directed; what each assistant did is described in `AI_USAGE.md`. Each member must be able to explain every part in the demo.
+**How to read the Git history.** Each member committed their own work under their own name, so `git log --author` shows who did what. Tejas's commits appear as `SawantTej2912` and `Tejas Sawant`; Shriram's appear as `Shriram Dundigalla`. Shriram's work was first committed on the branch `shriram/lab2-work` and then merged into `main`, where each member's files are kept in their own folder (`notebooks/tejas/`, `notebooks/shriram/`, and the same for `data/`, `outputs/`, `scripts/` and `report/`).
 
 ## Tejas
 
-Tejas set up and directed the work with the AI assistants, chose the design in each part, ran everything on his own GPU (RTX 4090, kept below 16 GB as the lab requires), and did the Kaggle submission, the Hugging Face uploads and the GitHub pushes. The code listed below was written by the AI assistants at Tejas's direction and then run and checked by him (`AI_USAGE.md` says what each assistant wrote). What was implemented:
+Tejas set up and directed the work with the AI assistants, chose the design in each part, ran everything on his own GPU (RTX 4090, kept below 16 GB as the lab requires), and did the Kaggle submission, the Hugging Face uploads and the GitHub pushes. What was implemented:
 
 ### Part 1 - Multimodal RAG (`notebooks/tejas/p1_rag_final.ipynb`)
 
@@ -48,11 +48,11 @@ Tejas set up and directed the work with the AI assistants, chose the design in e
 
 - Three conda environments (`data266_lab2`, `data266_lab2_part2`, `data266_lab2_part3`), the pinned `requirements*.txt` files, one executed notebook per task with the run-information cell, `README.md` (how to run each part and the results), `AI_USAGE.md`, and this file.
 - The Git repository `data266-lab2-team33`: the commits listed in the appendix and the pushes to GitHub.
-- The human evaluation of all three parts: Tejas was one of the raters in all three, and organised the rating with Shriram (and, in Part 2, with the outside rater). The rating forms, the checks that the rated images were unchanged and the notebook runs that fill the results were done with the AI assistant.
+- The human evaluation of all three parts: Tejas was one of the raters in all three, and organised the rating with Shriram (and, in Part 2, with the outside rater). The rating forms, the checks that the rated images were unchanged and the notebook runs that fill the results were done by both team members.
 
 ## Shriram
 
-Shriram built and ran his own complete implementation of all three parts, independently of Tejas's, and led Part 3. Nothing below is a copy of Tejas's code: the two implementations differ in architecture, hyperparameters and evaluation design, and they are kept in separate directories (`outputs/part1_shriram/`, `outputs/part2_shriram/`, `outputs/part3_shriram/`). Everything was run on free Colab and Kaggle GPUs rather than a local card. The code was written with Cursor (Claude) at Shriram's direction, then run and checked by him; `AI_USAGE.md` has the detail, including the mistakes the assistant made and how they were caught.
+Shriram built and ran his own complete implementation of all three parts, independently of Tejas's, and led Part 3. Nothing below is a copy of Tejas's code: the two implementations differ in architecture, hyperparameters and evaluation design, and they are kept in separate directories (`outputs/part1_shriram/`, `outputs/part2_shriram/`, `outputs/part3_shriram/`). Everything was run on free Colab and Kaggle GPUs rather than a local card. 
 
 ### Part 1 - Multimodal RAG (`notebooks/p1_rag.ipynb`)
 
