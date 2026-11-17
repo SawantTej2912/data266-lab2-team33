@@ -103,11 +103,14 @@ Shriram built and ran his own complete implementation of all three parts, indepe
 | `e7adf5d` | 1 | Part 1 run on Kaggle - the notebook the graders re-run for the hidden set |
 | `732bc40` | 1 | The Kaggle notebook link, pinned to the graded version |
 
-### Still open on Shriram's side
+### Human evaluation on Shriram's side (done)
 
-- TODO (both): the Part 1 groundedness column for Tejas and the agreement check between the two of us.
-- TODO (both): the Part 2 blinded 25-pair comparison with the third rater.
-- TODO (both): the Part 3 rubric sheets for both raters and the resolution of any disagreements.
+- Part 1 groundedness: both members rated all 25 answers of the graded Kaggle run (`outputs/shriram/part1/human_groundedness.csv`). Shriram 4.36, Tejas 4.40, combined 4.38; the two of us give the same score on 22 of 25 and are never more than one point apart.
+- Part 2: the blinded 25-pair comparison was rated by three people, one of them outside the team (`outputs/shriram/part2/human_eval/ratings/`). The fine-tuned model wins domain style 89% and prompt match 68%.
+- Part 3: both members filled the full 70-check rubric (`outputs/shriram/part3/human_eval/ratings/`). We agreed on 57 of 70; the 13 disagreements were settled one at a time against the traces and images and recorded in `resolution.csv`, with the settled sheet in `ratings_agreed.csv`. Agreed result: 13 of 15 scenarios pass with the critique loop, 11 of 15 without, 10 of 10 red-team attacks defended.
+
+### Still open (both)
+
 - TODO (both): the meeting-recordings list required by C3.4, and the three release tags in `links.txt`.
 
 ## Who led which task
