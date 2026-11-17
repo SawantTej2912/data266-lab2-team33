@@ -28,9 +28,10 @@ Kaggle — team Pair_Programming_Team_33 (both members merged into one team)
   re-running the tagged notebook on the hidden set, so p1-v1.0 tags that same notebook.
 
   SELECTED FOR FINAL SCORE — Tejas
-    notebook    TODO (Tejas): Kaggle notebook URL with ?scriptVersionId=
-    submission  TODO (Tejas): public leaderboard score
-    run cost    TODO (Tejas): peak GPU memory and notebook runtime
+    notebook    https://www.kaggle.com/code/tejassawant291201/data266-lab2-tejas
+    submission  public leaderboard 0.761
+    run cost    one Kaggle Tesla T4, GPU memory used by the model 2.8 GB (Qwen2.5-VL-7B-Instruct, 4-bit),
+                answering the 40 questions 19.1 min, total notebook runtime 55.5 min (3328 s)
 
   ALSO SUBMITTED — Shriram (not selected; this is the run the report's Part 1 measures)
     notebook    https://www.kaggle.com/code/shriramdundigalla14/part1-rag/notebook?scriptVersionId=370463230
