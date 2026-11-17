@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import pymupdf
 
-LAB = Path("/Users/x-sdundigalla/Desktop/GenAI/Lab2")
+LAB = Path(__file__).resolve().parents[2]
 DATA, OUT = LAB / "data/tejas/part1", LAB / "outputs/shriram/part1"
 
 manifest = json.loads((DATA / "kb_manifest.json").read_text())
