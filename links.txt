@@ -7,9 +7,9 @@ GitHub repository
   https://github.com/SawantTej2912/data266-lab2-team33
 
 Tagged commits (graders use the tagged commit, and tags made after the deadline are ignored)
-  p1-v1.0   581416db0abe6c5bd0c31dca331e4c1a7b319405
-  p2-v1.0   581416db0abe6c5bd0c31dca331e4c1a7b319405
-  p3-v1.0   581416db0abe6c5bd0c31dca331e4c1a7b319405
+  p1-v1.0   06efa42264a69cf67d38a871dfe28247b5fc2b2d
+  p2-v1.0   06efa42264a69cf67d38a871dfe28247b5fc2b2d
+  p3-v1.0   06efa42264a69cf67d38a871dfe28247b5fc2b2d
 
 Hugging Face — Part 2 (Tejas led Part 2; these are the graded ones, printed by
 notebooks/tejas/p2_3_generate_evaluate.ipynb)
