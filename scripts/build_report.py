@@ -855,6 +855,11 @@ A(Paragraph(
     "measurement that only appears when it agrees with you is not a measurement.", BODY))
 
 A(Paragraph("VI.&nbsp;&nbsp;REPRODUCIBILITY", H1))
+# The URL is wider than a column, so it gets its own line rather than being
+# hyphenated across one.
+A(Paragraph(
+    "<font face='Courier' size='7'>"
+    "https://github.com/SawantTej2912/data266-lab2-team33</font>", PLAIN))
 A(Paragraph(
     "Repository <font face='Courier' size='8'>data266-lab2-team33</font>, tags "
     "<font face='Courier' size='8'>p1-v1.0</font>, "
