@@ -1,5 +1,5 @@
 outcome,dense baseline,hybrid + exact-label hybrid
-correct,15,19
+correct,16,19
 retrieval miss,8,1
 status error,1,1
-generation error,1,4
+generation error,0,4

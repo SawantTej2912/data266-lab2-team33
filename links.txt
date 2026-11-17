@@ -22,8 +22,9 @@ Hugging Face — Part 2 image dataset (120 generated images with prompt, seed an
 
 Kaggle
   competition     https://www.kaggle.com/t/e7463a4483964d5a9a41169a67416325
-  final notebook  TODO link to the notebook run at tag p1-v1.0
-  selected submission  TODO score
+  final notebook  TODO paste the Kaggle notebook URL
+  selected submission  public leaderboard 0.646, run on a Kaggle T4,
+                       peak GPU memory 8.51 GB, notebook runtime 33.4 min
 
 Part 3 Gradio app
   run from notebooks/p3_agents.ipynb; the share link is printed there

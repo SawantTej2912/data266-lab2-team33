@@ -1,6 +1,6 @@
 id,kind,doc_id,page,figure_id,trust_level,caption,path,description
-DOC1_p1_Table_1_1,visual,DOC1,1,Table 1-1,high,"Table 1-1 gives you output growth rates for the world economy, for advanced econ-",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p1_Table_1_1.png,"The provided text does not contain a table but rather describes a crisis in the world economy since 2000. Therefore, I cannot extract a table from this content. If you have a specific table that needs to be extracted, please provide the table details, and I will assist you accordingly."
-DOC1_p2_Figure_1_1,visual,DOC1,2,Figure 1-1,high,Figure 1-1,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p2_Figure_1_1.png,"**Figure 1-1**
+DOC1_p1_Table_1_1,visual,DOC1,1,Table 1-1,high,"Table 1-1 gives you output growth rates for the world economy, for advanced econ-",/kaggle/working/visuals/DOC1_p1_Table_1_1.png,"The provided text does not contain a table but rather describes a crisis in the world economy since 2000. Therefore, I cannot extract a table from this content. If you have a specific table that needs to be extracted, please provide the table details, and I will assist you accordingly."
+DOC1_p2_Figure_1_1,visual,DOC1,2,Figure 1-1,high,Figure 1-1,/kaggle/working/visuals/DOC1_p2_Figure_1_1.png,"**Figure 1-1**
 
 **Title:** Stock prices in the United States, the Euro area, and emerging economies, 2007–2010
 
@@ -10,26 +10,12 @@ DOC1_p2_Figure_1_1,visual,DOC1,2,Figure 1-1,high,Figure 1-1,/content/drive/MyDri
 
 The figure shows the evolution of three stock price indexes over time:
 
-- **United States**
-- **Euro area**
-- **Emerging economies**
+- **United States:** The index starts at 1.0 in January 2007 and fluctuates throughout the period until it reaches approximately 0.9 by December 2010.
+- **Euro area:** The index also starts at 1.0 in January 2007 but experiences a significant drop to around 0.5 by December 2008 before recovering slightly to about 0.7 by December 2010.
+- **Emerging economies:** The index begins at 1.0 in January 2007 and shows a sharp decline to roughly 0.6 by December 2008 before rising back to approximately 1.3 by December 2010.
 
-The index values are set equal to 1 in January 2007.
-
-| Date       | United States | Euro area | Emerging economies |
-|------------|---------------|-----------|--------------------|
-| 2007-01    | 1.0           | 1.0       | 1.0                |
-| 2007-06    | 1.05          | 1.05      | 1.1                |
-| 2008-01    | 1.4           | 1.2       | 1.4                |
-| 2008-06    | 1.3           | 1.1       | 1.3                |
-| 2009-01    | 0.9           | 0.6       | 1.2                |
-| 2009-06    | 0.8           | 0.5       | 0.9                |
-| 2010-01    | 0.8           | 0.7       | 1.1                |
-| 2010-06    | 0.8           | 0.6       | 1.0                |
-| 2010-11    | 0.9           | 0.7       | 1.3                |
-
-Note how, by the end of 2008, stock prices had lost half or more of their value from their previous peak."
-DOC1_p3_Figure_1_2,visual,DOC1,3,Figure 1-2,high,Figure 1-2,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p3_Figure_1_2.png,"**Figure 1-2**
+The horizontal axis represents the months from January 2007 to December 2010. The vertical axis represents the index level, which is equal to 1.0 in January 2007."
+DOC1_p3_Figure_1_2,visual,DOC1,3,Figure 1-2,high,Figure 1-2,/kaggle/working/visuals/DOC1_p3_Figure_1_2.png,"**Figure 1-2**
 
 **Title:** Unemployment rates in the United States and the Euro area, 2000–2012
 
@@ -61,7 +47,7 @@ DOC1_p3_Figure_1_2,visual,DOC1,3,Figure 1-2,high,Figure 1-2,/content/drive/MyDri
 | 2012 | 9.0       | 7.5           |
 
 **Note:** The values are outturns."
-DOC1_p4_Figure_1_3,visual,DOC1,4,Figure 1-3,high,Figure 1-3,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p4_Figure_1_3.png,"**Figure 1-3**
+DOC1_p4_Figure_1_3,visual,DOC1,4,Figure 1-3,high,Figure 1-3,/kaggle/working/visuals/DOC1_p4_Figure_1_3.png,"**Figure 1-3**
 
 **The United States**
 
@@ -73,7 +59,7 @@ DOC1_p4_Figure_1_3,visual,DOC1,4,Figure 1-3,high,Figure 1-3,/content/drive/MyDri
 
 **Chapter 1 A Tour of the World**
 7"
-DOC1_p5_Table_1_2,visual,DOC1,5,Table 1-2,high,"Table 1-2 Growth, Unemployment, and Inflation in the United States, 1980–2012",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p5_Table_1_2.png,"Table 1-2 Growth, Unemployment, and Inflation in the United States, 1980–2012
+DOC1_p5_Table_1_2,visual,DOC1,5,Table 1-2,high,"Table 1-2 Growth, Unemployment, and Inflation in the United States, 1980–2012",/kaggle/working/visuals/DOC1_p5_Table_1_2.png,"Table 1-2 Growth, Unemployment, and Inflation in the United States, 1980–2012
 
 | Percent | 1980–1999 (average) | 2000–2007 (average) | 2008 | 2009 | 2010 | 2011 | 2012 |
 |---------|---------------------|---------------------|------|------|------|------|------|
@@ -84,7 +70,7 @@ DOC1_p5_Table_1_2,visual,DOC1,5,Table 1-2,high,"Table 1-2 Growth, Unemployment, 
 Output growth rate: annual rate of growth of output (GDP). Unemployment rate: average over the year. Inflation rate: annual rate of change of the price level (GDP deflator).
 
 Source: World Economic Outlook database, September 2011"
-DOC1_p5_Figure_1_4,visual,DOC1,5,Figure 1-4,high,Figure 1-4,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p5_Figure_1_4.png,"Figure 1-4
+DOC1_p5_Figure_1_4,visual,DOC1,5,Figure 1-4,high,Figure 1-4,/kaggle/working/visuals/DOC1_p5_Figure_1_4.png,"Figure 1-4
 
 U.S. Federal Budget surpluses as a percent of GDP since 1990
 
@@ -103,7 +89,7 @@ Percent
 2006 -2.0
 2008 -4.0
 2010 -10.0"
-DOC1_p7_Table_1_3,visual,DOC1,7,Table 1-3,high,"Table 1-3   Growth, Unemployment, and Inflation in the Euro Area, 1980–2012",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p7_Table_1_3.png,"Table 1-3 Growth, Unemployment, and Inflation in the Euro Area, 1980–2012
+DOC1_p7_Table_1_3,visual,DOC1,7,Table 1-3,high,"Table 1-3   Growth, Unemployment, and Inflation in the Euro Area, 1980–2012",/kaggle/working/visuals/DOC1_p7_Table_1_3.png,"Table 1-3 Growth, Unemployment, and Inflation in the Euro Area, 1980–2012
 
 | Percent | 1980–1999 (average) | 2000–2007 (average) | 2008 | 2009 | 2010 | 2011 | 2012 |
 |---------|---------------------|---------------------|------|------|------|------|------|
@@ -112,12 +98,12 @@ DOC1_p7_Table_1_3,visual,DOC1,7,Table 1-3,high,"Table 1-3   Growth, Unemployment
 | Inflation rate | 5.2 | 2.3 | 3.2 | 0.3 | 1.6 | 2.5 | 1.5 |
 
 Source: World Economic Outlook database, September 2011"
-DOC1_p8_Figure_1_5,visual,DOC1,8,Figure 1-5,high,Figure 1-5,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p8_Figure_1_5.png,"Figure 1-5  
+DOC1_p8_Figure_1_5,visual,DOC1,8,Figure 1-5,high,Figure 1-5,/kaggle/working/visuals/DOC1_p8_Figure_1_5.png,"Figure 1-5  
 The Euro area  
 
 Chapter 1 A Tour of the World  
 11"
-DOC1_p10_Figure_1_6,visual,DOC1,10,Figure 1-6,high,Figure 1-6,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p10_Figure_1_6.png,"Figure 1-6
+DOC1_p10_Figure_1_6,visual,DOC1,10,Figure 1-6,high,Figure 1-6,/kaggle/working/visuals/DOC1_p10_Figure_1_6.png,"Figure 1-6
 
 China, 2010
 
@@ -125,7 +111,7 @@ Output: $5.8 trillion
 Population: 1,340 million
 Output per person: $4,300
 Share of world output: 9.3%"
-DOC1_p11_Table_1_4,visual,DOC1,11,Table 1-4,high,"Table 1-4 Growth and Inflation in China, 1980–2012",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p11_Table_1_4.png,"**Table 1-4 Growth and Inflation in China, 1980–2012**
+DOC1_p11_Table_1_4,visual,DOC1,11,Table 1-4,high,"Table 1-4 Growth and Inflation in China, 1980–2012",/kaggle/working/visuals/DOC1_p11_Table_1_4.png,"**Table 1-4 Growth and Inflation in China, 1980–2012**
 
 | Percent | 1980–1999 (average) | 2000–2007 (average) | 2008 | 2009 | 2010 | 2011 | 2012 |
 |---------|---------------------|---------------------|------|------|------|------|------|
@@ -136,7 +122,7 @@ DOC1_p11_Table_1_4,visual,DOC1,11,Table 1-4,high,"Table 1-4 Growth and Inflation
 Output growth rate: annual rate of growth of output (GDP). Inflation rate: annual rate of change of the price level (GDP deflator).
 
 Source: World Economic Outlook database, September 2011"
-DOC1_p20_Figure_2_1,visual,DOC1,20,Figure 2-1,high,Figure 2-1,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p20_Figure_2_1.png,"Figure 2-1
+DOC1_p20_Figure_2_1,visual,DOC1,20,Figure 2-1,high,Figure 2-1,/kaggle/working/visuals/DOC1_p20_Figure_2_1.png,"Figure 2-1
 
 Nominal and real U.S. GDP, 1960–2010
 
@@ -146,7 +132,7 @@ Source: Series GDPCA,GDPA: Federal Reserve Economic Data (FRED) http://research.
 
 Chapter 2 A Tour of the Book
 23"
-DOC1_p21_Figure_2_2,visual,DOC1,21,Figure 2-2,high,Figure 2-2,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p21_Figure_2_2.png,"Figure 2-2
+DOC1_p21_Figure_2_2,visual,DOC1,21,Figure 2-2,high,Figure 2-2,/kaggle/working/visuals/DOC1_p21_Figure_2_2.png,"Figure 2-2
 
 Growth rate of U.S. GDP,  
 1960-2010
@@ -155,7 +141,7 @@ Since 1960, the U.S. economy has gone through a series of expansions, interrupte
 
 Source: Calculated using series  
 GDPCA in Figure 2-1"
-DOC1_p24_Figure_2_3,visual,DOC1,24,Figure 2-3,high,Figure 2-3,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p24_Figure_2_3.png,"**Figure 2-3**
+DOC1_p24_Figure_2_3,visual,DOC1,24,Figure 2-3,high,Figure 2-3,/kaggle/working/visuals/DOC1_p24_Figure_2_3.png,"**Figure 2-3**
 
 **Title:** U.S. unemployment rate, 1960–2010
 
@@ -163,7 +149,7 @@ DOC1_p24_Figure_2_3,visual,DOC1,24,Figure 2-3,high,Figure 2-3,/content/drive/MyD
 The U.S. unemployment rate fluctuated between 3% and 10% over the period from 1960 to 2010. The rate went up during recessions and down during expansions. The highest rate since the 1980s was nearly 10%, reached in 2010.
 
 **Source:** Series UNRATE: Federal Reserve Economic Data (FRED) http://research.stlouisfed.org/fred2/"
-DOC1_p27_Figure_2_4,visual,DOC1,27,Figure 2-4,high,Figure 2-4,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p27_Figure_2_4.png,"**Figure 2-4**
+DOC1_p27_Figure_2_4,visual,DOC1,27,Figure 2-4,high,Figure 2-4,/kaggle/working/visuals/DOC1_p27_Figure_2_4.png,"**Figure 2-4**
 
 **Title:** Inflation rate, using the CPI and the GDP deflator, 1960–2010
 
@@ -188,7 +174,7 @@ The inflation rates, computed using either the CPI or the GDP deflator, are larg
 | 2010 | 1.6     | 1.4              |
 
 **Note:** The values represent the consumption basket of a typical urban consumer and is updated roughly only once every 10 years."
-DOC1_p29_Figure_2_5,visual,DOC1,29,Figure 2-5,high,Figure 2-5,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p29_Figure_2_5.png,"**Figure 2-5**
+DOC1_p29_Figure_2_5,visual,DOC1,29,Figure 2-5,high,Figure 2-5,/kaggle/working/visuals/DOC1_p29_Figure_2_5.png,"**Figure 2-5**
 
 **Changes in the unemployment rate versus output growth in the United States, 1960–2010**
 
@@ -202,144 +188,21 @@ Source: See Figures 2-2 and 2-3.
 - **X-axis:** Output growth (percent)
 - **Y-axis:** Change in the unemployment rate (percentage points)
 - **Period:** 1960–2010
-- **Series:** 
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown
-  - Unknown"
-DOC1_p30_Figure_2_6,visual,DOC1,30,Figure 2-6,high,Figure 2-6,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p30_Figure_2_6.png,"**Figure 2-6**
+- **Series:**
+  - **Line:** Regression line
+    - Slope: -0.4
+    - Intercept: Unknown
+- **Data Points:**
+  - (-4, -2)
+  - (-2, 0)
+  - (0, 1)
+  - (2, 2)
+  - (4, 3)
+  - (6, 4)
+  - (8, 5)
+
+**Note:** The exact values for the intercept and other points are not clearly readable from the chart."
+DOC1_p30_Figure_2_6,visual,DOC1,30,Figure 2-6,high,Figure 2-6,/kaggle/working/visuals/DOC1_p30_Figure_2_6.png,"**Figure 2-6**
 
 **Changes in the inflation rate versus the unemployment rate in the United States, 1960–2010**
 
@@ -359,7 +222,7 @@ Source: See Figures 2-3 and 2-4.
 | 10                     | 1                                          |
 
 The line crosses the horizontal axis at the point where the unemployment rate is roughly equal to 6%. In economic terms: When unemployment has been below 6%, inflation has typically increased, suggesting that the economy was overheating, operating above its potential. When unemployment has been above 6%, inflation has typically decreased, suggesting that the economy was operating below potential. But, again here, the relation is not tight enough that the unemployment rate at which the economy overheats can be pinned down very precisely. This explains why some economists believe that we should try to maintain a lower unemployment rate, say 4 or 5%, and others believe that it may be dangerous, leading to overheating and increasing inflation."
-DOC1_p32_Figure_2_7,visual,DOC1,32,Figure 2-7,high,Figure 2-7,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC1_p32_Figure_2_7.png,"**Figure 2-7**
+DOC1_p32_Figure_2_7,visual,DOC1,32,Figure 2-7,high,Figure 2-7,/kaggle/working/visuals/DOC1_p32_Figure_2_7.png,"**Figure 2-7**
 
 The organization of the book
 
@@ -398,7 +261,7 @@ Chapters 10 to 13 focus on the long run. Chapter 10 introduces the relevant fact
 The core chapters give you a way of thinking about how output (and unemployment, and inflation) is determined over the short, medium, and long run. However, they leave out several elements, which are explored in two extensions:
 
 - Expectations play an essential role in macroeconomics. Nearly all the economic decisions people and firms make—whether or not to buy a car, whether to buy bonds or to buy stocks, whether or not to build a new plant—depend on their expectations about future income, future profits, future interest rates, and so on. Fiscal and monetary policy affect economic activity not only through their direct effects, but also through their effects on people’s and firms’ expectations. While we touch on these issues in the core, Chapters 14 to 17 offer a more detailed treatment and draw the implications for fiscal and monetary policy."
-DOC2_p2_Table_A_1,visual,DOC2,2,Table A-1,high,"Table A-1 World output growth: forecasts and outturns, 2011-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p2_Table_A_1.png,"**Table A-1 World output growth: forecasts and outturns, 2011-2013**
+DOC2_p2_Table_A_1,visual,DOC2,2,Table A-1,high,"Table A-1 World output growth: forecasts and outturns, 2011-2013",/kaggle/working/visuals/DOC2_p2_Table_A_1.png,"**Table A-1 World output growth: forecasts and outturns, 2011-2013**
 
 | Percent | 2011 forecast* | 2011 outturn | 2012 forecast* | 2012 outturn | 2013 outturn |
 |---------|----------------|---------------|----------------|---------------|---------------|
@@ -407,7 +270,7 @@ DOC2_p2_Table_A_1,visual,DOC2,2,Table A-1,high,"Table A-1 World output growth: f
 | Emerging and developing economies | 6.4            | 6.2           | 6.0            | 4.9           | 4.6           |
 
 * Forecasts as of the fall of 2011, as reported in Document 1, Table 1-1. Output growth: annual rate of growth of GDP."
-DOC2_p2_Figure_A_1,visual,DOC2,2,Figure A-1,high,Figure A-1 Output growth in 2012: forecast versus outturn,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p2_Figure_A_1.png,"**Figure A-1 Output growth in 2012: forecast versus outturn**
+DOC2_p2_Figure_A_1,visual,DOC2,2,Figure A-1,high,Figure A-1 Output growth in 2012: forecast versus outturn,/kaggle/working/visuals/DOC2_p2_Figure_A_1.png,"**Figure A-1 Output growth in 2012: forecast versus outturn**
 
 **Output growth in 2012: forecast versus outturn**
 
@@ -432,7 +295,7 @@ Source: Table A-1.
 
 DOC2 | Supplement A: Outturns, Revisions and Forecast Errors, 2011-2013
 Page 2"
-DOC2_p3_Table_A_2,visual,DOC2,3,Table A-2,high,"Table A-2 Growth, unemployment and inflation: outturns 2011-2013 (fall-2011 forecast in brackets)",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p3_Table_A_2.png,"**Table A-2 Growth, unemployment and inflation: outturns 2011-2013 (fall-2011 forecast in brackets)**
+DOC2_p3_Table_A_2,visual,DOC2,3,Table A-2,high,"Table A-2 Growth, unemployment and inflation: outturns 2011-2013 (fall-2011 forecast in brackets)",/kaggle/working/visuals/DOC2_p3_Table_A_2.png,"**Table A-2 Growth, unemployment and inflation: outturns 2011-2013 (fall-2011 forecast in brackets)**
 
 | Percent | 2011 | 2012 | 2013 |
 |---------|------|------|------|
@@ -449,7 +312,7 @@ DOC2_p3_Table_A_2,visual,DOC2,3,Table A-2,high,"Table A-2 Growth, unemployment a
 **Source:** DATA 266 Course Data Desk, March 2014 vintage. Forecasts: Document 1, Tables 1-2, 1-3 and 1-4.
 
 **Revision notice:** U.S. output growth for 2010 has been revised from 3.0% (Document 1, Table 1-2) to 2.4% following the comprehensive benchmark revision of the national accounts in July 2013. The revised value supersedes the value in Document 1. No other 2008-2010 value in Document 1 is revised by this supplement."
-DOC2_p4_Figure_A_2,visual,DOC2,4,Figure A-2,high,"Figure A-2 Unemployment rates in the United States and the Euro area, 2000-2012 (September 2011",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p4_Figure_A_2.png,"Figure A-2 Unemployment rates in the United States and the Euro area, 2000-2012 (September 2011 vintage)
+DOC2_p4_Figure_A_2,visual,DOC2,4,Figure A-2,high,"Figure A-2 Unemployment rates in the United States and the Euro area, 2000-2012 (September 2011",/kaggle/working/visuals/DOC2_p4_Figure_A_2.png,"Figure A-2 Unemployment rates in the United States and the Euro area, 2000-2012 (September 2011 vintage)
 
 Vintage: September 2011 (dashed = forecast)
 
@@ -470,7 +333,7 @@ Vintage: September 2011 (dashed = forecast)
 | 2012 | 9.0          | 9.9       |
 
 Source: Document 1 (World Economic Outlook database, September 2011). Dashed segments are forecasts."
-DOC2_p4_Figure_A_3,visual,DOC2,4,Figure A-3,high,"Figure A-3 Unemployment rates in the United States and the Euro area, 2000-2013 (March 2014",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p4_Figure_A_3.png,"**Figure A-3 Unemployment rates in the United States and the Euro area, 2000-2013 (March 2014 vintage)**
+DOC2_p4_Figure_A_3,visual,DOC2,4,Figure A-3,high,"Figure A-3 Unemployment rates in the United States and the Euro area, 2000-2013 (March 2014",/kaggle/working/visuals/DOC2_p4_Figure_A_3.png,"**Figure A-3 Unemployment rates in the United States and the Euro area, 2000-2013 (March 2014 vintage)**
 
 **Vintage:** March 2014 (all values are outturns)
 
@@ -505,30 +368,24 @@ DOC2_p4_Figure_A_3,visual,DOC2,4,Figure A-3,high,"Figure A-3 Unemployment rates 
 - 2007: 7.6
 - 2008: 7.8
 - 2009: 9.7
-- 2010: 10.1
+- 2010: 10.2
 - 2011: 10.5
 - 2012: 11.4
 - 2013: 12.0"
-DOC2_p5_Figure_A_4,visual,DOC2,5,Figure A-4,high,"Figure A-4 Stock prices in the United States, the Euro area and emerging economies, 2007-2010",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p5_Figure_A_4.png,"**Figure A-4 Stock prices in the United States, the Euro area and emerging economies, 2007-2010 (January 2007 = 1.0)**
+DOC2_p5_Figure_A_4,visual,DOC2,5,Figure A-4,high,"Figure A-4 Stock prices in the United States, the Euro area and emerging economies, 2007-2010",/kaggle/working/visuals/DOC2_p5_Figure_A_4.png,"**Figure A-4 Stock prices in the United States, the Euro area and emerging economies, 2007-2010 (January 2007 = 1.0)**
 
 **Stock prices: United States, Euro area and emerging economies**
 
 Monthly averages, January 2007 to December 2010; index = 1.0 in January 2007
 
-| Period | Emerging economies | United States | Euro area |
-|--------|-------------------|---------------|------------|
-| 2007-01| 1.0              | 1.0           | 1.0        |
-| 2007-07| 1.4              | 1.1           | 1.1        |
-| 2008-01| 1.3              | 1.0           | 1.0        |
-| 2008-07| 1.2              | 0.9           | 0.9        |
-| 2009-01| 0.6              | 0.5          | 0.5        |
-| 2009-07| 0.6              | 0.7          | 0.7        |
-| 2010-01| 1.1              | 0.8          | 0.7        |
-| 2010-07| 1.0              | 0.8          | 0.6        |
-| 2010-12| 1.2              | 0.9          | 0.7        |
+| Index (January 2007 = 1.0) | 2007-01 | 2007-07 | 2008-01 | 2008-07 | 2009-01 | 2009-07 | 2010-01 | 2010-07 | 2010-12 |
+|-----------------------------|----------|----------|----------|----------|----------|----------|----------|----------|----------|
+| Emerging economies           | 1.00     | 1.35     | 1.30     | 1.20     | 0.63     | 0.63     | 1.10     | 1.22     | 1.22     |
+| United States                | 1.00     | 1.05     | 1.00     | 0.90     | 0.50     | 0.63     | 0.85     | 0.80     | 0.88     |
+| Euro area                    | 1.00     | 1.10     | 1.00     | 0.85     | 0.45     | 0.63     | 0.70     | 0.60     | 0.66     |
 
 Source: DATA 266 Course Data Desk; monthly averages."
-DOC2_p5_Figure_A_5,visual,DOC2,5,Figure A-5,high,"Figure A-5 Stock prices in the United States, the Euro area and emerging economies, 2007-2010",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p5_Figure_A_5.png,"Figure A-5 Stock prices in the United States, the Euro area and emerging economies, 2007-2010 (January 2009 = 1.0)
+DOC2_p5_Figure_A_5,visual,DOC2,5,Figure A-5,high,"Figure A-5 Stock prices in the United States, the Euro area and emerging economies, 2007-2010",/kaggle/working/visuals/DOC2_p5_Figure_A_5.png,"Figure A-5 Stock prices in the United States, the Euro area and emerging economies, 2007-2010 (January 2009 = 1.0)
 
 Stock prices: United States, Euro area and emerging economies
 
@@ -549,7 +406,7 @@ Monthly averages, January 2007 to December 2010; index = 1.0 in January 2009
 Source: as Figure A-4, rebased to January 2009.
 
 DOC2 | Supplement A: Outturns, Revisions and Forecast Errors, 2011-2013"
-DOC2_p6_Figure_A_6,visual,DOC2,6,Figure A-6,high,"Figure A-6 Unemployment rates in selected Euro area countries, 2010",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p6_Figure_A_6.png,"Figure A-6 Unemployment rates in selected Euro area countries, 2010
+DOC2_p6_Figure_A_6,visual,DOC2,6,Figure A-6,high,"Figure A-6 Unemployment rates in selected Euro area countries, 2010",/kaggle/working/visuals/DOC2_p6_Figure_A_6.png,"Figure A-6 Unemployment rates in selected Euro area countries, 2010
 
 Unemployment rates in selected Euro area countries
 
@@ -568,7 +425,7 @@ Annual average, 2010
 | Austria       | 4.4     |
 
 Source: DATA 266 Course Data Desk; annual averages."
-DOC2_p6_Figure_A_7,visual,DOC2,6,Figure A-7,high,"Figure A-7 Unemployment rates in selected Euro area countries, 2012",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p6_Figure_A_7.png,"Figure A-7 Unemployment rates in selected Euro area countries, 2012
+DOC2_p6_Figure_A_7,visual,DOC2,6,Figure A-7,high,"Figure A-7 Unemployment rates in selected Euro area countries, 2012",/kaggle/working/visuals/DOC2_p6_Figure_A_7.png,"Figure A-7 Unemployment rates in selected Euro area countries, 2012
 
 Unemployment rates in selected Euro area countries
 
@@ -581,7 +438,7 @@ Annual average, 2012
 Source: DATA 266 Course Data Desk; annual averages.
 
 DOC2 | Supplement A: Outturns, Revisions and Forecast Errors, 2011-2013"
-DOC2_p7_Table_A_3,visual,DOC2,7,Table A-3,high,"Table A-3 U.S. federal revenues, spending and budget balance, 2007-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC2_p7_Table_A_3.png,"**Table A-3 U.S. federal revenues, spending and budget balance, 2007-2013**
+DOC2_p7_Table_A_3,visual,DOC2,7,Table A-3,high,"Table A-3 U.S. federal revenues, spending and budget balance, 2007-2013",/kaggle/working/visuals/DOC2_p7_Table_A_3.png,"**Table A-3 U.S. federal revenues, spending and budget balance, 2007-2013**
 
 | Percent of GDP | Revenues | Spending | Budget balance |
 |----------------|----------|----------|----------------|
@@ -594,7 +451,7 @@ DOC2_p7_Table_A_3,visual,DOC2,7,Table A-3,high,"Table A-3 U.S. federal revenues,
 | 2013           | 17.5     | 21.6     | -4.1           |
 
 A negative budget balance is a deficit. Values for 2007 and 2010 match those quoted in Document 1."
-DOC3_p2_Table_B_1,visual,DOC3,2,Table B-1,medium,Table B-1 Okun's law estimates,/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p2_Table_B_1.png,"**Table B-1 Okun's law estimates**
+DOC3_p2_Table_B_1,visual,DOC3,2,Table B-1,medium,Table B-1 Okun's law estimates,/kaggle/working/visuals/DOC3_p2_Table_B_1.png,"**Table B-1 Okun's law estimates**
 
 | Sample | Slope (pp per 1% growth) | Intercept (pp) | Growth needed to keep unemployment constant (%) |
 |--------|--------------------------|----------------|------------------------------------------------|
@@ -603,7 +460,7 @@ DOC3_p2_Table_B_1,visual,DOC3,2,Table B-1,medium,Table B-1 Okun's law estimates,
 | Euro area, 1992-2013 | -0.31 | 0.50 | 1.6 |
 
 Source: Pacific Policy Institute estimates, ordinary least squares on annual data. The Euro area estimate uses a shorter sample because consistent data start in 1992."
-DOC3_p2_Figure_B_1,visual,DOC3,2,Figure B-1,medium,"Figure B-1 Okun's law, United States, 1961-2010",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p2_Figure_B_1.png,"**Figure B-1 Okun's law, United States, 1961-2010**
+DOC3_p2_Figure_B_1,visual,DOC3,2,Figure B-1,medium,"Figure B-1 Okun's law, United States, 1961-2010",/kaggle/working/visuals/DOC3_p2_Figure_B_1.png,"**Figure B-1 Okun's law, United States, 1961-2010**
 
 **Title:** Okun's law, United States
 
@@ -621,7 +478,7 @@ DOC3_p2_Figure_B_1,visual,DOC3,2,Figure B-1,medium,"Figure B-1 Okun's law, Unite
 - The growth needed to keep the unemployment rate constant is indicated as 3.1%.
 
 **Page:** Page 2"
-DOC3_p3_Figure_B_2,visual,DOC3,3,Figure B-2,medium,"Figure B-2 Okun's law, United States, 1961-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p3_Figure_B_2.png,"**Figure B-2 Okun's law, United States, 1961-2013**
+DOC3_p3_Figure_B_2,visual,DOC3,3,Figure B-2,medium,"Figure B-2 Okun's law, United States, 1961-2013",/kaggle/working/visuals/DOC3_p3_Figure_B_2.png,"**Figure B-2 Okun's law, United States, 1961-2013**
 
 **Okun's law, United States**
 
@@ -636,7 +493,7 @@ DOC3_p3_Figure_B_2,visual,DOC3,3,Figure B-2,medium,"Figure B-2 Okun's law, Unite
 Source: PPI estimates.
 
 The chart shows the relationship between output growth and the change in the unemployment rate over the period from 1961 to 2013. The fitted line equation provided is used to model this relationship."
-DOC3_p4_Figure_B_3,visual,DOC3,4,Figure B-3,medium,"Figure B-3 Inflation in the United States: headline CPI and GDP deflator, 2000-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p4_Figure_B_3.png,"Figure B-3 Inflation in the United States: headline CPI and GDP deflator, 2000-2013
+DOC3_p4_Figure_B_3,visual,DOC3,4,Figure B-3,medium,"Figure B-3 Inflation in the United States: headline CPI and GDP deflator, 2000-2013",/kaggle/working/visuals/DOC3_p4_Figure_B_3.png,"Figure B-3 Inflation in the United States: headline CPI and GDP deflator, 2000-2013
 
 Inflation in the United States, 2000-2013
 
@@ -660,7 +517,7 @@ CPI (headline) and GDP deflator
 | 2013 | 1.5            | 1.5          |
 
 Source: PPI calculations; GDP deflator values for 2008-2013 as in Documents 1 and 2."
-DOC3_p4_Figure_B_4,visual,DOC3,4,Figure B-4,medium,"Figure B-4 Inflation in the United States: headline CPI and core CPI, 2000-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p4_Figure_B_4.png,"**Figure B-4 Inflation in the United States: headline CPI and core CPI, 2000-2013**
+DOC3_p4_Figure_B_4,visual,DOC3,4,Figure B-4,medium,"Figure B-4 Inflation in the United States: headline CPI and core CPI, 2000-2013",/kaggle/working/visuals/DOC3_p4_Figure_B_4.png,"**Figure B-4 Inflation in the United States: headline CPI and core CPI, 2000-2013**
 
 **CPI (headline) and core CPI (excl. food and energy)**
 
@@ -683,8 +540,9 @@ DOC3_p4_Figure_B_4,visual,DOC3,4,Figure B-4,medium,"Figure B-4 Inflation in the 
 
 **Source:** PPI calculations.
 
-**DOC3 | Briefing B: Labour Markets, Prices and Policy Trade-offs**"
-DOC3_p5_Table_B_2,visual,DOC3,5,Table B-2,medium,"Table B-2 U.S. unemployment and labour force participation, 2007-2010",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p5_Table_B_2.png,"**Table B-2 U.S. Unemployment and Labour Force Participation, 2007-2010**
+**DOC3 | Briefing B: Labour Markets, Prices and Policy Trade-offs**
+Page 4"
+DOC3_p5_Table_B_2,visual,DOC3,5,Table B-2,medium,"Table B-2 U.S. unemployment and labour force participation, 2007-2010",/kaggle/working/visuals/DOC3_p5_Table_B_2.png,"**Table B-2 U.S. Unemployment and Labour Force Participation, 2007-2010**
 
 | United States | Unemployment rate (%) | Labour force participation rate (%) |
 |---------------|-----------------------|------------------------------------|
@@ -698,7 +556,7 @@ Source: Pacific Policy Institute calculations from household survey microdata, a
 **B.4 China: slower growth, stable unemployment**
 
 China's output growth slowed to 7.8% in 2012, its lowest rate since 1999. Investment remained very high, at about 48% of GDP in 2012, and the slowdown reflects weaker export demand from Europe as well as a deliberate shift away from investment-led growth. Despite the slowdown, the registered urban unemployment rate has barely moved, as Figure B-5 shows. As Document 1 notes, registered unemployment in China is a weak indicator, because many workers who lose urban jobs return to the countryside."
-DOC3_p5_Figure_B_5,visual,DOC3,5,Figure B-5,medium,"Figure B-5 Registered urban unemployment rate, China, 2000-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p5_Figure_B_5.png,"Figure B-5 Registered urban unemployment rate, China, 2000-2013
+DOC3_p5_Figure_B_5,visual,DOC3,5,Figure B-5,medium,"Figure B-5 Registered urban unemployment rate, China, 2000-2013",/kaggle/working/visuals/DOC3_p5_Figure_B_5.png,"Figure B-5 Registered urban unemployment rate, China, 2000-2013
 
 Registered urban unemployment rate, China, 2000-2013
 
@@ -723,7 +581,7 @@ Source: PPI compilation of official registered urban unemployment data.
 
 DOC3 | Briefing B: Labour Markets, Prices and Policy Trade-offs
 Page 5"
-DOC3_p6_Figure_B_5_corrected,visual,DOC3,6,Figure B-5 (corrected),medium,"Figure B-5 (corrected) Registered urban unemployment rate, China, 2000-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p6_Figure_B_5_corrected.png,"Figure B-5 (corrected) Registered urban unemployment rate, China, 2000-2013
+DOC3_p6_Figure_B_5_corrected,visual,DOC3,6,Figure B-5 (corrected),medium,"Figure B-5 (corrected) Registered urban unemployment rate, China, 2000-2013",/kaggle/working/visuals/DOC3_p6_Figure_B_5_corrected.png,"Figure B-5 (corrected) Registered urban unemployment rate, China, 2000-2013
 
 Registered urban unemployment rate, China, 2000-2013
 
@@ -736,7 +594,7 @@ Annual average (corrected version)
 Source: PPI compilation of official registered urban unemployment data.
 
 DOC3 | Briefing B: Labour Markets, Prices and Policy Trade-offs Page 6"
-DOC3_p7_Figure_C_1,visual,DOC3,7,Figure C-1,low,"Figure C-1 Reader sentiment index (unverified, reader-submitted), 2007-2013",/content/drive/MyDrive/data266_lab2/outputs/part1_shriram/visuals/DOC3_p7_Figure_C_1.png,"**Figure C-1 Reader sentiment index (unverified, reader-submitted), 2007-2013**
+DOC3_p7_Figure_C_1,visual,DOC3,7,Figure C-1,low,"Figure C-1 Reader sentiment index (unverified, reader-submitted), 2007-2013",/kaggle/working/visuals/DOC3_p7_Figure_C_1.png,"**Figure C-1 Reader sentiment index (unverified, reader-submitted), 2007-2013**
 
 **Title:** Reader sentiment index (unverified, reader-submitted)
 
