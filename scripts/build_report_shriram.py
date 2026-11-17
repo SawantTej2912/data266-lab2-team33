@@ -230,13 +230,21 @@ P1_RUN = {"items": scrape(NB1, r"items in ChromaDB\s*:\s*(\d+)", int),
           # The one figure with no local source: the Kaggle public leaderboard.
           "kaggle": 0.646, "kaggle_prev": 0.650}
 
-P2_SAFETY = {"nsfw_flagged": scrape(NB2, r"flagged by the safety checker:\s*(\d+)", int),
-             "nsfw_total": len(p2_log),
-             "mem_gen_mean": scrape(NB2, r"nearest training image\s*:\s*mean ([\d.]+)"),
-             "mem_gen_max": scrape(NB2, r"nearest training image\s*:\s*mean [\d.]+, max ([\d.]+)"),
+p2_nsfw = pd.read_csv(P2 / "safety" / "nsfw_check.csv")
+p2_mem = pd.read_csv(P2 / "safety" / "memorization_check.csv")
+P2_SAFETY = {"nsfw_flagged": int(p2_nsfw["flagged"].sum()),
+             "nsfw_total": len(p2_nsfw),
+             "nsfw_base": int(p2_nsfw[(p2_nsfw["model"] == "base") & p2_nsfw["flagged"]].shape[0]),
+             "nsfw_tuned": int(p2_nsfw[(p2_nsfw["model"] != "base") & p2_nsfw["flagged"]].shape[0]),
+             "mem_gen_mean": p2_mem["clip_similarity"].mean(),
+             "mem_gen_max": p2_mem["clip_similarity"].max(),
+             "mem_n": len(p2_mem),
+             # The held-out control has no csv of its own; it is printed beside the generated
+             # row in the same cell, which is the only place the comparison is made.
              "mem_test_mean": scrape(NB2, r"nearest train:\s*mean ([\d.]+)"),
              "mem_test_max": scrape(NB2, r"nearest train:\s*mean [\d.]+, max ([\d.]+)"),
-             "source": "p2_finetune.ipynb safety cells; safety/*.csv not yet retrieved"}
+             "source": "outputs/part2_shriram/safety/; the held-out control row from "
+                       "p2_finetune.ipynb"}
 
 P3_RUN = {"peak_gb": scrape(NB3, r"peak GPU memory\s+:\s*([\d.]+) GB"),
           "median_s": scrape(NB3, r"median s per request:\s*([\d.]+)"),
@@ -600,7 +608,8 @@ A(Paragraph(
     f"<b>NSFW filter.</b> Every generated image passes through the Stable Diffusion safety "
     f"checker. It flagged {P2_SAFETY['nsfw_flagged']} of {P2_SAFETY['nsfw_total']} images. I "
     "inspected all of them and none is unsafe; they are harmless cartoon creatures, and the "
-    "flags cluster on the fine-tuned runs rather than the base model. The plausible reading is "
+    f"flags cluster on the fine-tuned runs ({P2_SAFETY['nsfw_tuned']}) rather than the base "
+    f"model ({P2_SAFETY['nsfw_base']}). The plausible reading is "
     "that the checker compares against CLIP embeddings of unsafe concepts and the fine-tuned "
     "model's saturated, smooth, skin-toned rounded forms drift closer to those embeddings than "
     "photographic imagery does. The practical lesson is that this checker's false-positive rate "
@@ -608,8 +617,9 @@ A(Paragraph(
     "matters\u2014a conclusion I acted on in Part 3, where the output gate requires two "
     "independent detectors to agree.", BODY))
 A(Paragraph(
-    f"<b>Memorization.</b> For in-domain generations I measured CLIP similarity to the nearest "
-    f"training image: mean {P2_SAFETY['mem_gen_mean']:.4f}, max {P2_SAFETY['mem_gen_max']:.4f}. "
+    f"<b>Memorization.</b> For the {P2_SAFETY['mem_n']} in-domain generations I measured CLIP "
+    f"similarity to the nearest training image: mean {P2_SAFETY['mem_gen_mean']:.4f}, max "
+    f"{P2_SAFETY['mem_gen_max']:.4f}. "
     "That number is meaningless alone, because a value near 0.9 could indicate either "
     "memorization or simply a visually homogeneous dataset. The control is to run the same "
     "measurement on held-out test images, which by construction were never trained on: mean "
