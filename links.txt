@@ -22,7 +22,8 @@ Hugging Face — Part 2 image dataset (120 generated images with prompt, seed an
 
 Kaggle
   competition     https://www.kaggle.com/t/e7463a4483964d5a9a41169a67416325
-  final notebook  TODO paste the Kaggle notebook URL
+  final notebook  https://www.kaggle.com/code/shriramdundigalla14/part1-rag/notebook?scriptVersionId=370463230
+                  (version 370463230 is the run that produced the submission below)
   selected submission  public leaderboard 0.646, run on a Kaggle T4,
                        peak GPU memory 8.51 GB, notebook runtime 33.4 min
 
