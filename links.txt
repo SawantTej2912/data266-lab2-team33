@@ -7,9 +7,13 @@ GitHub repository
   https://github.com/SawantTej2912/data266-lab2-team33
 
 Tagged commits (graders use the tagged commit, and tags made after the deadline are ignored)
-  p1-v1.0   4925095190af9802edc6e43904f697b461c12f86
-  p2-v1.0   4925095190af9802edc6e43904f697b461c12f86
-  p3-v1.0   4925095190af9802edc6e43904f697b461c12f86
+  p1-v1.0   94c9a2c8a5b9baf1266e60cfc10ab3e9e601f31f
+  p2-v1.0   94c9a2c8a5b9baf1266e60cfc10ab3e9e601f31f
+  p3-v1.0   94c9a2c8a5b9baf1266e60cfc10ab3e9e601f31f
+  All three tag the same commit: the three parts share one repository and one
+  final state. This file is the copy to read for those SHAs, because a file
+  cannot contain the hash of the commit that records it, so the copy committed
+  inside the tagged snapshot itself names the previous commit.
 
 Hugging Face — Part 2 (Tejas led Part 2; these are the graded ones, printed by
 notebooks/tejas/p2_3_generate_evaluate.ipynb)
