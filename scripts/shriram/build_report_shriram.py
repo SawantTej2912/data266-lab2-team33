@@ -193,6 +193,47 @@ p2_split_test = pd.read_csv(P2 / "metrics" / "split_test.csv")
 p3_results = pd.read_csv(P3 / "evaluation" / "results_table.csv").set_index("measurement")
 p3_pass = pd.read_csv(P3 / "evaluation" / "scenario_pass_table.csv")
 p3_critic = pd.read_csv(P3 / "evaluation" / "critic_agreement.csv")
+
+# Part 2 blinded pairs: how often each rater picked the fine-tuned image.
+s2_key = pd.read_csv(P2 / "human_eval" / "answer_key.csv")
+S2_COLS = ("better_domain_style", "better_prompt_match")
+S2_SHEETS = {p.stem.split("_")[1]: pd.read_csv(p) for p in
+             sorted((P2 / "human_eval" / "ratings").glob("ratings_*.csv"))}
+S2_WINS = {}
+for who, sheet in S2_SHEETS.items():
+    m = s2_key.merge(sheet, on="pair")
+    S2_WINS[who] = [(((m[c] == "left") & (m["left_model"] == "lora_r32"))
+                     | ((m[c] == "right") & (m["right_model"] == "lora_r32"))).mean()
+                    for c in S2_COLS]
+S2_MEAN = [sum(v[n] for v in S2_WINS.values()) / len(S2_WINS) for n in (0, 1)]
+S2_UNANIMOUS = {c: sum(1 for n in range(len(s2_key))
+                       if len({sheet[c].iloc[n] for sheet in S2_SHEETS.values()}) == 1)
+                for c in S2_COLS}
+
+# Part 3 rubric: a run passes a setting only if every rubric line for it is yes.
+RAT = P3 / "human_eval" / "ratings"
+s3_rub_s, s3_rub_t = (pd.read_csv(RAT / f"ratings_{w}.csv") for w in ("Shriram", "Tejas"))
+s3_agreed = pd.read_csv(RAT / "ratings_agreed.csv")
+S3_DISAGREE = int((s3_rub_s["judgement"] != s3_rub_t["judgement"]).sum())
+S3_RATER_AGREE = 1 - S3_DISAGREE / len(s3_rub_s)
+
+
+def rubric_pass(sheet, setting):
+    # "S04_without_r1" also starts with "S04_with", so the rubric suffix has to be
+    # part of the prefix or the two settings bleed into each other.
+    runs = {i.split("_r")[0] for i in sheet["item"] if f"_{setting}_" in i}
+    return sum(1 for run in runs
+               if all(str(v).strip().lower() == "yes"
+                      for v in sheet.loc[sheet["item"].str.startswith(run + "_r"),
+                                         "judgement"]))
+
+
+S3_HUMAN = {s: rubric_pass(s3_agreed, s) for s in ("with", "without")}
+S3_RED_HUMAN = sum(1 for r in {i.split("_r")[0] for i in s3_agreed["item"] if i.startswith("R")}
+                   if all(str(v).strip().lower() == "yes"
+                          for v in s3_agreed.loc[s3_agreed["item"].str.startswith(r + "_r"),
+                                                 "judgement"]))
+S3_CHECKS_PASSED = int((s3_agreed["judgement"].str.strip().str.lower() == "yes").sum())
 p3_red = pd.read_csv(P3 / "evaluation" / "redteam_results.csv")
 p3_runs = pd.read_csv(P3 / "evaluation" / "scenario_runs.csv")
 
@@ -551,7 +592,8 @@ for model in ["base", "lora_r8", "lora_r32"]:
     rows.append([model, f"{r['kid_in_domain']:.4f} \u00b1 {r['kid_std']:.4f}",
                  f"{r['clip_score']:.2f}", f"{r['clip_in_domain']:.2f}",
                  f"{r['lpips_diversity']:.4f}"])
-rows.append(["Human eval: win rate vs base", PENDING, "", "", ""])
+rows.append([f"Human eval, {len(S2_WINS)} raters: win rate vs base",
+             f"domain style {S2_MEAN[0]:.0%}", f"prompt match {S2_MEAN[1]:.0%}", "", ""])
 A(figure(table(rows, cols(0.26, 0.26, 0.15, 0.18, 0.15)),
          "TABLE V.&nbsp;&nbsp;Part 2 results. KID is computed between in-domain generations and "
          "test images. "
@@ -678,7 +720,8 @@ rows = [["Measurement", "Without critique", "With critique"]]
 for m in p3_results.index:
     rows.append([m, p3_results.loc[m, "baseline (no critique loop)"],
                  p3_results.loc[m, "final (critique loop)"]])
-rows.append(["Human eval: inter-rater agreement", PENDING, PENDING])
+rows.append(["Human eval, 2 raters: scenarios passing all rubric lines",
+             f"{S3_HUMAN['without']} of 15", f"{S3_HUMAN['with']} of 15"])
 A(figure(table(rows, cols(0.46, 0.27, 0.27)),
          "TABLE VI.&nbsp;&nbsp;Part 3, 15 scenarios run twice. "
          "<font face='Courier' size='7'>outputs/shriram/part3/evaluation/results_table.csv</font>"))
