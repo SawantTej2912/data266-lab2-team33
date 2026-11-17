@@ -176,8 +176,10 @@ if GROUND_DONE:
                                     + p1_ground["rating_tejas"]) / 2 <= 2, "id"].tolist()}
     GROUND_CELL = f"{GROUND['mean']:.2f}"
 else:
-    rated_n = int(p1_ground["rating_shriram"].notna().sum())
-    GROUND_CELL = f"{PENDING} ({rated_n} of {len(p1_ground)} in)"
+    done = {name.split("_")[1]: int(p1_ground[name].notna().sum())
+            for name in ("rating_shriram", "rating_tejas")}
+    GROUND_CELL = (f"{PENDING}: "
+                   + ", ".join(f"{who} {n} of {len(p1_ground)}" for who, n in done.items()))
 BASE1, FINAL1 = "dense baseline", "hybrid + exact-label hybrid"
 
 p2_results = pd.read_csv(P2 / "metrics" / "results_table.csv").set_index("model")
