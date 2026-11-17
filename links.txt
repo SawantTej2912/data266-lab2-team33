@@ -11,14 +11,20 @@ Tagged commits (graders use the tagged commit, and tags made after the deadline 
   p2-v1.0   TODO commit sha
   p3-v1.0   TODO commit sha
 
-Hugging Face — Part 2 models
-  LoRA rank 8    https://huggingface.co/shriram14/pokemon-sd15-lora-r8
-  LoRA rank 32   https://huggingface.co/shriram14/pokemon-sd15-lora-r32
-  final run      rank 32, selected on in-domain KID (0.0274 against 0.0507 at rank 8).
+Hugging Face — Part 2 (Tejas led Part 2; these are the graded ones, printed by
+notebooks/tejas/p2_3_generate_evaluate.ipynb)
+  LoRA rank 8    https://huggingface.co/SawantTej/pokemon-sd15-lora-r8
+  LoRA rank 32   https://huggingface.co/SawantTej/pokemon-sd15-lora-r32
+  final run      rank 32 (run2_lora_r32), selected on in-domain KID (0.0356 against 0.0531 at rank 8).
                  The model card is the README of that repository.
+  image dataset  https://huggingface.co/datasets/SawantTej/pokemon-sd15-lora-generations
+                 (120 generated images, 40 per model, with prompt, seed and model)
 
-Hugging Face — Part 2 image dataset (120 generated images with prompt, seed and model)
-  https://huggingface.co/datasets/shriram14/data266-lab2-part2-images
+  ALSO UPLOADED — Shriram's own Part 2 implementation
+    LoRA rank 8    https://huggingface.co/shriram14/pokemon-sd15-lora-r8
+    LoRA rank 32   https://huggingface.co/shriram14/pokemon-sd15-lora-r32
+    final run      rank 32, selected on in-domain KID (0.0274 against 0.0507 at rank 8).
+    image dataset  https://huggingface.co/datasets/shriram14/data266-lab2-part2-images
 
 Kaggle — team Pair_Programming_Team_33 (both members merged into one team)
   competition  https://www.kaggle.com/t/e7463a4483964d5a9a41169a67416325

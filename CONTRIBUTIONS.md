@@ -103,15 +103,23 @@ Shriram built and ran his own complete implementation of all three parts, indepe
 | `e7adf5d` | 1 | Part 1 run on Kaggle - the notebook the graders re-run for the hidden set |
 | `732bc40` | 1 | The Kaggle notebook link, pinned to the graded version |
 
-### Human evaluation on Shriram's side (done)
+### Human evaluation on Shriram's side 
 
 - Part 1 groundedness: both members rated all 25 answers of the graded Kaggle run (`outputs/shriram/part1/human_groundedness.csv`). Shriram 4.36, Tejas 4.40, combined 4.38; the two of us give the same score on 22 of 25 and are never more than one point apart.
 - Part 2: the blinded 25-pair comparison was rated by three people, one of them outside the team (`outputs/shriram/part2/human_eval/ratings/`). The fine-tuned model wins domain style 89% and prompt match 68%.
 - Part 3: both members filled the full 70-check rubric (`outputs/shriram/part3/human_eval/ratings/`). We agreed on 57 of 70; the 13 disagreements were settled one at a time against the traces and images and recorded in `resolution.csv`, with the settled sheet in `ratings_agreed.csv`. Agreed result: 13 of 15 scenarios pass with the critique loop, 11 of 15 without, 10 of 10 red-team attacks defended.
 
-### Still open (both)
+### Meetings and discussion
 
-- TODO (both): the meeting-recordings list required by C3.4, and the three release tags in `links.txt`.
+Throughout the DATA 266 lab, Shriram and I worked as partners and regularly discussed our individual progress, approaches, and results. Most of our discussions took place in person while working in the GPU lab, so we do not have recordings of these meetings.
+
+For **Part 1**, which involved building the RAG system, we discussed which LLM models would be appropriate to use and helped each other refine and tailor the prompts. Although we completed our runs individually, we discussed the approaches we were taking and, after completing the experiments, evaluated each other’s answers and results.
+
+For **Part 2**, we jointly decided to use the Pokémon dataset from Hugging Face. We coordinated throughout the experimentation process, particularly around training decisions such as the number of epochs and other training considerations. Once our individual runs were completed, we reviewed and evaluated each other’s generated outputs and overall results.
+
+For **Part 3**, we again reviewed and evaluated each other’s results. We compared the differences between our outputs and discussed possible reasons for those differences, including how our individual choices and experimental setups may have affected the final results.
+
+Overall, even though each part required us to perform the tasks individually, we regularly coordinated, discussed our decisions and observations, and provided peer evaluation and feedback on each other’s work.
 
 ## Who led which task
 
