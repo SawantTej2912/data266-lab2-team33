@@ -161,6 +161,23 @@ p1_attrib = pd.read_csv(P1 / "failure_attribution.csv").set_index("outcome")
 p1_probes = pd.read_csv(P1 / "safety_probes.csv")
 p1_submission = pd.read_csv(P1 / "submission.csv", dtype=str, keep_default_na=False)
 p1_ground = pd.read_csv(P1 / "human_groundedness.csv")
+# The two columns fill in as the raters work, so the report shows figures only once both are
+# complete and says so plainly until then. A rating only counts if it was made against the
+# answer the graded run produced, which is what the sheet now holds.
+GROUND_DONE = not p1_ground[["rating_shriram", "rating_tejas"]].isna().any().any()
+if GROUND_DONE:
+    gap = (p1_ground["rating_shriram"] - p1_ground["rating_tejas"]).abs()
+    GROUND = {"mean": (p1_ground["rating_shriram"].mean() + p1_ground["rating_tejas"].mean()) / 2,
+              "mean_s": p1_ground["rating_shriram"].mean(),
+              "mean_t": p1_ground["rating_tejas"].mean(),
+              "exact": int((gap == 0).sum()), "within_one": int((gap <= 1).sum()),
+              "n": len(p1_ground),
+              "low": p1_ground.loc[(p1_ground["rating_shriram"]
+                                    + p1_ground["rating_tejas"]) / 2 <= 2, "id"].tolist()}
+    GROUND_CELL = f"{GROUND['mean']:.2f}"
+else:
+    rated_n = int(p1_ground["rating_shriram"].notna().sum())
+    GROUND_CELL = f"{PENDING} ({rated_n} of {len(p1_ground)} in)"
 BASE1, FINAL1 = "dense baseline", "hybrid + exact-label hybrid"
 
 p2_results = pd.read_csv(P2 / "metrics" / "results_table.csv").set_index("model")
@@ -321,7 +338,7 @@ rows.append(["Secondary: Recall@5",
              f"{p1_results.loc[BASE1, 'recall_at_5']:.3f}", f"{p1_results.loc[FINAL1, 'recall_at_5']:.3f}"])
 rows.append(["Secondary: citation accuracy",
              f"{p1_results.loc[BASE1, 'citation_accuracy']:.3f}", f"{p1_results.loc[FINAL1, 'citation_accuracy']:.3f}"])
-rows.append(["Human eval: mean groundedness, 1\u20135", PENDING, PENDING])
+rows.append(["Human eval: mean groundedness, 1\u20135", "\u2014", GROUND_CELL])
 rows.append(["Efficiency: median s per question",
              f"{p1_results.loc[BASE1, 'median_seconds']:.1f}", f"{p1_results.loc[FINAL1, 'median_seconds']:.1f}"])
 rows.append(["Untrusted-source leaks",
@@ -381,6 +398,23 @@ for outcome in p1_attrib.index:
 A(figure(table(rows, cols(0.50, 0.25, 0.25)),
          "TABLE III.&nbsp;&nbsp;Where the 25 golden answers go. "
          "<font face='Courier' size='7'>outputs/part1_shriram/failure_attribution.csv</font>"))
+
+if GROUND_DONE:
+    A(Paragraph(
+        f"Both members rated all {GROUND['n']} golden answers 1\u20135 for groundedness\u2014"
+        "whether the cited source actually supports the claim, which is a different question "
+        f"from whether the answer is right. The means are {GROUND['mean_s']:.2f} and "
+        f"{GROUND['mean_t']:.2f}, {GROUND['mean']:.2f} combined. We agreed exactly on "
+        f"{GROUND['exact']} of {GROUND['n']} and within one point on {GROUND['within_one']} of "
+        f"{GROUND['n']}, with no gap wider than one point"
+        + (f". The answers we both scored at or below 2 are "
+           f"{', '.join(GROUND['low'])}" if GROUND["low"] else "") +
+        ". Agreement that tight is worth treating with some suspicion rather than pride: two "
+        "raters who built adjacent systems share the same idea of what a good citation looks "
+        "like, so this measures consistency of the rubric more than independence of the "
+        "judgement. The ratings were made against the answers the graded Kaggle run produced, "
+        "not an earlier run, which matters because the two runs differ on 23 of the 25 rows.",
+        BODY))
 
 A(Paragraph("C.&nbsp;&nbsp;What did not work", H2))
 A(Paragraph(
