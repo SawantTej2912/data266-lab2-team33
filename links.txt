@@ -7,9 +7,9 @@ GitHub repository
   https://github.com/SawantTej2912/data266-lab2-team33
 
 Tagged commits (graders use the tagged commit, and tags made after the deadline are ignored)
-  p1-v1.0   b145cbdedf0b19b1ea5699317bedc89f1d16ebb8
-  p2-v1.0   b145cbdedf0b19b1ea5699317bedc89f1d16ebb8
-  p3-v1.0   b145cbdedf0b19b1ea5699317bedc89f1d16ebb8
+  p1-v1.0   a9534a6c0f87e238f03b2d94943e5a577ad61fb9
+  p2-v1.0   a9534a6c0f87e238f03b2d94943e5a577ad61fb9
+  p3-v1.0   a9534a6c0f87e238f03b2d94943e5a577ad61fb9
   All three tag the same commit: the three parts share one repository and one
   final state. This file is the copy to read for those SHAs, because a file
   cannot contain the hash of the commit that records it, so the copy committed
