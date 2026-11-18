@@ -13,7 +13,7 @@ back it up.
 | 1 | the source does not support it at all, or the number is not there |
 
 Each answer below is the one the **graded Kaggle run** produced, copied from
-`outputs/part1_shriram/evaluation_results.csv`. Under it is the full text of every source it
+`outputs/shriram/part1/evaluation_results.csv`. Under it is the full text of every source it
 cited. Write your number on the `rating_tejas:` line in `human_groundedness.csv`.
 
 ---
