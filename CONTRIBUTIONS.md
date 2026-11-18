@@ -112,7 +112,9 @@ Shriram built and ran his own complete implementation of all three parts, indepe
 
 ### Meetings and discussion
 
-Throughout the DATA 266 lab, Shriram and I worked as partners and regularly discussed our individual progress, approaches, and results. Most of our discussions took place in person while working in the GPU lab, so we do not have recordings of these meetings.
+Throughout the DATA 266 lab, Shriram and I worked as partners and regularly discussed our individual progress, approaches, and results. Most of our discussions took place in person while working in the GPU lab, so they were not recorded. The sessions we did record are here, and the topics are the ones described below:
+
+**Recordings:** https://drive.google.com/drive/folders/17UmJQyS5iJAgqnkvvq9e2gbfGWaBxpRx?usp=sharing
 
 For **Part 1**, which involved building the RAG system, we discussed which LLM models would be appropriate to use and helped each other refine and tailor the prompts. Although we completed our runs individually, we discussed the approaches we were taking and, after completing the experiments, evaluated each other’s answers and results.
 
